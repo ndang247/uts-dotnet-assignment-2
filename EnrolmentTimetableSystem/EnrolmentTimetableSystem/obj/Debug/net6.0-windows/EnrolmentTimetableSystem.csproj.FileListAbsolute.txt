@@ -1,0 +1,17 @@
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\bin\Debug\net6.0-windows\EnrolmentTimetableSystem.exe
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\bin\Debug\net6.0-windows\EnrolmentTimetableSystem.deps.json
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\bin\Debug\net6.0-windows\EnrolmentTimetableSystem.runtimeconfig.json
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\bin\Debug\net6.0-windows\EnrolmentTimetableSystem.dll
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\bin\Debug\net6.0-windows\EnrolmentTimetableSystem.pdb
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.csproj.GenerateResource.cache
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.AssemblyInfoInputs.cache
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.AssemblyInfo.cs
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.csproj.CoreCompileInputs.cache
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.dll
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\refint\EnrolmentTimetableSystem.dll
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.pdb
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.genruntimeconfig.cache
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\ref\EnrolmentTimetableSystem.dll
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.LoginForm.resources
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.Properties.Resources.resources
