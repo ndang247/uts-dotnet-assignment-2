@@ -109,6 +109,8 @@
             loginButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             loginButton.BackColor = Color.FromArgb(15, 75, 235);
             loginButton.Cursor = Cursors.Hand;
+            loginButton.FlatAppearance.BorderSize = 0;
+            loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             loginButton.ForeColor = Color.White;
             loginButton.Location = new Point(3, 267);

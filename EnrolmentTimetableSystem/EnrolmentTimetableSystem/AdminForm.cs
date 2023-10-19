@@ -16,5 +16,10 @@ namespace EnrolmentTimetableSystem
         {
             InitializeComponent();
         }
+
+        private void ViewSubjectRequestsButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
