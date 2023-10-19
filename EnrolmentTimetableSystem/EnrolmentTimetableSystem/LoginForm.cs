@@ -2,6 +2,7 @@ namespace EnrolmentTimetableSystem
 {
     public partial class LoginForm : Form
     {
+        private string enteredID = "", enteredPassword = "";
         public LoginForm()
         {
             InitializeComponent();
@@ -9,23 +10,19 @@ namespace EnrolmentTimetableSystem
 
         private void Id_TextChanged(object sender, EventArgs e)
         {
-            // Enter ID
-
+            enteredID = id.Text;
         }
 
         private void Password_TextChanged(object sender, EventArgs e)
         {
-            // Enter Password
-
+            enteredPassword = password.Text;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string enteredID = id.Text;
-            string enteredPassword = password.Text;
-
             try
             {
+                Console.WriteLine(enteredID);
                 string file = $"{enteredID}.txt";
 
                 // Check if the file exists in three role directories
@@ -52,7 +49,7 @@ namespace EnrolmentTimetableSystem
             }
         }
 
-        private static void CheckCredentials(string id, string password, string role, string file)
+        private void CheckCredentials(string id, string password, string role, string file)
         {
             // Read the file
             string[] lines = File.ReadAllLines($"{role}\\{file}");
@@ -70,6 +67,8 @@ namespace EnrolmentTimetableSystem
 
                         break;
                     case "Admin":
+                        Hide();
+                        new AdminForm().Show();
                         break;
                     default:
                         break;

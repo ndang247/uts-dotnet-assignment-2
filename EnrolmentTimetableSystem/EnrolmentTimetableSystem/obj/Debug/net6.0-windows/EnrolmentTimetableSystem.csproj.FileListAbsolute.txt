@@ -33,3 +33,4 @@ C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\En
 C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.pdb
 C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.genruntimeconfig.cache
 C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\ref\EnrolmentTimetableSystem.dll
+C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.AdminForm.resources

@@ -127,6 +127,7 @@
             password.PasswordChar = '*';
             password.Size = new Size(240, 29);
             password.TabIndex = 3;
+            password.TextChanged += Password_TextChanged;
             // 
             // id
             // 
@@ -135,6 +136,7 @@
             id.Name = "id";
             id.Size = new Size(240, 29);
             id.TabIndex = 2;
+            id.TextChanged += Id_TextChanged;
             // 
             // passwordLabel
             // 
