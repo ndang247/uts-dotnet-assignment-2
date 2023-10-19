@@ -1,81 +1,84 @@
 namespace EnrolmentTimetableSystem
 {
-	public partial class LoginForm : Form
-	{
-		public LoginForm()
-		{
-			InitializeComponent();
-		}
+    public partial class LoginForm : Form
+    {
+        public LoginForm()
+        {
+            InitializeComponent();
+        }
 
-		private void id_TextChanged(object sender, EventArgs e)
-		{
-			// Enter ID
+        private void Id_TextChanged(object sender, EventArgs e)
+        {
+            // Enter ID
 
-		}
+        }
 
-		private void password_TextChanged(object sender, EventArgs e)
-		{
-			//Enter Password
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            // Enter Password
 
-		}
+        }
 
-		private void loginButton_Click(object sender, EventArgs e)
-		{
-			string enteredUsername = id.Text;
-			string enteredPassword = password.Text;
-			bool loginSuccessful = false;
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            string enteredID = id.Text;
+            string enteredPassword = password.Text;
 
-			// Replace with the path to your TeacherLogin file
-			string teacherFilePath = "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\bin\\Debug\\net6.0-windows\\TeacherLogin.txt";
+            try
+            {
+                string file = $"{enteredID}.txt";
 
-			// Attempt to read from TeacherLogin
-			if (File.Exists(teacherFilePath))
-			{
-				string[] teacherLines = File.ReadAllLines(teacherFilePath);
-				if (teacherLines.Length == 2)
-				{
-					string teacherUsername = teacherLines[0];
-					string teacherPassword = teacherLines[1];
+                // Check if the file exists in three role directories
+                if (File.Exists($"Students\\{file}"))
+                {
+                    CheckCredentials(enteredID, enteredPassword, "Students", file);
+                }
+                else if (File.Exists($"Teachers\\{file}"))
+                {
+                    CheckCredentials(enteredID, enteredPassword, "Teachers", file);
+                }
+                else if (File.Exists($"Admin\\{file}"))
+                {
+                    CheckCredentials(enteredID, enteredPassword, "Admin", file);
+                }
+                else
+                {
+                    throw new Exception("Invalid ID or account user doesn't exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-					if (enteredUsername == teacherUsername && enteredPassword == teacherPassword)
-					{
-						loginSuccessful = true;
-					}
-				}
-			}
+        private static void CheckCredentials(string id, string password, string role, string file)
+        {
+            // Read the file
+            string[] lines = File.ReadAllLines($"{role}\\{file}");
+            string[] details = lines[0].Split(':');
 
-			// If login is not successful with TeacherLogin, attempt StudentLogin
-			if (!loginSuccessful)
-			{
-				// Replace with the path to your StudentLogin file
-				string studentFilePath = "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\bin\\Debug\\net6.0-windows\\StudentLogin.txt";
+            // Check if the id and password is correct
+            if (id == details[0] && password == details[1])
+            {
+                switch (role)
+                {
+                    case "Students":
 
-				if (File.Exists(studentFilePath))
-				{
-					string[] studentLines = File.ReadAllLines(studentFilePath);
-					if (studentLines.Length == 2)
-					{
-						string studentUsername = studentLines[0];
-						string studentPassword = studentLines[1];
+                        break;
+                    case "Teachers":
 
-						if (enteredUsername == studentUsername && enteredPassword == studentPassword)
-						{
-							loginSuccessful = true;
-						}
-					}
-				}
-			}
-
-			if (loginSuccessful)
-			{
-				MessageBox.Show("Login Successful");
-				// You can add code here to open the main application or perform other actions.
-			}
-			else
-			{
-				MessageBox.Show("Login Failed. Please check your username and password.");
-			}
-		}
-
-	}
+                        break;
+                    case "Admin":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                throw new Exception("\nInvalid password");
+            }
+        }
+    }
 }
