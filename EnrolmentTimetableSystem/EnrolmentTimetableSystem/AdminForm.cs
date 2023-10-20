@@ -19,7 +19,17 @@ namespace EnrolmentTimetableSystem
 
         private void ViewSubjectRequestsButton_Click(object sender, EventArgs e)
         {
+            adminTabControl.SelectedTab = viewSubjectRequestsPage;
+        }
 
+        private void AddSubjectAndActivitiesButton_Click(object sender, EventArgs e)
+        {
+            adminTabControl.SelectedTab = addASubjectAndActivitiesPage;
+        }
+
+        private void RemoveFromASubjectButton_Click(object sender, EventArgs e)
+        {
+            adminTabControl.SelectedTab = removeFromASubjectPage;
         }
     }
 }
