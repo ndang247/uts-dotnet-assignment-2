@@ -31,5 +31,13 @@ namespace EnrolmentTimetableSystem
 		{
 			teacherTabControl.SelectedTab = teacherTabControl.TabPages["viewActivities"];
 		}
+
+		//Need to check if this actually logs the user out
+		private void logoutButton_Click(object sender, EventArgs e)
+		{
+			this.Close();
+			LoginForm loginForm = new LoginForm();
+			loginForm.Show();
+		}
 	}
 }
