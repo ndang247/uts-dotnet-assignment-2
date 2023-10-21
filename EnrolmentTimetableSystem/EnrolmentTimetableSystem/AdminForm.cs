@@ -13,9 +13,12 @@ namespace EnrolmentTimetableSystem
     public partial class AdminForm : Form
     {
         private readonly LoginForm loginForm;
-        public AdminForm(LoginForm loginForm)
+        private string firstName, lastName;
+        public AdminForm(LoginForm loginForm, string[] adminDetails)
         {
             this.loginForm = loginForm;
+            firstName = adminDetails[2];
+            lastName = adminDetails[3];
             InitializeComponent();
         }
 
@@ -162,6 +165,8 @@ namespace EnrolmentTimetableSystem
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
+
             subjectsListBox.Items.Clear();
             string[] subjects = Directory.GetFiles("Subjects");
             foreach (string subject in subjects)

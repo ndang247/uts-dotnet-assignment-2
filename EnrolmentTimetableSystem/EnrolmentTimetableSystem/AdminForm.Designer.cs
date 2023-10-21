@@ -120,7 +120,7 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(255, 767);
+            panel1.Size = new Size(270, 767);
             panel1.TabIndex = 0;
             // 
             // logoutButton
@@ -136,7 +136,7 @@
             logoutButton.ForeColor = Color.WhiteSmoke;
             logoutButton.Location = new Point(0, 325);
             logoutButton.Name = "logoutButton";
-            logoutButton.Size = new Size(255, 35);
+            logoutButton.Size = new Size(270, 35);
             logoutButton.TabIndex = 1;
             logoutButton.Text = "Logout";
             logoutButton.UseVisualStyleBackColor = false;
@@ -148,7 +148,7 @@
             panel5.Dock = DockStyle.Top;
             panel5.Location = new Point(0, 285);
             panel5.Name = "panel5";
-            panel5.Size = new Size(255, 40);
+            panel5.Size = new Size(270, 40);
             panel5.TabIndex = 6;
             // 
             // otherLabel
@@ -174,7 +174,7 @@
             removeFromASubjectButton.ForeColor = Color.Black;
             removeFromASubjectButton.Location = new Point(0, 250);
             removeFromASubjectButton.Name = "removeFromASubjectButton";
-            removeFromASubjectButton.Size = new Size(255, 35);
+            removeFromASubjectButton.Size = new Size(270, 35);
             removeFromASubjectButton.TabIndex = 1;
             removeFromASubjectButton.Text = "Remove From a Subject";
             removeFromASubjectButton.UseVisualStyleBackColor = false;
@@ -186,7 +186,7 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(0, 235);
             panel4.Name = "panel4";
-            panel4.Size = new Size(255, 15);
+            panel4.Size = new Size(270, 15);
             panel4.TabIndex = 5;
             // 
             // addSubjectAndActivitiesButton
@@ -201,7 +201,7 @@
             addSubjectAndActivitiesButton.ForeColor = Color.Black;
             addSubjectAndActivitiesButton.Location = new Point(0, 200);
             addSubjectAndActivitiesButton.Name = "addSubjectAndActivitiesButton";
-            addSubjectAndActivitiesButton.Size = new Size(255, 35);
+            addSubjectAndActivitiesButton.Size = new Size(270, 35);
             addSubjectAndActivitiesButton.TabIndex = 3;
             addSubjectAndActivitiesButton.Text = "Add a Subject and Activities";
             addSubjectAndActivitiesButton.UseVisualStyleBackColor = false;
@@ -213,7 +213,7 @@
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 185);
             panel3.Name = "panel3";
-            panel3.Size = new Size(255, 15);
+            panel3.Size = new Size(270, 15);
             panel3.TabIndex = 2;
             // 
             // viewSubjectRequestsButton
@@ -228,7 +228,7 @@
             viewSubjectRequestsButton.ForeColor = Color.Black;
             viewSubjectRequestsButton.Location = new Point(0, 150);
             viewSubjectRequestsButton.Name = "viewSubjectRequestsButton";
-            viewSubjectRequestsButton.Size = new Size(255, 35);
+            viewSubjectRequestsButton.Size = new Size(270, 35);
             viewSubjectRequestsButton.TabIndex = 1;
             viewSubjectRequestsButton.Text = "View Subject Requests";
             viewSubjectRequestsButton.UseVisualStyleBackColor = false;
@@ -243,7 +243,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(255, 150);
+            panel2.Size = new Size(270, 150);
             panel2.TabIndex = 1;
             // 
             // welcomeLabel
@@ -252,9 +252,9 @@
             welcomeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             welcomeLabel.Location = new Point(12, 89);
             welcomeLabel.Name = "welcomeLabel";
-            welcomeLabel.Size = new Size(180, 21);
+            welcomeLabel.Size = new Size(115, 21);
             welcomeLabel.TabIndex = 3;
-            welcomeLabel.Text = "Welcome Back <name>!";
+            welcomeLabel.Text = "Welcome Back!";
             // 
             // roleLabel
             // 
@@ -293,10 +293,10 @@
             adminTabControl.Controls.Add(addASubjectAndActivitiesPage);
             adminTabControl.Controls.Add(removeFromASubjectPage);
             adminTabControl.Dock = DockStyle.Fill;
-            adminTabControl.Location = new Point(255, 0);
+            adminTabControl.Location = new Point(270, 0);
             adminTabControl.Name = "adminTabControl";
             adminTabControl.SelectedIndex = 0;
-            adminTabControl.Size = new Size(992, 767);
+            adminTabControl.Size = new Size(977, 767);
             adminTabControl.TabIndex = 7;
             // 
             // viewSubjectRequestsPage
@@ -306,7 +306,7 @@
             viewSubjectRequestsPage.Location = new Point(4, 24);
             viewSubjectRequestsPage.Name = "viewSubjectRequestsPage";
             viewSubjectRequestsPage.Padding = new Padding(3);
-            viewSubjectRequestsPage.Size = new Size(984, 739);
+            viewSubjectRequestsPage.Size = new Size(969, 739);
             viewSubjectRequestsPage.TabIndex = 0;
             viewSubjectRequestsPage.Text = "viewSubjectRequestsTab";
             viewSubjectRequestsPage.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@
             subjectRequestsTableLayoutPanel.RowCount = 2;
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            subjectRequestsTableLayoutPanel.Size = new Size(961, 100);
+            subjectRequestsTableLayoutPanel.Size = new Size(946, 100);
             subjectRequestsTableLayoutPanel.TabIndex = 3;
             // 
             // panel6
@@ -347,7 +347,7 @@
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(624, 54);
             panel6.Name = "panel6";
-            panel6.Size = new Size(331, 40);
+            panel6.Size = new Size(316, 40);
             panel6.TabIndex = 12;
             // 
             // requestRejectButton
@@ -450,7 +450,7 @@
             requestActionsLabel.Dock = DockStyle.Fill;
             requestActionsLabel.Location = new Point(624, 3);
             requestActionsLabel.Name = "requestActionsLabel";
-            requestActionsLabel.Size = new Size(331, 45);
+            requestActionsLabel.Size = new Size(316, 45);
             requestActionsLabel.TabIndex = 10;
             requestActionsLabel.Text = "Actions";
             requestActionsLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -458,7 +458,7 @@
             // vScrollBar1
             // 
             vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Location = new Point(964, 3);
+            vScrollBar1.Location = new Point(949, 3);
             vScrollBar1.Name = "vScrollBar1";
             vScrollBar1.Size = new Size(17, 733);
             vScrollBar1.TabIndex = 1;
@@ -470,7 +470,7 @@
             addASubjectAndActivitiesPage.Location = new Point(4, 24);
             addASubjectAndActivitiesPage.Name = "addASubjectAndActivitiesPage";
             addASubjectAndActivitiesPage.Padding = new Padding(3);
-            addASubjectAndActivitiesPage.Size = new Size(984, 739);
+            addASubjectAndActivitiesPage.Size = new Size(959, 739);
             addASubjectAndActivitiesPage.TabIndex = 1;
             addASubjectAndActivitiesPage.Text = "addASubjectAndActivitiesTab";
             addASubjectAndActivitiesPage.UseVisualStyleBackColor = true;
@@ -500,7 +500,7 @@
             addActivitiesGroup.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             addActivitiesGroup.Location = new Point(3, 126);
             addActivitiesGroup.Name = "addActivitiesGroup";
-            addActivitiesGroup.Size = new Size(978, 610);
+            addActivitiesGroup.Size = new Size(953, 610);
             addActivitiesGroup.TabIndex = 1;
             addActivitiesGroup.TabStop = false;
             addActivitiesGroup.Text = "Add an Activity";
@@ -712,7 +712,7 @@
             addASubjectGroup.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             addASubjectGroup.Location = new Point(3, 3);
             addASubjectGroup.Name = "addASubjectGroup";
-            addASubjectGroup.Size = new Size(978, 123);
+            addASubjectGroup.Size = new Size(953, 123);
             addASubjectGroup.TabIndex = 0;
             addASubjectGroup.TabStop = false;
             addASubjectGroup.Text = "Add a Subject";
@@ -788,7 +788,7 @@
             removeFromASubjectPage.Controls.Add(subjectsListBox);
             removeFromASubjectPage.Location = new Point(4, 24);
             removeFromASubjectPage.Name = "removeFromASubjectPage";
-            removeFromASubjectPage.Size = new Size(984, 739);
+            removeFromASubjectPage.Size = new Size(959, 739);
             removeFromASubjectPage.TabIndex = 2;
             removeFromASubjectPage.Text = "removeFromASubjectTab";
             removeFromASubjectPage.UseVisualStyleBackColor = true;
@@ -803,7 +803,7 @@
             enrolmentTabControl.Multiline = true;
             enrolmentTabControl.Name = "enrolmentTabControl";
             enrolmentTabControl.SelectedIndex = 0;
-            enrolmentTabControl.Size = new Size(684, 739);
+            enrolmentTabControl.Size = new Size(659, 739);
             enrolmentTabControl.TabIndex = 1;
             // 
             // studentsEnrolmentTabPage
@@ -811,7 +811,7 @@
             studentsEnrolmentTabPage.Location = new Point(27, 4);
             studentsEnrolmentTabPage.Name = "studentsEnrolmentTabPage";
             studentsEnrolmentTabPage.Padding = new Padding(3);
-            studentsEnrolmentTabPage.Size = new Size(653, 731);
+            studentsEnrolmentTabPage.Size = new Size(628, 731);
             studentsEnrolmentTabPage.TabIndex = 0;
             studentsEnrolmentTabPage.Text = "studentsTab";
             studentsEnrolmentTabPage.UseVisualStyleBackColor = true;
