@@ -1,8 +1,12 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "1FLOmVDePv0IAjoh1ncrFsBOu30EzFjP9UyTcYnj+BcZwFyho0ZMhjVsCtA+sRufs5aEOwEwgT8QGH0pbs/lLQ==",
+=======
+  "dgSpecHash": "h5oJoymxsAZ2IhSOwpYBWCMtP9M+fIavxjABijWm2sl90LU4UYBmjcPHIk9XRT7WITvt6cc7vLjpJs5Ca0LwAA==",
+>>>>>>> 3d5b8a797a9b796a29900b213220e9e509e2d1cf
   "success": true,
-  "projectFilePath": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
+  "projectFilePath": "C:\\Users\\Matthew\\OneDrive\\Desktop\\.net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

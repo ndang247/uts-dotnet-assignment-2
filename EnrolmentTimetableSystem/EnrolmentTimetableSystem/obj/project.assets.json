@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\natha\\.nuget\\packages\\": {}
+    "C:\\Users\\Matthew\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
+      "projectUniqueName": "C:\\Users\\Matthew\\OneDrive\\Desktop\\.net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
       "projectName": "EnrolmentTimetableSystem",
-      "projectPath": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
-      "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\obj\\",
+      "projectPath": "C:\\Users\\Matthew\\OneDrive\\Desktop\\.net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
+      "packagesPath": "C:\\Users\\Matthew\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Matthew\\OneDrive\\Desktop\\.net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Matthew\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
