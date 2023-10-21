@@ -68,7 +68,8 @@ namespace EnrolmentTimetableSystem
                         break;
                     case "Admin":
                         Hide();
-                        new AdminForm().Show();
+                        AdminForm adminForm = new(this);
+                        adminForm.Show();
                         break;
                     default:
                         break;
@@ -78,6 +79,12 @@ namespace EnrolmentTimetableSystem
             {
                 throw new Exception("\nInvalid password");
             }
+        }
+
+        public void ResetLoginForm()
+        {
+            id.Text = "";
+            password.Text = "";
         }
     }
 }
