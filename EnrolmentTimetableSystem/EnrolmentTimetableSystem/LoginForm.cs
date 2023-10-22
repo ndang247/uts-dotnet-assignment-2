@@ -61,8 +61,10 @@ namespace EnrolmentTimetableSystem
                 switch (role)
                 {
                     case "Students":
-
-                        break;
+						Hide();
+						StudentForm studentForm = new(this, details);
+						studentForm.Show();
+						break;
                     case "Teachers":
                         Hide();
                         new TeacherForm().Show();
