@@ -431,7 +431,7 @@
 			groupBox2.Controls.Add(textBox6);
 			groupBox2.Controls.Add(textBox5);
 			groupBox2.Controls.Add(textBox4);
-			groupBox2.Location = new Point(106, 54);
+			groupBox2.Location = new Point(100, 100);
 			groupBox2.Name = "groupBox2";
 			groupBox2.Padding = new Padding(0);
 			groupBox2.Size = new Size(786, 46);
@@ -451,7 +451,7 @@
 			textBox9.BorderStyle = BorderStyle.None;
 			textBox9.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox9.ForeColor = Color.PaleVioletRed;
-			textBox9.Location = new Point(656, 11);
+			textBox9.Location = new Point(675, 11);
 			textBox9.Name = "textBox9";
 			textBox9.Size = new Size(100, 23);
 			textBox9.TabIndex = 5;
@@ -463,7 +463,7 @@
 			textBox8.BorderStyle = BorderStyle.None;
 			textBox8.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox8.ForeColor = Color.PaleVioletRed;
-			textBox8.Location = new Point(517, 11);
+			textBox8.Location = new Point(536, 11);
 			textBox8.Name = "textBox8";
 			textBox8.Size = new Size(100, 23);
 			textBox8.TabIndex = 4;
@@ -475,7 +475,7 @@
 			textBox7.BorderStyle = BorderStyle.None;
 			textBox7.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox7.ForeColor = Color.PaleVioletRed;
-			textBox7.Location = new Point(379, 11);
+			textBox7.Location = new Point(398, 11);
 			textBox7.Name = "textBox7";
 			textBox7.Size = new Size(100, 23);
 			textBox7.TabIndex = 3;
@@ -487,7 +487,7 @@
 			textBox6.BorderStyle = BorderStyle.None;
 			textBox6.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox6.ForeColor = Color.PaleVioletRed;
-			textBox6.Location = new Point(256, 11);
+			textBox6.Location = new Point(275, 11);
 			textBox6.Name = "textBox6";
 			textBox6.Size = new Size(100, 23);
 			textBox6.TabIndex = 2;
@@ -499,7 +499,7 @@
 			textBox5.BorderStyle = BorderStyle.None;
 			textBox5.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox5.ForeColor = Color.PaleVioletRed;
-			textBox5.Location = new Point(133, 11);
+			textBox5.Location = new Point(152, 11);
 			textBox5.Name = "textBox5";
 			textBox5.Size = new Size(100, 23);
 			textBox5.TabIndex = 1;
@@ -511,7 +511,7 @@
 			textBox4.BorderStyle = BorderStyle.None;
 			textBox4.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox4.ForeColor = Color.PaleVioletRed;
-			textBox4.Location = new Point(27, 11);
+			textBox4.Location = new Point(16, 11);
 			textBox4.Name = "textBox4";
 			textBox4.Size = new Size(100, 23);
 			textBox4.TabIndex = 0;
@@ -526,7 +526,7 @@
 			panel6.Controls.Add(panel9);
 			panel6.Controls.Add(panel8);
 			panel6.ForeColor = SystemColors.ActiveCaption;
-			panel6.Location = new Point(106, 54);
+			panel6.Location = new Point(100, 100);
 			panel6.Name = "panel6";
 			panel6.Size = new Size(786, 552);
 			panel6.TabIndex = 0;
@@ -537,7 +537,7 @@
 			textBox12.BorderStyle = BorderStyle.None;
 			textBox12.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox12.ForeColor = Color.PaleVioletRed;
-			textBox12.Location = new Point(27, 497);
+			textBox12.Location = new Point(16, 497);
 			textBox12.Name = "textBox12";
 			textBox12.Size = new Size(100, 23);
 			textBox12.TabIndex = 8;
@@ -549,7 +549,7 @@
 			textBox11.BorderStyle = BorderStyle.None;
 			textBox11.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox11.ForeColor = Color.PaleVioletRed;
-			textBox11.Location = new Point(27, 286);
+			textBox11.Location = new Point(16, 286);
 			textBox11.Name = "textBox11";
 			textBox11.Size = new Size(100, 23);
 			textBox11.TabIndex = 7;
@@ -561,7 +561,7 @@
 			textBox10.BorderStyle = BorderStyle.None;
 			textBox10.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox10.ForeColor = Color.PaleVioletRed;
-			textBox10.Location = new Point(27, 82);
+			textBox10.Location = new Point(16, 82);
 			textBox10.Name = "textBox10";
 			textBox10.Size = new Size(100, 23);
 			textBox10.TabIndex = 6;
@@ -583,7 +583,7 @@
 			textBox14.BorderStyle = BorderStyle.None;
 			textBox14.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox14.ForeColor = Color.PaleVioletRed;
-			textBox14.Location = new Point(27, 47);
+			textBox14.Location = new Point(16, 47);
 			textBox14.Name = "textBox14";
 			textBox14.Size = new Size(100, 23);
 			textBox14.TabIndex = 10;
@@ -605,7 +605,7 @@
 			textBox13.BorderStyle = BorderStyle.None;
 			textBox13.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox13.ForeColor = Color.PaleVioletRed;
-			textBox13.Location = new Point(27, 42);
+			textBox13.Location = new Point(16, 42);
 			textBox13.Name = "textBox13";
 			textBox13.Size = new Size(100, 23);
 			textBox13.TabIndex = 9;
