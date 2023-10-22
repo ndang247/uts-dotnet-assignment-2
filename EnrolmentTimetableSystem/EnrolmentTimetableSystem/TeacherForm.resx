@@ -202,4 +202,7 @@
         v99V/z8pjP0vBGXa4hFFA0UAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="subjectRequestsTableLayoutPanel.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

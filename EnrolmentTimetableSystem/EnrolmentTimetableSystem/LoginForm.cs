@@ -22,7 +22,6 @@ namespace EnrolmentTimetableSystem
         {
             try
             {
-                Console.WriteLine(enteredID);
                 string file = $"{enteredID}.txt";
 
                 // Check if the file exists in three role directories
@@ -61,13 +60,14 @@ namespace EnrolmentTimetableSystem
                 switch (role)
                 {
                     case "Students":
-						Hide();
-						StudentForm studentForm = new(this, details);
-						studentForm.Show();
-						break;
+                        Hide();
+                        StudentForm studentForm = new(this, details);
+                        studentForm.Show();
+                        break;
                     case "Teachers":
                         Hide();
-                        new TeacherForm().Show();
+                        TeacherForm teacherForm = new(this, details);
+                        teacherForm.Show();
                         break;
                     case "Admin":
                         Hide();
