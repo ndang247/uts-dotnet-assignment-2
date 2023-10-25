@@ -1,2 +1,2 @@
-Lecture|5:00 PM|City (U)|CB11.06.101|Monday|On-campus activity|10/23/2023|12/18/2023|2
-Tutorial|5:00 PM|City (U)|CB11.06.101|Thursday|On-campus activity|10/26/2023|12/21/2023|1.5
+74113|Lecture|11:00 AM|Online|Online|Monday|Online activity|10/30/2023|12/18/2023|2
+55021|Tutorial|2:00 PM|Online|Online|Thursday|Online activity|11/2/2023|12/21/2023|1.5

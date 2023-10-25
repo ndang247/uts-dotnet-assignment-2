@@ -80,7 +80,7 @@
             activityTypeComboxBox = new ComboBox();
             addASubjectGroup = new GroupBox();
             generateSubjectCodeButton = new Button();
-            addActivityButton = new Button();
+            addSubjectButton = new Button();
             sjNameTextBox = new TextBox();
             sjCodeTextBox = new TextBox();
             sjNameLabel = new Label();
@@ -470,7 +470,7 @@
             addASubjectAndActivitiesPage.Location = new Point(4, 24);
             addASubjectAndActivitiesPage.Name = "addASubjectAndActivitiesPage";
             addASubjectAndActivitiesPage.Padding = new Padding(3);
-            addASubjectAndActivitiesPage.Size = new Size(959, 739);
+            addASubjectAndActivitiesPage.Size = new Size(969, 739);
             addASubjectAndActivitiesPage.TabIndex = 1;
             addASubjectAndActivitiesPage.Text = "addASubjectAndActivitiesTab";
             addASubjectAndActivitiesPage.UseVisualStyleBackColor = true;
@@ -500,7 +500,7 @@
             addActivitiesGroup.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             addActivitiesGroup.Location = new Point(3, 126);
             addActivitiesGroup.Name = "addActivitiesGroup";
-            addActivitiesGroup.Size = new Size(953, 610);
+            addActivitiesGroup.Size = new Size(963, 610);
             addActivitiesGroup.TabIndex = 1;
             addActivitiesGroup.TabStop = false;
             addActivitiesGroup.Text = "Add an Activity";
@@ -547,9 +547,9 @@
             addSubjectActivityButton.ForeColor = Color.White;
             addSubjectActivityButton.Location = new Point(680, 570);
             addSubjectActivityButton.Name = "addSubjectActivityButton";
-            addSubjectActivityButton.Size = new Size(100, 32);
+            addSubjectActivityButton.Size = new Size(160, 32);
             addSubjectActivityButton.TabIndex = 7;
-            addSubjectActivityButton.Text = "Add";
+            addSubjectActivityButton.Text = "Add Activity";
             addSubjectActivityButton.UseVisualStyleBackColor = false;
             addSubjectActivityButton.Click += AddSubjectActivityButton_Click;
             // 
@@ -703,7 +703,7 @@
             // addASubjectGroup
             // 
             addASubjectGroup.Controls.Add(generateSubjectCodeButton);
-            addASubjectGroup.Controls.Add(addActivityButton);
+            addASubjectGroup.Controls.Add(addSubjectButton);
             addASubjectGroup.Controls.Add(sjNameTextBox);
             addASubjectGroup.Controls.Add(sjCodeTextBox);
             addASubjectGroup.Controls.Add(sjNameLabel);
@@ -712,7 +712,7 @@
             addASubjectGroup.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             addASubjectGroup.Location = new Point(3, 3);
             addASubjectGroup.Name = "addASubjectGroup";
-            addASubjectGroup.Size = new Size(953, 123);
+            addASubjectGroup.Size = new Size(963, 123);
             addASubjectGroup.TabIndex = 0;
             addASubjectGroup.TabStop = false;
             addASubjectGroup.Text = "Add a Subject";
@@ -728,23 +728,23 @@
             generateSubjectCodeButton.UseVisualStyleBackColor = true;
             generateSubjectCodeButton.Click += GenerateSubjectCodeButton_Click;
             // 
-            // addActivityButton
+            // addSubjectButton
             // 
-            addActivityButton.BackColor = Color.LightSkyBlue;
-            addActivityButton.Enabled = false;
-            addActivityButton.FlatAppearance.BorderColor = Color.White;
-            addActivityButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
-            addActivityButton.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
-            addActivityButton.FlatStyle = FlatStyle.Flat;
-            addActivityButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            addActivityButton.ForeColor = Color.White;
-            addActivityButton.Location = new Point(680, 60);
-            addActivityButton.Name = "addActivityButton";
-            addActivityButton.Size = new Size(130, 32);
-            addActivityButton.TabIndex = 1;
-            addActivityButton.Text = "Add an Activity";
-            addActivityButton.UseVisualStyleBackColor = false;
-            addActivityButton.Click += AddActivityButton_Click;
+            addSubjectButton.BackColor = Color.LightSkyBlue;
+            addSubjectButton.Enabled = false;
+            addSubjectButton.FlatAppearance.BorderColor = Color.White;
+            addSubjectButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
+            addSubjectButton.FlatAppearance.MouseOverBackColor = Color.SteelBlue;
+            addSubjectButton.FlatStyle = FlatStyle.Flat;
+            addSubjectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            addSubjectButton.ForeColor = Color.White;
+            addSubjectButton.Location = new Point(680, 60);
+            addSubjectButton.Name = "addSubjectButton";
+            addSubjectButton.Size = new Size(130, 32);
+            addSubjectButton.TabIndex = 1;
+            addSubjectButton.Text = "Add Subject";
+            addSubjectButton.UseVisualStyleBackColor = false;
+            addSubjectButton.Click += AddSubjectButton_Click;
             // 
             // sjNameTextBox
             // 
@@ -757,6 +757,7 @@
             // sjCodeTextBox
             // 
             sjCodeTextBox.Location = new Point(100, 60);
+            sjCodeTextBox.MaxLength = 5;
             sjCodeTextBox.Name = "sjCodeTextBox";
             sjCodeTextBox.Size = new Size(180, 32);
             sjCodeTextBox.TabIndex = 2;
@@ -788,7 +789,7 @@
             removeFromASubjectPage.Controls.Add(subjectsListBox);
             removeFromASubjectPage.Location = new Point(4, 24);
             removeFromASubjectPage.Name = "removeFromASubjectPage";
-            removeFromASubjectPage.Size = new Size(959, 739);
+            removeFromASubjectPage.Size = new Size(969, 739);
             removeFromASubjectPage.TabIndex = 2;
             removeFromASubjectPage.Text = "removeFromASubjectTab";
             removeFromASubjectPage.UseVisualStyleBackColor = true;
@@ -803,7 +804,7 @@
             enrolmentTabControl.Multiline = true;
             enrolmentTabControl.Name = "enrolmentTabControl";
             enrolmentTabControl.SelectedIndex = 0;
-            enrolmentTabControl.Size = new Size(659, 739);
+            enrolmentTabControl.Size = new Size(669, 739);
             enrolmentTabControl.TabIndex = 1;
             // 
             // studentsEnrolmentTabPage
@@ -811,7 +812,7 @@
             studentsEnrolmentTabPage.Location = new Point(27, 4);
             studentsEnrolmentTabPage.Name = "studentsEnrolmentTabPage";
             studentsEnrolmentTabPage.Padding = new Padding(3);
-            studentsEnrolmentTabPage.Size = new Size(628, 731);
+            studentsEnrolmentTabPage.Size = new Size(638, 731);
             studentsEnrolmentTabPage.TabIndex = 0;
             studentsEnrolmentTabPage.Text = "studentsTab";
             studentsEnrolmentTabPage.UseVisualStyleBackColor = true;
@@ -821,7 +822,7 @@
             teachersEnrolmentTabPage.Location = new Point(27, 4);
             teachersEnrolmentTabPage.Name = "teachersEnrolmentTabPage";
             teachersEnrolmentTabPage.Padding = new Padding(3);
-            teachersEnrolmentTabPage.Size = new Size(653, 731);
+            teachersEnrolmentTabPage.Size = new Size(638, 731);
             teachersEnrolmentTabPage.TabIndex = 1;
             teachersEnrolmentTabPage.Text = "teachersTab";
             teachersEnrolmentTabPage.UseVisualStyleBackColor = true;
@@ -893,7 +894,7 @@
         private GroupBox addASubjectGroup;
         private Label sjNameLabel;
         private Label sjCodeLabel;
-        private Button addActivityButton;
+        private Button addSubjectButton;
         private TextBox sjNameTextBox;
         private TextBox sjCodeTextBox;
         private GroupBox addActivitiesGroup;

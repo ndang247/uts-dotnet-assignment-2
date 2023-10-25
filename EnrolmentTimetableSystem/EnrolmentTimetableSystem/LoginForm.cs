@@ -10,12 +10,12 @@ namespace EnrolmentTimetableSystem
 
         private void Id_TextChanged(object sender, EventArgs e)
         {
-            enteredID = id.Text;
+            enteredID = id.Text.Trim();
         }
 
         private void Password_TextChanged(object sender, EventArgs e)
         {
-            enteredPassword = password.Text;
+            enteredPassword = password.Text.Trim();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -61,10 +61,10 @@ namespace EnrolmentTimetableSystem
                 switch (role)
                 {
                     case "Students":
-						Hide();
-						StudentForm studentForm = new(this, details);
-						studentForm.Show();
-						break;
+                        Hide();
+                        StudentForm studentForm = new(this, details);
+                        studentForm.Show();
+                        break;
                     case "Teachers":
                         Hide();
                         new TeacherForm().Show();
