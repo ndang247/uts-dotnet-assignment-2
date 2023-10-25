@@ -46,9 +46,6 @@
             adminTabControl = new TabControl();
             viewSubjectRequestsPage = new TabPage();
             subjectRequestsTableLayoutPanel = new TableLayoutPanel();
-            panel6 = new Panel();
-            requestRejectButton = new Button();
-            requestAcceptButton = new Button();
             requestIDLabel = new Label();
             requestTeacherIDLabel = new Label();
             requestSubjectLabel = new Label();
@@ -97,7 +94,6 @@
             adminTabControl.SuspendLayout();
             viewSubjectRequestsPage.SuspendLayout();
             subjectRequestsTableLayoutPanel.SuspendLayout();
-            panel6.SuspendLayout();
             addASubjectAndActivitiesPage.SuspendLayout();
             addActivitiesGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activityDurationNumericUpDown).BeginInit();
@@ -313,6 +309,7 @@
             // 
             // subjectRequestsTableLayoutPanel
             // 
+            subjectRequestsTableLayoutPanel.AutoSize = true;
             subjectRequestsTableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
             subjectRequestsTableLayoutPanel.ColumnCount = 7;
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
@@ -322,7 +319,6 @@
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
-            subjectRequestsTableLayoutPanel.Controls.Add(panel6, 6, 1);
             subjectRequestsTableLayoutPanel.Controls.Add(requestIDLabel, 0, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherIDLabel, 1, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestSubjectLabel, 2, 0);
@@ -337,46 +333,8 @@
             subjectRequestsTableLayoutPanel.RowCount = 2;
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
-            subjectRequestsTableLayoutPanel.Size = new Size(946, 100);
+            subjectRequestsTableLayoutPanel.Size = new Size(946, 30);
             subjectRequestsTableLayoutPanel.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(requestRejectButton);
-            panel6.Controls.Add(requestAcceptButton);
-            panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(686, 30);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(316, 64);
-            panel6.TabIndex = 12;
-            // 
-            // requestRejectButton
-            // 
-            requestRejectButton.BackColor = Color.LightCoral;
-            requestRejectButton.FlatAppearance.BorderColor = Color.White;
-            requestRejectButton.FlatAppearance.MouseDownBackColor = Color.Red;
-            requestRejectButton.FlatAppearance.MouseOverBackColor = Color.Red;
-            requestRejectButton.FlatStyle = FlatStyle.Flat;
-            requestRejectButton.Location = new Point(84, 3);
-            requestRejectButton.Name = "requestRejectButton";
-            requestRejectButton.Size = new Size(75, 32);
-            requestRejectButton.TabIndex = 4;
-            requestRejectButton.Text = "Reject";
-            requestRejectButton.UseVisualStyleBackColor = false;
-            // 
-            // requestAcceptButton
-            // 
-            requestAcceptButton.BackColor = Color.LightGreen;
-            requestAcceptButton.FlatAppearance.BorderColor = Color.White;
-            requestAcceptButton.FlatAppearance.MouseDownBackColor = Color.Green;
-            requestAcceptButton.FlatAppearance.MouseOverBackColor = Color.Green;
-            requestAcceptButton.FlatStyle = FlatStyle.Flat;
-            requestAcceptButton.Location = new Point(3, 3);
-            requestAcceptButton.Name = "requestAcceptButton";
-            requestAcceptButton.Size = new Size(75, 32);
-            requestAcceptButton.TabIndex = 11;
-            requestAcceptButton.Text = "Accept";
-            requestAcceptButton.UseVisualStyleBackColor = false;
             // 
             // requestIDLabel
             // 
@@ -450,7 +408,7 @@
             requestActionsLabel.Dock = DockStyle.Fill;
             requestActionsLabel.Location = new Point(686, 3);
             requestActionsLabel.Name = "requestActionsLabel";
-            requestActionsLabel.Size = new Size(316, 21);
+            requestActionsLabel.Size = new Size(254, 21);
             requestActionsLabel.TabIndex = 10;
             requestActionsLabel.Text = "Actions";
             requestActionsLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -856,9 +814,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             adminTabControl.ResumeLayout(false);
             viewSubjectRequestsPage.ResumeLayout(false);
+            viewSubjectRequestsPage.PerformLayout();
             subjectRequestsTableLayoutPanel.ResumeLayout(false);
             subjectRequestsTableLayoutPanel.PerformLayout();
-            panel6.ResumeLayout(false);
             addASubjectAndActivitiesPage.ResumeLayout(false);
             addActivitiesGroup.ResumeLayout(false);
             addActivitiesGroup.PerformLayout();
@@ -921,9 +879,6 @@
         private Label requestStatusLabel;
         private Label requestReasonForRejectionLabel;
         private Label requestActionsLabel;
-        private Button requestRejectButton;
-        private Button requestAcceptButton;
-        private Panel panel6;
         private TabControl enrolmentTabControl;
         private TabPage studentsEnrolmentTabPage;
         private TabPage teachersEnrolmentTabPage;

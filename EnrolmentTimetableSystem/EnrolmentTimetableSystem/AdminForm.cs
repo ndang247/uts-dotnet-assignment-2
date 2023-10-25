@@ -13,7 +13,8 @@ namespace EnrolmentTimetableSystem
     public partial class AdminForm : Form
     {
         private readonly LoginForm loginForm;
-        private string firstName, lastName;
+        private readonly string firstName, lastName;
+
         public AdminForm(LoginForm loginForm, string[] adminDetails)
         {
             this.loginForm = loginForm;
@@ -174,6 +175,174 @@ namespace EnrolmentTimetableSystem
                 string[] data = File.ReadAllLines(subject);
                 subjectsListBox.Items.Add($"{data[0].Split(':')[0]} - {data[0].Split(':')[1]}");
             }
+
+            // read all files in requests folder
+            string[] requests = Directory.GetFiles("Requests");
+            foreach (string request in requests)
+            {
+                string[] lines = File.ReadAllLines(request);
+                foreach (string line in lines)
+                {
+                    string requestID = line.Split(':')[0];
+                    string tID = line.Split(':')[1];
+                    string subject = line.Split(':')[2];
+                    string message = line.Split(':')[3];
+                    string status = line.Split(':')[4];
+                    string reason = line.Split(':')[5];
+                    AddNewRow(requestID, tID, subject, message, status, reason);
+                }
+            }
+        }
+
+        private void AddNewRow(string requestID, string tID, string subject, string message, string status, string rfr)
+        {
+            // Create a label for each subjectRequestsTableLayoutPanel cell and display the request details
+            Label requestIDLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = requestID,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label teacherID = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = tID,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label subjectLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = subject,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label messageLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = message,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label statusLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = status,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label reasonForRejection = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = rfr,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+
+            // Add the labels to the subjectRequestsTableLayoutPanel
+            int row = subjectRequestsTableLayoutPanel.RowCount - 1;
+            subjectRequestsTableLayoutPanel.RowCount++;
+
+            subjectRequestsTableLayoutPanel.Controls.Add(requestIDLabel, 0, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(teacherID, 1, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(subjectLabel, 2, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(messageLabel, 3, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(statusLabel, 4, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(reasonForRejection, 5, row);
+            AddActions(row, requestID);
+            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
+        }
+
+        private void AddActions(int row, string requestID)
+        {
+            // 
+            // requestAcceptButton
+            // 
+            Button requestAcceptButton = new()
+            {
+                BackColor = Color.LightGreen,
+                FlatAppearance =
+                {
+                    BorderColor = Color.White,
+                    MouseDownBackColor = Color.Green,
+                    MouseOverBackColor = Color.Green
+                },
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(3, 3),
+                Name = "requestAcceptButton",
+                Size = new Size(75, 32),
+                TabIndex = 11,
+                Text = "Accept",
+                UseVisualStyleBackColor = false,
+                Enabled = false
+            };
+            requestAcceptButton.Click += (sender, e) => RequestAcceptButton_Click(requestID);
+            // 
+            // requestRejectButton
+            // 
+            Button requestRejectButton = new()
+            {
+                BackColor = Color.LightCoral,
+                FlatAppearance =
+                {
+                    BorderColor = Color.White,
+                    MouseDownBackColor = Color.Red,
+                    MouseOverBackColor = Color.Red
+                },
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(84, 3),
+                Name = "requestRejectButton",
+                Size = new Size(75, 32),
+                TabIndex = 4,
+                Text = "Reject",
+                UseVisualStyleBackColor = false,
+                Enabled = false
+            };
+            requestRejectButton.Click += (sender, e) => RejectButton_Click(requestID);
+            // 
+            // panel6
+            // 
+            Panel panel6 = new()
+            {
+                Dock = DockStyle.Fill,
+                Location = new Point(686, 30),
+                Name = "panel6",
+                Size = new Size(300, 50),
+                TabIndex = 12
+            };
+            panel6.Controls.Add(requestRejectButton);
+            panel6.Controls.Add(requestAcceptButton);
+
+            subjectRequestsTableLayoutPanel.Controls.Add(panel6, 6, row);
+        }
+
+        private static void RequestAcceptButton_Click(string requestID)
+        {
+            MessageBox.Show($"The request {requestID} has been accepted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private static void RejectButton_Click(string requestID)
+        {
+            MessageBox.Show($"The request {requestID} has been rejected", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

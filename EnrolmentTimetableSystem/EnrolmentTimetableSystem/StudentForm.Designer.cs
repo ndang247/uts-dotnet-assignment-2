@@ -74,7 +74,7 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             studentTabControl.SuspendLayout();
-            this.subjectAllocationPage.SuspendLayout();
+            subjectAllocationPage.SuspendLayout();
             groupBox1.SuspendLayout();
             viewTimetablePage.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -608,6 +608,7 @@
         private Panel panel4;
         private Button studentAllocationButton;
         private Panel panel3;
+        private Button subjectEnrolmentButton;
         private Button studentEnrolmentButton;
         private Panel panel2;
         private Label welcomeLabel;
@@ -615,6 +616,7 @@
         private Label titleLabel;
         private PictureBox pictureBox1;
         private TabControl studentTabControl;
+        private TabPage subjectEnrolmentPage;
         private TabPage homePage;
         private TextBox textBox2;
         private TabPage subjectEnrolment;
@@ -627,6 +629,7 @@
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private GroupBox groupBox1;
+        private TabPage subjectAllocationPage;
         private ComboBox activityTypeComboxBox;
         private Panel panel6;
         private GroupBox groupBox2;
