@@ -588,6 +588,7 @@
             requestsComboBox.Name = "requestsComboBox";
             requestsComboBox.Size = new Size(180, 29);
             requestsComboBox.TabIndex = 0;
+            requestsComboBox.SelectedIndexChanged += requestsComboBox_SelectedIndexChanged;
             // 
             // addASubjectAndActivitiesPage
             // 
