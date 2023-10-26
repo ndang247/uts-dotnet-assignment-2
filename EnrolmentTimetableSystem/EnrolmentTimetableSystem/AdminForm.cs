@@ -41,6 +41,7 @@ namespace EnrolmentTimetableSystem
         private void ViewSubjectRequestsButton_Click(object sender, EventArgs e)
         {
             adminTabControl.SelectedTab = viewSubjectRequestsPage;
+            LoadRequestsComboBox();
         }
 
         private void AddSubjectAndActivitiesButton_Click(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace EnrolmentTimetableSystem
         private void RemoveFromASubjectButton_Click(object sender, EventArgs e)
         {
             adminTabControl.SelectedTab = removeFromASubjectPage;
+            LoadSubjectsListBox();
         }
 
         private void AddSubjectButton_Click(object sender, EventArgs e)
@@ -200,6 +202,12 @@ namespace EnrolmentTimetableSystem
         {
             welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
 
+            LoadSubjectsListBox();
+            LoadRequestsComboBox();
+        }
+
+        private void LoadSubjectsListBox()
+        {
             subjectsListBox.Items.Clear();
             string[] subjects = Directory.GetFiles("Subjects");
             foreach (string subject in subjects)
@@ -209,11 +217,38 @@ namespace EnrolmentTimetableSystem
             }
         }
 
+        private void LoadRequestsComboBox()
+        {
+            requestsComboBox.Items.Clear();
+            string[] requests = Directory.GetFiles("Requests");
+            foreach (string request in requests)
+            {
+                string[] lines = File.ReadAllLines(request);
+
+                foreach (string line in lines)
+                {
+                    string[] requestData = line.Split(':');
+
+                    // Teacher details
+                    string teacher = File.ReadAllText($"Teachers\\{requestData[1]}.txt");
+                    string[] teacherData = teacher.Split(':');
+                    //
+
+                    requestsComboBox.Items.Add($"{requestData[0]} - {teacherData[0]}");
+                }
+            }
+        }
+
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             loginForm.ResetLoginForm();
             loginForm.Show();
             Close();
+        }
+
+        private void requestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
