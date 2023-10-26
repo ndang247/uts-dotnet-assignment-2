@@ -98,7 +98,11 @@
             removeFromASubjectPage = new TabPage();
             enrolmentTabControl = new TabControl();
             studentsEnrolmentTabPage = new TabPage();
+            removeStudentFromSubjectButton = new Button();
+            studentsListBox = new ListBox();
             teachersEnrolmentTabPage = new TabPage();
+            removeTeacherFromSubjectButton = new Button();
+            teachersListBox = new ListBox();
             subjectsListBox = new ListBox();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -115,6 +119,8 @@
             addASubjectGroup.SuspendLayout();
             removeFromASubjectPage.SuspendLayout();
             enrolmentTabControl.SuspendLayout();
+            studentsEnrolmentTabPage.SuspendLayout();
+            teachersEnrolmentTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -463,6 +469,7 @@
             // 
             rejectButton.BackColor = Color.LightCoral;
             rejectButton.Cursor = Cursors.Hand;
+            rejectButton.Enabled = false;
             rejectButton.FlatAppearance.BorderColor = Color.White;
             rejectButton.FlatAppearance.MouseDownBackColor = Color.Red;
             rejectButton.FlatAppearance.MouseOverBackColor = Color.Red;
@@ -475,11 +482,13 @@
             rejectButton.TabIndex = 11;
             rejectButton.Text = "Reject";
             rejectButton.UseVisualStyleBackColor = false;
+            rejectButton.Click += RejectButton_Click;
             // 
             // approveButton
             // 
             approveButton.BackColor = Color.LightGreen;
             approveButton.Cursor = Cursors.Hand;
+            approveButton.Enabled = false;
             approveButton.FlatAppearance.BorderColor = Color.White;
             approveButton.FlatAppearance.MouseDownBackColor = Color.Lime;
             approveButton.FlatAppearance.MouseOverBackColor = Color.Lime;
@@ -492,9 +501,11 @@
             approveButton.TabIndex = 10;
             approveButton.Text = "Approve";
             approveButton.UseVisualStyleBackColor = false;
+            approveButton.Click += ApproveButton_Click;
             // 
             // messageRichTextBox
             // 
+            messageRichTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             messageRichTextBox.Location = new Point(400, 140);
             messageRichTextBox.Name = "messageRichTextBox";
             messageRichTextBox.ReadOnly = true;
@@ -588,7 +599,7 @@
             requestsComboBox.Name = "requestsComboBox";
             requestsComboBox.Size = new Size(180, 29);
             requestsComboBox.TabIndex = 0;
-            requestsComboBox.SelectedIndexChanged += requestsComboBox_SelectedIndexChanged;
+            requestsComboBox.SelectedIndexChanged += RequestsComboBox_SelectedIndexChanged;
             // 
             // addASubjectAndActivitiesPage
             // 
@@ -637,9 +648,11 @@
             // 
             activityEndDateTimePicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             activityEndDateTimePicker.Location = new Point(400, 305);
+            activityEndDateTimePicker.MinDate = new DateTime(2023, 10, 26, 0, 0, 0, 0);
             activityEndDateTimePicker.Name = "activityEndDateTimePicker";
             activityEndDateTimePicker.Size = new Size(280, 29);
             activityEndDateTimePicker.TabIndex = 27;
+            activityEndDateTimePicker.Value = new DateTime(2023, 10, 26, 0, 0, 0, 0);
             // 
             // activityEndLabel
             // 
@@ -655,11 +668,11 @@
             // 
             activityStartDateTimePicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             activityStartDateTimePicker.Location = new Point(400, 225);
-            activityStartDateTimePicker.MinDate = new DateTime(2023, 10, 22, 0, 0, 0, 0);
+            activityStartDateTimePicker.MinDate = new DateTime(2023, 10, 26, 0, 0, 0, 0);
             activityStartDateTimePicker.Name = "activityStartDateTimePicker";
             activityStartDateTimePicker.Size = new Size(280, 29);
             activityStartDateTimePicker.TabIndex = 25;
-            activityStartDateTimePicker.Value = new DateTime(2023, 10, 22, 0, 53, 25, 0);
+            activityStartDateTimePicker.Value = new DateTime(2023, 10, 26, 0, 0, 0, 0);
             activityStartDateTimePicker.ValueChanged += ActivityStartDateTimePicker_ValueChanged;
             // 
             // addSubjectActivityButton
@@ -858,6 +871,7 @@
             // addSubjectButton
             // 
             addSubjectButton.BackColor = Color.LightSkyBlue;
+            addSubjectButton.Cursor = Cursors.Hand;
             addSubjectButton.Enabled = false;
             addSubjectButton.FlatAppearance.BorderColor = Color.White;
             addSubjectButton.FlatAppearance.MouseDownBackColor = Color.SteelBlue;
@@ -936,6 +950,8 @@
             // 
             // studentsEnrolmentTabPage
             // 
+            studentsEnrolmentTabPage.Controls.Add(removeStudentFromSubjectButton);
+            studentsEnrolmentTabPage.Controls.Add(studentsListBox);
             studentsEnrolmentTabPage.Location = new Point(27, 4);
             studentsEnrolmentTabPage.Name = "studentsEnrolmentTabPage";
             studentsEnrolmentTabPage.Padding = new Padding(3);
@@ -944,8 +960,39 @@
             studentsEnrolmentTabPage.Text = "studentsTab";
             studentsEnrolmentTabPage.UseVisualStyleBackColor = true;
             // 
+            // removeStudentFromSubjectButton
+            // 
+            removeStudentFromSubjectButton.BackColor = Color.LightCoral;
+            removeStudentFromSubjectButton.Cursor = Cursors.Hand;
+            removeStudentFromSubjectButton.Enabled = false;
+            removeStudentFromSubjectButton.FlatAppearance.BorderColor = Color.White;
+            removeStudentFromSubjectButton.FlatAppearance.MouseDownBackColor = Color.Red;
+            removeStudentFromSubjectButton.FlatAppearance.MouseOverBackColor = Color.Red;
+            removeStudentFromSubjectButton.FlatStyle = FlatStyle.Flat;
+            removeStudentFromSubjectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            removeStudentFromSubjectButton.ForeColor = Color.White;
+            removeStudentFromSubjectButton.Location = new Point(502, 97);
+            removeStudentFromSubjectButton.Name = "removeStudentFromSubjectButton";
+            removeStudentFromSubjectButton.Size = new Size(130, 32);
+            removeStudentFromSubjectButton.TabIndex = 12;
+            removeStudentFromSubjectButton.Text = "Remove";
+            removeStudentFromSubjectButton.UseVisualStyleBackColor = false;
+            // 
+            // studentsListBox
+            // 
+            studentsListBox.Dock = DockStyle.Top;
+            studentsListBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            studentsListBox.FormattingEnabled = true;
+            studentsListBox.ItemHeight = 21;
+            studentsListBox.Location = new Point(3, 3);
+            studentsListBox.Name = "studentsListBox";
+            studentsListBox.Size = new Size(632, 88);
+            studentsListBox.TabIndex = 0;
+            // 
             // teachersEnrolmentTabPage
             // 
+            teachersEnrolmentTabPage.Controls.Add(removeTeacherFromSubjectButton);
+            teachersEnrolmentTabPage.Controls.Add(teachersListBox);
             teachersEnrolmentTabPage.Location = new Point(27, 4);
             teachersEnrolmentTabPage.Name = "teachersEnrolmentTabPage";
             teachersEnrolmentTabPage.Padding = new Padding(3);
@@ -953,6 +1000,35 @@
             teachersEnrolmentTabPage.TabIndex = 1;
             teachersEnrolmentTabPage.Text = "teachersTab";
             teachersEnrolmentTabPage.UseVisualStyleBackColor = true;
+            // 
+            // removeTeacherFromSubjectButton
+            // 
+            removeTeacherFromSubjectButton.BackColor = Color.LightCoral;
+            removeTeacherFromSubjectButton.Cursor = Cursors.Hand;
+            removeTeacherFromSubjectButton.Enabled = false;
+            removeTeacherFromSubjectButton.FlatAppearance.BorderColor = Color.White;
+            removeTeacherFromSubjectButton.FlatAppearance.MouseDownBackColor = Color.Red;
+            removeTeacherFromSubjectButton.FlatAppearance.MouseOverBackColor = Color.Red;
+            removeTeacherFromSubjectButton.FlatStyle = FlatStyle.Flat;
+            removeTeacherFromSubjectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            removeTeacherFromSubjectButton.ForeColor = Color.White;
+            removeTeacherFromSubjectButton.Location = new Point(502, 97);
+            removeTeacherFromSubjectButton.Name = "removeTeacherFromSubjectButton";
+            removeTeacherFromSubjectButton.Size = new Size(130, 32);
+            removeTeacherFromSubjectButton.TabIndex = 13;
+            removeTeacherFromSubjectButton.Text = "Remove";
+            removeTeacherFromSubjectButton.UseVisualStyleBackColor = false;
+            // 
+            // teachersListBox
+            // 
+            teachersListBox.Dock = DockStyle.Top;
+            teachersListBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            teachersListBox.FormattingEnabled = true;
+            teachersListBox.ItemHeight = 21;
+            teachersListBox.Location = new Point(3, 3);
+            teachersListBox.Name = "teachersListBox";
+            teachersListBox.Size = new Size(632, 88);
+            teachersListBox.TabIndex = 0;
             // 
             // subjectsListBox
             // 
@@ -998,6 +1074,8 @@
             addASubjectGroup.PerformLayout();
             removeFromASubjectPage.ResumeLayout(false);
             enrolmentTabControl.ResumeLayout(false);
+            studentsEnrolmentTabPage.ResumeLayout(false);
+            teachersEnrolmentTabPage.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1074,5 +1152,9 @@
         private Label requestStatusLabel;
         private Label requestReasonForRejectionLabel;
         private VScrollBar vScrollBar1;
+        private ListBox teachersListBox;
+        private ListBox studentsListBox;
+        private Button removeStudentFromSubjectButton;
+        private Button removeTeacherFromSubjectButton;
     }
 }

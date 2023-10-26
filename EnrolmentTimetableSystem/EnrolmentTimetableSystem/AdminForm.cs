@@ -42,11 +42,14 @@ namespace EnrolmentTimetableSystem
         {
             adminTabControl.SelectedTab = viewSubjectRequestsPage;
             LoadRequestsComboBox();
+            ResetApproveRequestForm();
         }
 
         private void AddSubjectAndActivitiesButton_Click(object sender, EventArgs e)
         {
             adminTabControl.SelectedTab = addASubjectAndActivitiesPage;
+            activityStartDateTimePicker.MinDate = DateTime.Now;
+            activityEndDateTimePicker.MinDate = activityStartDateTimePicker.Value.AddDays(7);
         }
 
         private void RemoveFromASubjectButton_Click(object sender, EventArgs e)
@@ -246,9 +249,74 @@ namespace EnrolmentTimetableSystem
             Close();
         }
 
-        private void requestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void RequestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedRequest = $"{requestsComboBox.SelectedItem}";
+            string[] selectedRequestDetails = selectedRequest.Split('-');
+
+            string requestID = selectedRequestDetails[0].Trim();
+            string teacherID = selectedRequestDetails[1].Trim();
+
+            // Get Request details
+            selectedRequestDetails = GetRequestDetails(requestID, teacherID);
+            //
+
+            // Teacher details
+            string teacher = File.ReadAllText($"Teachers\\{teacherID}.txt");
+            string[] teacherDetails = teacher.Split(':');
+            //
+
+            teacherFullNameTextBox.Text = $"{teacherDetails[0]} {teacherDetails[1]}";
+            subjectTextBox.Text = $"{selectedRequestDetails[2]}";
+            messageRichTextBox.Text = $"{selectedRequestDetails[3]}";
+            statusTextBox.Text = $"{selectedRequestDetails[4]}";
+
+            if (statusTextBox.Text == "Awaiting for approval")
+            {
+                approveButton.Enabled = true;
+                rejectButton.Enabled = true;
+            }
+            else
+            {
+                approveButton.Enabled = false;
+                rejectButton.Enabled = false;
+            }
+        }
+
+        private static string[] GetRequestDetails(string requestID, string teacherID)
+        {
+            string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
+
+            foreach (string request in requests)
+            {
+                string[] requestData = request.Split(':');
+                if (requestData[0] == requestID)
+                {
+                    return requestData;
+                }
+            }
+
+            return Array.Empty<string>();
+        }
+
+        private void ApproveButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RejectButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ResetApproveRequestForm()
+        {
+            teacherFullNameTextBox.Text = "";
+            subjectTextBox.Text = "";
+            messageRichTextBox.Text = "";
+            statusTextBox.Text = "";
+            approveButton.Enabled = false;
+            rejectButton.Enabled = false;
         }
     }
 }
