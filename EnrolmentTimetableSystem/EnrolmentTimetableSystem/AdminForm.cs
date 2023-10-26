@@ -38,6 +38,36 @@ namespace EnrolmentTimetableSystem
             InitializeComponent();
         }
 
+        #region Form load
+        private void AdminForm_Load(object sender, EventArgs e)
+        {
+            welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
+
+            LoadRequestsComboBox();
+
+            // Read all files in requests folder
+            string[] requests = Directory.GetFiles("Requests");
+            foreach (string request in requests)
+            {
+                string[] lines = File.ReadAllLines(request);
+                foreach (string line in lines)
+                {
+                    string status = line.Split(':')[4];
+                    if (status == "Approved" || status == "Rejected")
+                    {
+                        string requestID = line.Split(':')[0];
+                        string tID = line.Split(':')[1];
+                        string subject = line.Split(':')[2];
+                        string message = line.Split(':')[3];
+                        string reason = line.Split(':')[5];
+                        AddNewRow(requestID, tID, subject, message, status, reason);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Approve and view requests
         private void ViewSubjectRequestsButton_Click(object sender, EventArgs e)
         {
             adminTabControl.SelectedTab = viewSubjectRequestsPage;
@@ -45,6 +75,228 @@ namespace EnrolmentTimetableSystem
             ResetApproveRequestForm();
         }
 
+        private void LoadRequestsComboBox()
+        {
+            requestsComboBox.Items.Clear();
+            string[] requests = Directory.GetFiles("Requests");
+            foreach (string request in requests)
+            {
+                string[] lines = File.ReadAllLines(request);
+
+                foreach (string line in lines)
+                {
+                    string[] requestData = line.Split(':');
+
+                    if (requestData[4] == "Awaiting for approval")
+                    {
+                        // Teacher details
+                        string teacher = File.ReadAllText($"Teachers\\{requestData[1]}.txt");
+                        string[] teacherData = teacher.Split(':');
+                        //
+
+                        requestsComboBox.Items.Add($"{requestData[0]} - {teacherData[0]}");
+                    }
+                }
+            }
+        }
+
+        private void RequestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedRequest = $"{requestsComboBox.SelectedItem}";
+            string[] selectedRequestDetails = selectedRequest.Split('-');
+
+            string requestID = selectedRequestDetails[0].Trim();
+            string teacherID = selectedRequestDetails[1].Trim();
+
+            // Get Request details
+            selectedRequestDetails = GetRequestDetails(requestID, teacherID);
+            //
+
+            // Teacher details
+            string teacher = File.ReadAllText($"Teachers\\{teacherID}.txt");
+            string[] teacherDetails = teacher.Split(':');
+            //
+
+            teacherFullNameTextBox.Text = $"{teacherDetails[0]} {teacherDetails[1]}";
+            subjectTextBox.Text = $"{selectedRequestDetails[2]}";
+            messageRichTextBox.Text = $"{selectedRequestDetails[3]}";
+            statusTextBox.Text = $"{selectedRequestDetails[4]}";
+
+            if (statusTextBox.Text == "Awaiting for approval")
+            {
+                approveButton.Enabled = true;
+                rejectButton.Enabled = true;
+            }
+            else
+            {
+                approveButton.Enabled = false;
+                rejectButton.Enabled = false;
+            }
+        }
+
+        private static string[] GetRequestDetails(string requestID, string teacherID)
+        {
+            string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
+
+            foreach (string request in requests)
+            {
+                string[] requestData = request.Split(':');
+                if (requestData[0] == requestID)
+                {
+                    return requestData;
+                }
+            }
+
+            return Array.Empty<string>();
+        }
+
+        private void ApproveButton_Click(object sender, EventArgs e)
+        {
+            string selectedRequest = $"{requestsComboBox.SelectedItem}";
+            string[] selectedRequestDetails = selectedRequest.Split('-');
+            string requestID = selectedRequestDetails[0].Trim();
+            string teacherID = selectedRequestDetails[1].Trim();
+
+            string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
+            for (int i = 0; i < requests.Length; i++)
+            {
+                string[] requestData = requests[i].Split(':');
+                if (requestData[0] == $"{requestID}")
+                {
+                    requests[i] = $"{requestData[0]}:{requestData[1]}:{requestData[2]}:{requestData[3]}:Approved:{requestData[5]}";
+                    File.WriteAllLines($"Requests\\{teacherID}.txt", requests);
+
+                    requestData = GetRequestDetails(requestID, teacherID);
+                    AddNewRow(requestData[0], requestData[1], requestData[2], requestData[3], "Approved", requestData[5]);
+                    ResetApproveRequestForm();
+                    break;
+                }
+            }
+        }
+
+        private void RejectButton_Click(object sender, EventArgs e)
+        {
+            rejectionReasonLabel.Visible = true;
+            rejectionReasonRichTextBox.Visible = true;
+
+            if (string.IsNullOrEmpty(rejectionReasonRichTextBox.Text))
+            {
+                MessageBox.Show("Please fill in the rejection reason", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string selectedRequest = $"{requestsComboBox.SelectedItem}";
+            string[] selectedRequestDetails = selectedRequest.Split('-');
+            string requestID = selectedRequestDetails[0].Trim();
+            string teacherID = selectedRequestDetails[1].Trim();
+
+            string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
+            for (int i = 0; i < requests.Length; i++)
+            {
+                string[] requestData = requests[i].Split(':');
+                if (requestData[0] == $"{requestID}")
+                {
+                    requests[i] = $"{requestData[0]}:{requestData[1]}:{requestData[2]}:{requestData[3]}:Rejected:{rejectionReasonRichTextBox.Text}";
+                    File.WriteAllLines($"Requests\\{teacherID}.txt", requests);
+
+                    requestData = GetRequestDetails(requestID, teacherID);
+                    AddNewRow(requestData[0], requestData[1], requestData[2], requestData[3], "Rejected", requestData[5]);
+                    ResetApproveRequestForm();
+                    break;
+                }
+            }
+        }
+
+        private void ResetApproveRequestForm()
+        {
+            teacherFullNameTextBox.Text = "";
+            subjectTextBox.Text = "";
+            messageRichTextBox.Text = "";
+            statusTextBox.Text = "";
+            rejectionReasonRichTextBox.Text = "";
+            approveButton.Enabled = false;
+            rejectButton.Enabled = false;
+        }
+
+        private void AddNewRow(string requestID, string tID, string subject, string message, string status, string rfr)
+        {
+            // Create a label for each subjectRequestsTableLayoutPanel cell and display the request details
+            Label requestIDLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = requestID,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label teacherID = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = tID,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label subjectLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = subject,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label messageLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = message,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label statusLabel = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = status,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+            Label reasonForRejection = new()
+            {
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                Text = rfr,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Anchor = AnchorStyles.None,
+                Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, 0),
+                Margin = new Padding(0),
+            };
+
+            // Add the labels to the subjectRequestsTableLayoutPanel
+            int row = subjectRequestsTableLayoutPanel.RowCount - 1;
+            subjectRequestsTableLayoutPanel.RowCount++;
+
+            subjectRequestsTableLayoutPanel.Controls.Add(requestIDLabel, 0, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(teacherID, 1, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(subjectLabel, 2, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(messageLabel, 3, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(statusLabel, 4, row);
+            subjectRequestsTableLayoutPanel.Controls.Add(reasonForRejection, 5, row);
+            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
+        }
+        #endregion
+
+        #region Add subject and activities
         private void AddSubjectAndActivitiesButton_Click(object sender, EventArgs e)
         {
             adminTabControl.SelectedTab = addASubjectAndActivitiesPage;
@@ -52,10 +304,36 @@ namespace EnrolmentTimetableSystem
             activityEndDateTimePicker.MinDate = activityStartDateTimePicker.Value.AddDays(7);
         }
 
-        private void RemoveFromASubjectButton_Click(object sender, EventArgs e)
+        private void SjCodeNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            adminTabControl.SelectedTab = removeFromASubjectPage;
-            LoadSubjectsListBox();
+            string code = sjCodeTextBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(code))
+            {
+                if (File.Exists($"Subjects\\{code}.txt"))
+                {
+                    string[] data = File.ReadAllLines($"Subjects\\{code}.txt");
+                    sjNameTextBox.Text = data[0].Split(':')[1];
+                    addSubjectButton.Enabled = true;
+                }
+
+                string name = sjNameTextBox.Text.Trim();
+                addSubjectButton.Enabled = !string.IsNullOrEmpty(name);
+                if (string.IsNullOrEmpty(name))
+                {
+                    addActivitiesGroup.Visible = false;
+                }
+            }
+            else
+            {
+                addSubjectButton.Enabled = false;
+                addActivitiesGroup.Visible = false;
+            }
+        }
+
+        private void GenerateSubjectCodeButton_Click(object sender, EventArgs e)
+        {
+            sjCodeTextBox.Text = GenerateCode;
         }
 
         private void AddSubjectButton_Click(object sender, EventArgs e)
@@ -91,36 +369,9 @@ namespace EnrolmentTimetableSystem
             addActivitiesGroup.Visible = true;
         }
 
-        private void SjCodeNameTextBox_TextChanged(object sender, EventArgs e)
+        private void ActivityStartDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            string code = sjCodeTextBox.Text.Trim();
-
-            if (!string.IsNullOrEmpty(code))
-            {
-                if (File.Exists($"Subjects\\{code}.txt"))
-                {
-                    string[] data = File.ReadAllLines($"Subjects\\{code}.txt");
-                    sjNameTextBox.Text = data[0].Split(':')[1];
-                    addSubjectButton.Enabled = true;
-                }
-
-                string name = sjNameTextBox.Text.Trim();
-                addSubjectButton.Enabled = !string.IsNullOrEmpty(name);
-                if (string.IsNullOrEmpty(name))
-                {
-                    addActivitiesGroup.Visible = false;
-                }
-            }
-            else
-            {
-                addSubjectButton.Enabled = false;
-                addActivitiesGroup.Visible = false;
-            }
-        }
-
-        private void GenerateSubjectCodeButton_Click(object sender, EventArgs e)
-        {
-            sjCodeTextBox.Text = GenerateCode;
+            activityEndDateTimePicker.MinDate = activityStartDateTimePicker.Value;
         }
 
         private void AddSubjectActivityButton_Click(object sender, EventArgs e)
@@ -190,23 +441,13 @@ namespace EnrolmentTimetableSystem
             }
             MessageBox.Show("The activity has been added successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        #endregion
 
-        private void ActivityStartDateTimePicker_ValueChanged(object sender, EventArgs e)
+        #region Remove teacher and student from a subject
+        private void RemoveFromASubjectButton_Click(object sender, EventArgs e)
         {
-            activityEndDateTimePicker.MinDate = activityStartDateTimePicker.Value;
-        }
-
-        private void SubjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AdminForm_Load(object sender, EventArgs e)
-        {
-            welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
-
+            adminTabControl.SelectedTab = removeFromASubjectPage;
             LoadSubjectsListBox();
-            LoadRequestsComboBox();
         }
 
         private void LoadSubjectsListBox()
@@ -220,106 +461,17 @@ namespace EnrolmentTimetableSystem
             }
         }
 
-        private void LoadRequestsComboBox()
+        private void SubjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            requestsComboBox.Items.Clear();
-            string[] requests = Directory.GetFiles("Requests");
-            foreach (string request in requests)
-            {
-                string[] lines = File.ReadAllLines(request);
 
-                foreach (string line in lines)
-                {
-                    string[] requestData = line.Split(':');
-
-                    if (requestData[4] == "Awaiting for approval")
-                    {
-                        // Teacher details
-                        string teacher = File.ReadAllText($"Teachers\\{requestData[1]}.txt");
-                        string[] teacherData = teacher.Split(':');
-                        //
-
-                        requestsComboBox.Items.Add($"{requestData[0]} - {teacherData[0]}");
-                    }
-                }
-            }
         }
+        #endregion
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             loginForm.ResetLoginForm();
             loginForm.Show();
             Close();
-        }
-
-        private void RequestsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedRequest = $"{requestsComboBox.SelectedItem}";
-            string[] selectedRequestDetails = selectedRequest.Split('-');
-
-            string requestID = selectedRequestDetails[0].Trim();
-            string teacherID = selectedRequestDetails[1].Trim();
-
-            // Get Request details
-            selectedRequestDetails = GetRequestDetails(requestID, teacherID);
-            //
-
-            // Teacher details
-            string teacher = File.ReadAllText($"Teachers\\{teacherID}.txt");
-            string[] teacherDetails = teacher.Split(':');
-            //
-
-            teacherFullNameTextBox.Text = $"{teacherDetails[0]} {teacherDetails[1]}";
-            subjectTextBox.Text = $"{selectedRequestDetails[2]}";
-            messageRichTextBox.Text = $"{selectedRequestDetails[3]}";
-            statusTextBox.Text = $"{selectedRequestDetails[4]}";
-
-            if (statusTextBox.Text == "Awaiting for approval")
-            {
-                approveButton.Enabled = true;
-                rejectButton.Enabled = true;
-            }
-            else
-            {
-                approveButton.Enabled = false;
-                rejectButton.Enabled = false;
-            }
-        }
-
-        private static string[] GetRequestDetails(string requestID, string teacherID)
-        {
-            string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
-
-            foreach (string request in requests)
-            {
-                string[] requestData = request.Split(':');
-                if (requestData[0] == requestID)
-                {
-                    return requestData;
-                }
-            }
-
-            return Array.Empty<string>();
-        }
-
-        private void ApproveButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RejectButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ResetApproveRequestForm()
-        {
-            teacherFullNameTextBox.Text = "";
-            subjectTextBox.Text = "";
-            messageRichTextBox.Text = "";
-            statusTextBox.Text = "";
-            approveButton.Enabled = false;
-            rejectButton.Enabled = false;
         }
     }
 }

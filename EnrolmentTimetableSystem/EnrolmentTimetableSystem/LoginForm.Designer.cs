@@ -97,19 +97,23 @@
             // 
             titleLabel.AutoSize = true;
             titleLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            titleLabel.ForeColor = SystemColors.ActiveCaption;
-            titleLabel.Location = new Point(13, 43);
+            titleLabel.ForeColor = Color.FromArgb(36, 92, 150);
+            titleLabel.Location = new Point(3, 5);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(221, 45);
             titleLabel.TabIndex = 5;
             titleLabel.Text = "myEnrolment";
+            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // loginButton
             // 
             loginButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             loginButton.BackColor = Color.FromArgb(15, 75, 235);
             loginButton.Cursor = Cursors.Hand;
+            loginButton.FlatAppearance.BorderColor = Color.White;
             loginButton.FlatAppearance.BorderSize = 0;
+            loginButton.FlatAppearance.MouseDownBackColor = Color.DarkBlue;
+            loginButton.FlatAppearance.MouseOverBackColor = Color.DarkBlue;
             loginButton.FlatStyle = FlatStyle.Flat;
             loginButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             loginButton.ForeColor = Color.White;

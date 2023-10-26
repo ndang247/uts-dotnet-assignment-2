@@ -48,13 +48,14 @@
             viewRequestsGroupBox = new GroupBox();
             subjectRequestsTableLayoutPanel = new TableLayoutPanel();
             requestIDLabel = new Label();
-            requestTeacherFirstNameLabel = new Label();
-            requestTeacherLastNameLabel = new Label();
+            requestTeacherIDLabel = new Label();
+            requestSubjectLabel = new Label();
             requestMessageLabel = new Label();
             requestStatusLabel = new Label();
             requestReasonForRejectionLabel = new Label();
-            vScrollBar1 = new VScrollBar();
             approveRequestGroupBox = new GroupBox();
+            rejectionReasonRichTextBox = new RichTextBox();
+            rejectionReasonLabel = new Label();
             rejectButton = new Button();
             approveButton = new Button();
             messageRichTextBox = new RichTextBox();
@@ -331,7 +332,6 @@
             // viewRequestsGroupBox
             // 
             viewRequestsGroupBox.Controls.Add(subjectRequestsTableLayoutPanel);
-            viewRequestsGroupBox.Controls.Add(vScrollBar1);
             viewRequestsGroupBox.Dock = DockStyle.Fill;
             viewRequestsGroupBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             viewRequestsGroupBox.Location = new Point(3, 402);
@@ -353,8 +353,8 @@
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             subjectRequestsTableLayoutPanel.Controls.Add(requestIDLabel, 0, 0);
-            subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherFirstNameLabel, 1, 0);
-            subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherLastNameLabel, 2, 0);
+            subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherIDLabel, 1, 0);
+            subjectRequestsTableLayoutPanel.Controls.Add(requestSubjectLabel, 2, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestMessageLabel, 3, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestStatusLabel, 4, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestReasonForRejectionLabel, 5, 0);
@@ -365,7 +365,7 @@
             subjectRequestsTableLayoutPanel.RowCount = 2;
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
             subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
-            subjectRequestsTableLayoutPanel.Size = new Size(940, 30);
+            subjectRequestsTableLayoutPanel.Size = new Size(957, 30);
             subjectRequestsTableLayoutPanel.TabIndex = 5;
             // 
             // requestIDLabel
@@ -379,33 +379,33 @@
             requestIDLabel.Text = "Request ID";
             requestIDLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // requestTeacherFirstNameLabel
+            // requestTeacherIDLabel
             // 
-            requestTeacherFirstNameLabel.AutoSize = true;
-            requestTeacherFirstNameLabel.Dock = DockStyle.Fill;
-            requestTeacherFirstNameLabel.Location = new Point(100, 3);
-            requestTeacherFirstNameLabel.Name = "requestTeacherFirstNameLabel";
-            requestTeacherFirstNameLabel.Size = new Size(142, 21);
-            requestTeacherFirstNameLabel.TabIndex = 5;
-            requestTeacherFirstNameLabel.Text = "Teacher First Name";
-            requestTeacherFirstNameLabel.TextAlign = ContentAlignment.MiddleCenter;
+            requestTeacherIDLabel.AutoSize = true;
+            requestTeacherIDLabel.Dock = DockStyle.Fill;
+            requestTeacherIDLabel.Location = new Point(100, 3);
+            requestTeacherIDLabel.Name = "requestTeacherIDLabel";
+            requestTeacherIDLabel.Size = new Size(81, 21);
+            requestTeacherIDLabel.TabIndex = 5;
+            requestTeacherIDLabel.Text = "Teacher ID";
+            requestTeacherIDLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // requestTeacherLastNameLabel
+            // requestSubjectLabel
             // 
-            requestTeacherLastNameLabel.AutoSize = true;
-            requestTeacherLastNameLabel.Dock = DockStyle.Fill;
-            requestTeacherLastNameLabel.Location = new Point(251, 3);
-            requestTeacherLastNameLabel.Name = "requestTeacherLastNameLabel";
-            requestTeacherLastNameLabel.Size = new Size(140, 21);
-            requestTeacherLastNameLabel.TabIndex = 6;
-            requestTeacherLastNameLabel.Text = "Teacher Last Name";
-            requestTeacherLastNameLabel.TextAlign = ContentAlignment.MiddleCenter;
+            requestSubjectLabel.AutoSize = true;
+            requestSubjectLabel.Dock = DockStyle.Fill;
+            requestSubjectLabel.Location = new Point(190, 3);
+            requestSubjectLabel.Name = "requestSubjectLabel";
+            requestSubjectLabel.Size = new Size(61, 21);
+            requestSubjectLabel.TabIndex = 6;
+            requestSubjectLabel.Text = "Subject";
+            requestSubjectLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // requestMessageLabel
             // 
             requestMessageLabel.AutoSize = true;
             requestMessageLabel.Dock = DockStyle.Fill;
-            requestMessageLabel.Location = new Point(400, 3);
+            requestMessageLabel.Location = new Point(260, 3);
             requestMessageLabel.Name = "requestMessageLabel";
             requestMessageLabel.Size = new Size(131, 21);
             requestMessageLabel.TabIndex = 7;
@@ -416,7 +416,7 @@
             // 
             requestStatusLabel.AutoSize = true;
             requestStatusLabel.Dock = DockStyle.Fill;
-            requestStatusLabel.Location = new Point(540, 3);
+            requestStatusLabel.Location = new Point(400, 3);
             requestStatusLabel.Name = "requestStatusLabel";
             requestStatusLabel.Size = new Size(112, 21);
             requestStatusLabel.TabIndex = 8;
@@ -427,23 +427,17 @@
             // 
             requestReasonForRejectionLabel.AutoSize = true;
             requestReasonForRejectionLabel.Dock = DockStyle.Fill;
-            requestReasonForRejectionLabel.Location = new Point(661, 3);
+            requestReasonForRejectionLabel.Location = new Point(521, 3);
             requestReasonForRejectionLabel.Name = "requestReasonForRejectionLabel";
-            requestReasonForRejectionLabel.Size = new Size(273, 21);
+            requestReasonForRejectionLabel.Size = new Size(430, 21);
             requestReasonForRejectionLabel.TabIndex = 9;
             requestReasonForRejectionLabel.Text = "Reason For Rejection";
             requestReasonForRejectionLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Location = new Point(943, 28);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 303);
-            vScrollBar1.TabIndex = 0;
-            // 
             // approveRequestGroupBox
             // 
+            approveRequestGroupBox.Controls.Add(rejectionReasonRichTextBox);
+            approveRequestGroupBox.Controls.Add(rejectionReasonLabel);
             approveRequestGroupBox.Controls.Add(rejectButton);
             approveRequestGroupBox.Controls.Add(approveButton);
             approveRequestGroupBox.Controls.Add(messageRichTextBox);
@@ -465,6 +459,27 @@
             approveRequestGroupBox.TabStop = false;
             approveRequestGroupBox.Text = "Approve a Request";
             // 
+            // rejectionReasonRichTextBox
+            // 
+            rejectionReasonRichTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rejectionReasonRichTextBox.Location = new Point(700, 220);
+            rejectionReasonRichTextBox.Name = "rejectionReasonRichTextBox";
+            rejectionReasonRichTextBox.Size = new Size(353, 96);
+            rejectionReasonRichTextBox.TabIndex = 13;
+            rejectionReasonRichTextBox.Text = "";
+            rejectionReasonRichTextBox.Visible = false;
+            // 
+            // rejectionReasonLabel
+            // 
+            rejectionReasonLabel.AutoSize = true;
+            rejectionReasonLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rejectionReasonLabel.Location = new Point(700, 190);
+            rejectionReasonLabel.Name = "rejectionReasonLabel";
+            rejectionReasonLabel.Size = new Size(129, 21);
+            rejectionReasonLabel.TabIndex = 12;
+            rejectionReasonLabel.Text = "Rejection Reason";
+            rejectionReasonLabel.Visible = false;
+            // 
             // rejectButton
             // 
             rejectButton.BackColor = Color.LightCoral;
@@ -476,7 +491,7 @@
             rejectButton.FlatStyle = FlatStyle.Flat;
             rejectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rejectButton.ForeColor = Color.White;
-            rejectButton.Location = new Point(810, 361);
+            rejectButton.Location = new Point(827, 361);
             rejectButton.Name = "rejectButton";
             rejectButton.Size = new Size(130, 32);
             rejectButton.TabIndex = 11;
@@ -495,7 +510,7 @@
             approveButton.FlatStyle = FlatStyle.Flat;
             approveButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             approveButton.ForeColor = Color.White;
-            approveButton.Location = new Point(674, 361);
+            approveButton.Location = new Point(691, 361);
             approveButton.Name = "approveButton";
             approveButton.Size = new Size(130, 32);
             approveButton.TabIndex = 10;
@@ -1146,15 +1161,16 @@
         private TextBox statusTextBox;
         private TableLayoutPanel subjectRequestsTableLayoutPanel;
         private Label requestIDLabel;
-        private Label requestTeacherFirstNameLabel;
-        private Label requestTeacherLastNameLabel;
+        private Label requestTeacherIDLabel;
+        private Label requestSubjectLabel;
         private Label requestMessageLabel;
         private Label requestStatusLabel;
         private Label requestReasonForRejectionLabel;
-        private VScrollBar vScrollBar1;
         private ListBox teachersListBox;
         private ListBox studentsListBox;
         private Button removeStudentFromSubjectButton;
         private Button removeTeacherFromSubjectButton;
+        private RichTextBox rejectionReasonRichTextBox;
+        private Label rejectionReasonLabel;
     }
 }

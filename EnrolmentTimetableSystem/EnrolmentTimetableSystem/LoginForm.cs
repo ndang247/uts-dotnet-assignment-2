@@ -67,7 +67,8 @@ namespace EnrolmentTimetableSystem
                         break;
                     case "Teachers":
                         Hide();
-                        new TeacherForm().Show();
+                        TeacherForm teacherForm = new(this, details);
+                        teacherForm.Show();
                         break;
                     case "Admin":
                         Hide();
