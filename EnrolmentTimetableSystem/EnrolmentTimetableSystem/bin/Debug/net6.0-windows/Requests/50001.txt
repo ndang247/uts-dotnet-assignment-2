@@ -1,2 +1,2 @@
-65241:50001:12362 - Cloud:I have 10 years of .NET experience:Awaiting for approval:
+65241:50001:12362 - Cloud:I have 10 years of .NET experience:Approved:
 92852:50001:13477 - .NET:I want to teach .NET:Awaiting for approval:

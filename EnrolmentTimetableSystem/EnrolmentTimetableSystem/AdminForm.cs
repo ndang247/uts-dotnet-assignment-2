@@ -232,12 +232,15 @@ namespace EnrolmentTimetableSystem
                 {
                     string[] requestData = line.Split(':');
 
-                    // Teacher details
-                    string teacher = File.ReadAllText($"Teachers\\{requestData[1]}.txt");
-                    string[] teacherData = teacher.Split(':');
-                    //
+                    if (requestData[4] == "Awaiting for approval")
+                    {
+                        // Teacher details
+                        string teacher = File.ReadAllText($"Teachers\\{requestData[1]}.txt");
+                        string[] teacherData = teacher.Split(':');
+                        //
 
-                    requestsComboBox.Items.Add($"{requestData[0]} - {teacherData[0]}");
+                        requestsComboBox.Items.Add($"{requestData[0]} - {teacherData[0]}");
+                    }
                 }
             }
         }
