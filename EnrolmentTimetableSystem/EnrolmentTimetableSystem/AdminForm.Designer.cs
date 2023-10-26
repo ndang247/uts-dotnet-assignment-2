@@ -45,18 +45,28 @@
             pictureBox1 = new PictureBox();
             adminTabControl = new TabControl();
             viewSubjectRequestsPage = new TabPage();
+            viewRequestsGroupBox = new GroupBox();
             subjectRequestsTableLayoutPanel = new TableLayoutPanel();
-            panel6 = new Panel();
-            requestRejectButton = new Button();
-            requestAcceptButton = new Button();
             requestIDLabel = new Label();
             requestTeacherFirstNameLabel = new Label();
             requestTeacherLastNameLabel = new Label();
             requestMessageLabel = new Label();
             requestStatusLabel = new Label();
             requestReasonForRejectionLabel = new Label();
-            requestActionsLabel = new Label();
             vScrollBar1 = new VScrollBar();
+            approveRequestGroupBox = new GroupBox();
+            rejectButton = new Button();
+            approveButton = new Button();
+            messageRichTextBox = new RichTextBox();
+            subjectTextBox = new TextBox();
+            statusTextBox = new TextBox();
+            teacherFullNameTextBox = new TextBox();
+            statusLabel = new Label();
+            messageLabel = new Label();
+            subjectLabel = new Label();
+            teacherFullNameLabel = new Label();
+            requestLabel = new Label();
+            requestsComboBox = new ComboBox();
             addASubjectAndActivitiesPage = new TabPage();
             addActivitiesGroup = new GroupBox();
             activityEndDateTimePicker = new DateTimePicker();
@@ -96,8 +106,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             adminTabControl.SuspendLayout();
             viewSubjectRequestsPage.SuspendLayout();
+            viewRequestsGroupBox.SuspendLayout();
             subjectRequestsTableLayoutPanel.SuspendLayout();
-            panel6.SuspendLayout();
+            approveRequestGroupBox.SuspendLayout();
             addASubjectAndActivitiesPage.SuspendLayout();
             addActivitiesGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)activityDurationNumericUpDown).BeginInit();
@@ -301,8 +312,8 @@
             // 
             // viewSubjectRequestsPage
             // 
-            viewSubjectRequestsPage.Controls.Add(subjectRequestsTableLayoutPanel);
-            viewSubjectRequestsPage.Controls.Add(vScrollBar1);
+            viewSubjectRequestsPage.Controls.Add(viewRequestsGroupBox);
+            viewSubjectRequestsPage.Controls.Add(approveRequestGroupBox);
             viewSubjectRequestsPage.Location = new Point(4, 24);
             viewSubjectRequestsPage.Name = "viewSubjectRequestsPage";
             viewSubjectRequestsPage.Padding = new Padding(3);
@@ -311,72 +322,45 @@
             viewSubjectRequestsPage.Text = "viewSubjectRequestsTab";
             viewSubjectRequestsPage.UseVisualStyleBackColor = true;
             // 
+            // viewRequestsGroupBox
+            // 
+            viewRequestsGroupBox.Controls.Add(subjectRequestsTableLayoutPanel);
+            viewRequestsGroupBox.Controls.Add(vScrollBar1);
+            viewRequestsGroupBox.Dock = DockStyle.Fill;
+            viewRequestsGroupBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            viewRequestsGroupBox.Location = new Point(3, 402);
+            viewRequestsGroupBox.Name = "viewRequestsGroupBox";
+            viewRequestsGroupBox.Size = new Size(963, 334);
+            viewRequestsGroupBox.TabIndex = 5;
+            viewRequestsGroupBox.TabStop = false;
+            viewRequestsGroupBox.Text = "View Requests";
+            // 
             // subjectRequestsTableLayoutPanel
             // 
+            subjectRequestsTableLayoutPanel.AutoSize = true;
             subjectRequestsTableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
-            subjectRequestsTableLayoutPanel.ColumnCount = 7;
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            subjectRequestsTableLayoutPanel.Controls.Add(panel6, 6, 1);
+            subjectRequestsTableLayoutPanel.ColumnCount = 6;
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
+            subjectRequestsTableLayoutPanel.ColumnStyles.Add(new ColumnStyle());
             subjectRequestsTableLayoutPanel.Controls.Add(requestIDLabel, 0, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherFirstNameLabel, 1, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestTeacherLastNameLabel, 2, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestMessageLabel, 3, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestStatusLabel, 4, 0);
             subjectRequestsTableLayoutPanel.Controls.Add(requestReasonForRejectionLabel, 5, 0);
-            subjectRequestsTableLayoutPanel.Controls.Add(requestActionsLabel, 6, 0);
             subjectRequestsTableLayoutPanel.Dock = DockStyle.Top;
             subjectRequestsTableLayoutPanel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            subjectRequestsTableLayoutPanel.Location = new Point(3, 3);
+            subjectRequestsTableLayoutPanel.Location = new Point(3, 28);
             subjectRequestsTableLayoutPanel.Name = "subjectRequestsTableLayoutPanel";
             subjectRequestsTableLayoutPanel.RowCount = 2;
-            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            subjectRequestsTableLayoutPanel.Size = new Size(946, 100);
-            subjectRequestsTableLayoutPanel.TabIndex = 3;
-            // 
-            // panel6
-            // 
-            panel6.Controls.Add(requestRejectButton);
-            panel6.Controls.Add(requestAcceptButton);
-            panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(624, 54);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(316, 40);
-            panel6.TabIndex = 12;
-            // 
-            // requestRejectButton
-            // 
-            requestRejectButton.BackColor = Color.LightCoral;
-            requestRejectButton.FlatAppearance.BorderColor = Color.White;
-            requestRejectButton.FlatAppearance.MouseDownBackColor = Color.Red;
-            requestRejectButton.FlatAppearance.MouseOverBackColor = Color.Red;
-            requestRejectButton.FlatStyle = FlatStyle.Flat;
-            requestRejectButton.Location = new Point(84, 3);
-            requestRejectButton.Name = "requestRejectButton";
-            requestRejectButton.Size = new Size(75, 32);
-            requestRejectButton.TabIndex = 4;
-            requestRejectButton.Text = "Reject";
-            requestRejectButton.UseVisualStyleBackColor = false;
-            // 
-            // requestAcceptButton
-            // 
-            requestAcceptButton.BackColor = Color.LightGreen;
-            requestAcceptButton.FlatAppearance.BorderColor = Color.White;
-            requestAcceptButton.FlatAppearance.MouseDownBackColor = Color.Green;
-            requestAcceptButton.FlatAppearance.MouseOverBackColor = Color.Green;
-            requestAcceptButton.FlatStyle = FlatStyle.Flat;
-            requestAcceptButton.Location = new Point(3, 3);
-            requestAcceptButton.Name = "requestAcceptButton";
-            requestAcceptButton.Size = new Size(75, 32);
-            requestAcceptButton.TabIndex = 11;
-            requestAcceptButton.Text = "Accept";
-            requestAcceptButton.UseVisualStyleBackColor = false;
+            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            subjectRequestsTableLayoutPanel.RowStyles.Add(new RowStyle());
+            subjectRequestsTableLayoutPanel.Size = new Size(940, 30);
+            subjectRequestsTableLayoutPanel.TabIndex = 5;
             // 
             // requestIDLabel
             // 
@@ -384,7 +368,7 @@
             requestIDLabel.Dock = DockStyle.Fill;
             requestIDLabel.Location = new Point(6, 3);
             requestIDLabel.Name = "requestIDLabel";
-            requestIDLabel.Size = new Size(94, 45);
+            requestIDLabel.Size = new Size(85, 21);
             requestIDLabel.TabIndex = 4;
             requestIDLabel.Text = "Request ID";
             requestIDLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -393,9 +377,9 @@
             // 
             requestTeacherFirstNameLabel.AutoSize = true;
             requestTeacherFirstNameLabel.Dock = DockStyle.Fill;
-            requestTeacherFirstNameLabel.Location = new Point(109, 3);
+            requestTeacherFirstNameLabel.Location = new Point(100, 3);
             requestTeacherFirstNameLabel.Name = "requestTeacherFirstNameLabel";
-            requestTeacherFirstNameLabel.Size = new Size(94, 45);
+            requestTeacherFirstNameLabel.Size = new Size(142, 21);
             requestTeacherFirstNameLabel.TabIndex = 5;
             requestTeacherFirstNameLabel.Text = "Teacher First Name";
             requestTeacherFirstNameLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -404,9 +388,9 @@
             // 
             requestTeacherLastNameLabel.AutoSize = true;
             requestTeacherLastNameLabel.Dock = DockStyle.Fill;
-            requestTeacherLastNameLabel.Location = new Point(212, 3);
+            requestTeacherLastNameLabel.Location = new Point(251, 3);
             requestTeacherLastNameLabel.Name = "requestTeacherLastNameLabel";
-            requestTeacherLastNameLabel.Size = new Size(94, 45);
+            requestTeacherLastNameLabel.Size = new Size(140, 21);
             requestTeacherLastNameLabel.TabIndex = 6;
             requestTeacherLastNameLabel.Text = "Teacher Last Name";
             requestTeacherLastNameLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -415,9 +399,9 @@
             // 
             requestMessageLabel.AutoSize = true;
             requestMessageLabel.Dock = DockStyle.Fill;
-            requestMessageLabel.Location = new Point(315, 3);
+            requestMessageLabel.Location = new Point(400, 3);
             requestMessageLabel.Name = "requestMessageLabel";
-            requestMessageLabel.Size = new Size(94, 45);
+            requestMessageLabel.Size = new Size(131, 21);
             requestMessageLabel.TabIndex = 7;
             requestMessageLabel.Text = "Request Message";
             requestMessageLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -426,9 +410,9 @@
             // 
             requestStatusLabel.AutoSize = true;
             requestStatusLabel.Dock = DockStyle.Fill;
-            requestStatusLabel.Location = new Point(418, 3);
+            requestStatusLabel.Location = new Point(540, 3);
             requestStatusLabel.Name = "requestStatusLabel";
-            requestStatusLabel.Size = new Size(94, 45);
+            requestStatusLabel.Size = new Size(112, 21);
             requestStatusLabel.TabIndex = 8;
             requestStatusLabel.Text = "Request Status";
             requestStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -437,31 +421,173 @@
             // 
             requestReasonForRejectionLabel.AutoSize = true;
             requestReasonForRejectionLabel.Dock = DockStyle.Fill;
-            requestReasonForRejectionLabel.Location = new Point(521, 3);
+            requestReasonForRejectionLabel.Location = new Point(661, 3);
             requestReasonForRejectionLabel.Name = "requestReasonForRejectionLabel";
-            requestReasonForRejectionLabel.Size = new Size(94, 45);
+            requestReasonForRejectionLabel.Size = new Size(273, 21);
             requestReasonForRejectionLabel.TabIndex = 9;
             requestReasonForRejectionLabel.Text = "Reason For Rejection";
             requestReasonForRejectionLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // requestActionsLabel
-            // 
-            requestActionsLabel.AutoSize = true;
-            requestActionsLabel.Dock = DockStyle.Fill;
-            requestActionsLabel.Location = new Point(624, 3);
-            requestActionsLabel.Name = "requestActionsLabel";
-            requestActionsLabel.Size = new Size(316, 45);
-            requestActionsLabel.TabIndex = 10;
-            requestActionsLabel.Text = "Actions";
-            requestActionsLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // vScrollBar1
             // 
             vScrollBar1.Dock = DockStyle.Right;
-            vScrollBar1.Location = new Point(949, 3);
+            vScrollBar1.Location = new Point(943, 28);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 733);
-            vScrollBar1.TabIndex = 1;
+            vScrollBar1.Size = new Size(17, 303);
+            vScrollBar1.TabIndex = 0;
+            // 
+            // approveRequestGroupBox
+            // 
+            approveRequestGroupBox.Controls.Add(rejectButton);
+            approveRequestGroupBox.Controls.Add(approveButton);
+            approveRequestGroupBox.Controls.Add(messageRichTextBox);
+            approveRequestGroupBox.Controls.Add(subjectTextBox);
+            approveRequestGroupBox.Controls.Add(statusTextBox);
+            approveRequestGroupBox.Controls.Add(teacherFullNameTextBox);
+            approveRequestGroupBox.Controls.Add(statusLabel);
+            approveRequestGroupBox.Controls.Add(messageLabel);
+            approveRequestGroupBox.Controls.Add(subjectLabel);
+            approveRequestGroupBox.Controls.Add(teacherFullNameLabel);
+            approveRequestGroupBox.Controls.Add(requestLabel);
+            approveRequestGroupBox.Controls.Add(requestsComboBox);
+            approveRequestGroupBox.Dock = DockStyle.Top;
+            approveRequestGroupBox.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            approveRequestGroupBox.Location = new Point(3, 3);
+            approveRequestGroupBox.Name = "approveRequestGroupBox";
+            approveRequestGroupBox.Size = new Size(963, 399);
+            approveRequestGroupBox.TabIndex = 4;
+            approveRequestGroupBox.TabStop = false;
+            approveRequestGroupBox.Text = "Approve a Request";
+            // 
+            // rejectButton
+            // 
+            rejectButton.BackColor = Color.LightCoral;
+            rejectButton.Cursor = Cursors.Hand;
+            rejectButton.FlatAppearance.BorderColor = Color.White;
+            rejectButton.FlatAppearance.MouseDownBackColor = Color.Red;
+            rejectButton.FlatAppearance.MouseOverBackColor = Color.Red;
+            rejectButton.FlatStyle = FlatStyle.Flat;
+            rejectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            rejectButton.ForeColor = Color.White;
+            rejectButton.Location = new Point(810, 361);
+            rejectButton.Name = "rejectButton";
+            rejectButton.Size = new Size(130, 32);
+            rejectButton.TabIndex = 11;
+            rejectButton.Text = "Reject";
+            rejectButton.UseVisualStyleBackColor = false;
+            // 
+            // approveButton
+            // 
+            approveButton.BackColor = Color.LightGreen;
+            approveButton.Cursor = Cursors.Hand;
+            approveButton.FlatAppearance.BorderColor = Color.White;
+            approveButton.FlatAppearance.MouseDownBackColor = Color.Lime;
+            approveButton.FlatAppearance.MouseOverBackColor = Color.Lime;
+            approveButton.FlatStyle = FlatStyle.Flat;
+            approveButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            approveButton.ForeColor = Color.White;
+            approveButton.Location = new Point(674, 361);
+            approveButton.Name = "approveButton";
+            approveButton.Size = new Size(130, 32);
+            approveButton.TabIndex = 10;
+            approveButton.Text = "Approve";
+            approveButton.UseVisualStyleBackColor = false;
+            // 
+            // messageRichTextBox
+            // 
+            messageRichTextBox.Location = new Point(400, 140);
+            messageRichTextBox.Name = "messageRichTextBox";
+            messageRichTextBox.ReadOnly = true;
+            messageRichTextBox.Size = new Size(255, 148);
+            messageRichTextBox.TabIndex = 9;
+            messageRichTextBox.Text = "";
+            // 
+            // subjectTextBox
+            // 
+            subjectTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            subjectTextBox.Location = new Point(700, 60);
+            subjectTextBox.Name = "subjectTextBox";
+            subjectTextBox.ReadOnly = true;
+            subjectTextBox.Size = new Size(180, 29);
+            subjectTextBox.TabIndex = 8;
+            // 
+            // statusTextBox
+            // 
+            statusTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            statusTextBox.Location = new Point(700, 140);
+            statusTextBox.Name = "statusTextBox";
+            statusTextBox.ReadOnly = true;
+            statusTextBox.Size = new Size(180, 29);
+            statusTextBox.TabIndex = 7;
+            // 
+            // teacherFullNameTextBox
+            // 
+            teacherFullNameTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            teacherFullNameTextBox.Location = new Point(400, 60);
+            teacherFullNameTextBox.Name = "teacherFullNameTextBox";
+            teacherFullNameTextBox.ReadOnly = true;
+            teacherFullNameTextBox.Size = new Size(180, 29);
+            teacherFullNameTextBox.TabIndex = 6;
+            // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            statusLabel.Location = new Point(700, 110);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new Size(52, 21);
+            statusLabel.TabIndex = 5;
+            statusLabel.Text = "Status";
+            // 
+            // messageLabel
+            // 
+            messageLabel.AutoSize = true;
+            messageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            messageLabel.Location = new Point(400, 110);
+            messageLabel.Name = "messageLabel";
+            messageLabel.Size = new Size(71, 21);
+            messageLabel.TabIndex = 4;
+            messageLabel.Text = "Message";
+            // 
+            // subjectLabel
+            // 
+            subjectLabel.AutoSize = true;
+            subjectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            subjectLabel.Location = new Point(700, 30);
+            subjectLabel.Name = "subjectLabel";
+            subjectLabel.Size = new Size(61, 21);
+            subjectLabel.TabIndex = 3;
+            subjectLabel.Text = "Subject";
+            // 
+            // teacherFullNameLabel
+            // 
+            teacherFullNameLabel.AutoSize = true;
+            teacherFullNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            teacherFullNameLabel.Location = new Point(400, 30);
+            teacherFullNameLabel.Name = "teacherFullNameLabel";
+            teacherFullNameLabel.Size = new Size(137, 21);
+            teacherFullNameLabel.TabIndex = 2;
+            teacherFullNameLabel.Text = "Teacher Full Name";
+            // 
+            // requestLabel
+            // 
+            requestLabel.AutoSize = true;
+            requestLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            requestLabel.Location = new Point(100, 30);
+            requestLabel.Name = "requestLabel";
+            requestLabel.Size = new Size(73, 21);
+            requestLabel.TabIndex = 1;
+            requestLabel.Text = "Requests";
+            // 
+            // requestsComboBox
+            // 
+            requestsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            requestsComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            requestsComboBox.FormattingEnabled = true;
+            requestsComboBox.Location = new Point(100, 60);
+            requestsComboBox.Name = "requestsComboBox";
+            requestsComboBox.Size = new Size(180, 29);
+            requestsComboBox.TabIndex = 0;
             // 
             // addASubjectAndActivitiesPage
             // 
@@ -557,7 +683,7 @@
             // 
             activityDurationNumericUpDown.DecimalPlaces = 1;
             activityDurationNumericUpDown.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            activityDurationNumericUpDown.Location = new Point(700, 67);
+            activityDurationNumericUpDown.Location = new Point(700, 65);
             activityDurationNumericUpDown.Minimum = new decimal(new int[] { 10, 0, 0, 65536 });
             activityDurationNumericUpDown.Name = "activityDurationNumericUpDown";
             activityDurationNumericUpDown.Size = new Size(180, 29);
@@ -604,7 +730,7 @@
             activityDayComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             activityDayComboBox.FormattingEnabled = true;
             activityDayComboBox.Items.AddRange(new object[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" });
-            activityDayComboBox.Location = new Point(400, 67);
+            activityDayComboBox.Location = new Point(400, 65);
             activityDayComboBox.Name = "activityDayComboBox";
             activityDayComboBox.Size = new Size(180, 29);
             activityDayComboBox.TabIndex = 17;
@@ -857,9 +983,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             adminTabControl.ResumeLayout(false);
             viewSubjectRequestsPage.ResumeLayout(false);
+            viewRequestsGroupBox.ResumeLayout(false);
+            viewRequestsGroupBox.PerformLayout();
             subjectRequestsTableLayoutPanel.ResumeLayout(false);
             subjectRequestsTableLayoutPanel.PerformLayout();
-            panel6.ResumeLayout(false);
+            approveRequestGroupBox.ResumeLayout(false);
+            approveRequestGroupBox.PerformLayout();
             addASubjectAndActivitiesPage.ResumeLayout(false);
             addActivitiesGroup.ResumeLayout(false);
             addActivitiesGroup.PerformLayout();
@@ -914,18 +1043,6 @@
         private NumericUpDown activityDurationNumericUpDown;
         private TextBox activityLocationTextBox;
         private TextBox activityCampusTextBox;
-        private VScrollBar vScrollBar1;
-        private TableLayoutPanel subjectRequestsTableLayoutPanel;
-        private Label requestIDLabel;
-        private Label requestTeacherFirstNameLabel;
-        private Label requestTeacherLastNameLabel;
-        private Label requestMessageLabel;
-        private Label requestStatusLabel;
-        private Label requestReasonForRejectionLabel;
-        private Label requestActionsLabel;
-        private Button requestRejectButton;
-        private Button requestAcceptButton;
-        private Panel panel6;
         private TabControl enrolmentTabControl;
         private TabPage studentsEnrolmentTabPage;
         private TabPage teachersEnrolmentTabPage;
@@ -934,5 +1051,27 @@
         private DateTimePicker activityStartDateTimePicker;
         private DateTimePicker activityEndDateTimePicker;
         private Label activityEndLabel;
+        private GroupBox viewRequestsGroupBox;
+        private GroupBox approveRequestGroupBox;
+        private Label teacherFullNameLabel;
+        private Label requestLabel;
+        private ComboBox requestsComboBox;
+        private TextBox teacherFullNameTextBox;
+        private Label statusLabel;
+        private Label messageLabel;
+        private Label subjectLabel;
+        private Button rejectButton;
+        private Button approveButton;
+        private RichTextBox messageRichTextBox;
+        private TextBox subjectTextBox;
+        private TextBox statusTextBox;
+        private TableLayoutPanel subjectRequestsTableLayoutPanel;
+        private Label requestIDLabel;
+        private Label requestTeacherFirstNameLabel;
+        private Label requestTeacherLastNameLabel;
+        private Label requestMessageLabel;
+        private Label requestStatusLabel;
+        private Label requestReasonForRejectionLabel;
+        private VScrollBar vScrollBar1;
     }
 }
