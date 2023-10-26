@@ -44,26 +44,7 @@ namespace EnrolmentTimetableSystem
             welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
 
             LoadRequestsComboBox();
-
-            // Read all files in requests folder
-            string[] requests = Directory.GetFiles("Requests");
-            foreach (string request in requests)
-            {
-                string[] lines = File.ReadAllLines(request);
-                foreach (string line in lines)
-                {
-                    string status = line.Split(':')[4];
-                    if (status == "Approved" || status == "Rejected")
-                    {
-                        string requestID = line.Split(':')[0];
-                        string tID = line.Split(':')[1];
-                        string subject = line.Split(':')[2];
-                        string message = line.Split(':')[3];
-                        string reason = line.Split(':')[5];
-                        AddNewRow(requestID, tID, subject, message, status, reason);
-                    }
-                }
-            }
+            UpdateRequestsTable();
         }
         #endregion
 
@@ -117,7 +98,7 @@ namespace EnrolmentTimetableSystem
             string[] teacherDetails = teacher.Split(':');
             //
 
-            teacherFullNameTextBox.Text = $"{teacherDetails[0]} {teacherDetails[1]}";
+            teacherFullNameTextBox.Text = $"{teacherDetails[2]} {teacherDetails[3]}";
             subjectTextBox.Text = $"{selectedRequestDetails[2]}";
             messageRichTextBox.Text = $"{selectedRequestDetails[3]}";
             statusTextBox.Text = $"{selectedRequestDetails[4]}";
@@ -156,6 +137,7 @@ namespace EnrolmentTimetableSystem
             string[] selectedRequestDetails = selectedRequest.Split('-');
             string requestID = selectedRequestDetails[0].Trim();
             string teacherID = selectedRequestDetails[1].Trim();
+            string teacherFullName = teacherFullNameTextBox.Text.Trim();
 
             string[] requests = File.ReadAllLines($"Requests\\{teacherID}.txt");
             for (int i = 0; i < requests.Length; i++)
@@ -166,11 +148,27 @@ namespace EnrolmentTimetableSystem
                     requests[i] = $"{requestData[0]}:{requestData[1]}:{requestData[2]}:{requestData[3]}:Approved:{requestData[5]}";
                     File.WriteAllLines($"Requests\\{teacherID}.txt", requests);
 
+                    AllocateToSubject(teacherID, teacherFullName, requestData[2]);
+
                     requestData = GetRequestDetails(requestID, teacherID);
                     AddNewRow(requestData[0], requestData[1], requestData[2], requestData[3], "Approved", requestData[5]);
                     ResetApproveRequestForm();
                     break;
                 }
+            }
+        }
+
+        private static void AllocateToSubject(string teacherID, string teacherFullName, string subjectID)
+        {
+            string data = $"{teacherID}:{teacherFullName}:teacher";
+
+            if (File.Exists($"Enrolment\\{subjectID}.txt"))
+            {
+                File.AppendAllText($"Enrolment\\{subjectID}.txt", $"\n{data}");
+            }
+            else
+            {
+                File.WriteAllText($"Enrolment\\{subjectID}.txt", data);
             }
         }
 
@@ -216,6 +214,29 @@ namespace EnrolmentTimetableSystem
             rejectionReasonRichTextBox.Text = "";
             approveButton.Enabled = false;
             rejectButton.Enabled = false;
+        }
+
+        private void UpdateRequestsTable()
+        {
+            // Read all files in requests folder
+            string[] requests = Directory.GetFiles("Requests");
+            foreach (string request in requests)
+            {
+                string[] lines = File.ReadAllLines(request);
+                foreach (string line in lines)
+                {
+                    string status = line.Split(':')[4];
+                    if (status == "Approved" || status == "Rejected")
+                    {
+                        string requestID = line.Split(':')[0];
+                        string tID = line.Split(':')[1];
+                        string subject = line.Split(':')[2];
+                        string message = line.Split(':')[3];
+                        string reason = line.Split(':')[5];
+                        AddNewRow(requestID, tID, subject, message, status, reason);
+                    }
+                }
+            }
         }
 
         private void AddNewRow(string requestID, string tID, string subject, string message, string status, string rfr)
