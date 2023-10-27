@@ -484,6 +484,67 @@ namespace EnrolmentTimetableSystem
 
         private void SubjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            teachersListBox.Items.Clear();
+            studentsListBox.Items.Clear();
+
+            string selectedSubject = $"{subjectsListBox.SelectedItem}";
+            string[] selectedSubjectDetails = selectedSubject.Split('-');
+
+            string subjectID = selectedSubjectDetails[0].Trim();
+            string subjectName = selectedSubjectDetails[1].Trim();
+
+            if (File.Exists($"Enrolment\\{subjectID} - {subjectName}.txt"))
+            {
+                LoadEnrolmentListBox(subjectID, subjectName);
+            }
+            else
+            {
+                teachersListBox.Items.Clear();
+                studentsListBox.Items.Clear();
+            }
+        }
+
+        private void LoadEnrolmentListBox(string subjectID, string subjectName)
+        {
+            // Get enrolement by subject ID
+            string[] enrolments = File.ReadAllLines($"Enrolment\\{subjectID} - {subjectName}.txt");
+
+            // For each enrolment if it has teacher role add to the teacherListbox else add to the studentListbox
+            foreach (string enrolment in enrolments)
+            {
+                string[] enrolmentData = enrolment.Split(':');
+                if (enrolmentData[2] == "teacher")
+                {
+                    string teacher = File.ReadAllText($"Teachers\\{enrolmentData[0]}.txt");
+                    string[] teacherData = teacher.Split(':');
+                    teachersListBox.Items.Add($"{teacherData[0]} - {teacherData[2]} {teacherData[3]}");
+                }
+                else
+                {
+                    string student = File.ReadAllText($"Students\\{enrolmentData[0]}.txt");
+                    string[] studentData = student.Split(':');
+                    studentsListBox.Items.Add($"{studentData[0]} {studentData[1]}");
+                }
+            }
+        }
+
+        private void TeachersListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            removeTeacherFromSubjectButton.Enabled = true;
+        }
+
+        private void StudentsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            removeStudentFromSubjectButton.Enabled = true;
+        }
+
+        private void RemoveStudentFromSubjectButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RemoveTeacherFromSubjectButton_Click(object sender, EventArgs e)
+        {
 
         }
         #endregion
@@ -494,5 +555,6 @@ namespace EnrolmentTimetableSystem
             loginForm.Show();
             Close();
         }
+
     }
 }

@@ -992,6 +992,7 @@
             removeStudentFromSubjectButton.TabIndex = 12;
             removeStudentFromSubjectButton.Text = "Remove";
             removeStudentFromSubjectButton.UseVisualStyleBackColor = false;
+            removeStudentFromSubjectButton.Click += RemoveStudentFromSubjectButton_Click;
             // 
             // studentsListBox
             // 
@@ -1003,6 +1004,7 @@
             studentsListBox.Name = "studentsListBox";
             studentsListBox.Size = new Size(632, 88);
             studentsListBox.TabIndex = 0;
+            studentsListBox.SelectedIndexChanged += StudentsListBox_SelectedIndexChanged;
             // 
             // teachersEnrolmentTabPage
             // 
@@ -1027,12 +1029,13 @@
             removeTeacherFromSubjectButton.FlatStyle = FlatStyle.Flat;
             removeTeacherFromSubjectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             removeTeacherFromSubjectButton.ForeColor = Color.White;
-            removeTeacherFromSubjectButton.Location = new Point(502, 97);
+            removeTeacherFromSubjectButton.Location = new Point(6, 97);
             removeTeacherFromSubjectButton.Name = "removeTeacherFromSubjectButton";
             removeTeacherFromSubjectButton.Size = new Size(130, 32);
             removeTeacherFromSubjectButton.TabIndex = 13;
             removeTeacherFromSubjectButton.Text = "Remove";
             removeTeacherFromSubjectButton.UseVisualStyleBackColor = false;
+            removeTeacherFromSubjectButton.Click += RemoveTeacherFromSubjectButton_Click;
             // 
             // teachersListBox
             // 
@@ -1044,6 +1047,7 @@
             teachersListBox.Name = "teachersListBox";
             teachersListBox.Size = new Size(632, 88);
             teachersListBox.TabIndex = 0;
+            teachersListBox.SelectedIndexChanged += TeachersListBox_SelectedIndexChanged;
             // 
             // subjectsListBox
             // 
