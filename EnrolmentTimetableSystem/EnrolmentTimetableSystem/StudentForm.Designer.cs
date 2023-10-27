@@ -47,6 +47,7 @@
 			homePage = new TabPage();
 			textBox2 = new TextBox();
 			subjectEnrolment = new TabPage();
+			studentSubjectsComboBox = new ComboBox();
 			textBox1 = new TextBox();
 			vScrollBar1 = new VScrollBar();
 			subjectAllocation = new TabPage();
@@ -73,6 +74,7 @@
 			textBox14 = new TextBox();
 			panel8 = new Panel();
 			textBox13 = new TextBox();
+			enrolmentButton = new Button();
 			panel1.SuspendLayout();
 			panel5.SuspendLayout();
 			panel2.SuspendLayout();
@@ -304,6 +306,8 @@
 			// 
 			// subjectEnrolment
 			// 
+			subjectEnrolment.Controls.Add(enrolmentButton);
+			subjectEnrolment.Controls.Add(studentSubjectsComboBox);
 			subjectEnrolment.Controls.Add(textBox1);
 			subjectEnrolment.Controls.Add(vScrollBar1);
 			subjectEnrolment.Location = new Point(4, 24);
@@ -314,14 +318,25 @@
 			subjectEnrolment.Text = "Subject Enrolment";
 			subjectEnrolment.UseVisualStyleBackColor = true;
 			// 
+			// studentSubjectsComboBox
+			// 
+			studentSubjectsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			studentSubjectsComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			studentSubjectsComboBox.FormattingEnabled = true;
+			studentSubjectsComboBox.Location = new Point(60, 109);
+			studentSubjectsComboBox.Name = "studentSubjectsComboBox";
+			studentSubjectsComboBox.Size = new Size(180, 29);
+			studentSubjectsComboBox.TabIndex = 4;
+			studentSubjectsComboBox.SelectedIndexChanged += studentSubjectsComboBox_SelectedIndexChanged;
+			// 
 			// textBox1
 			// 
 			textBox1.BorderStyle = BorderStyle.None;
-			textBox1.Location = new Point(314, 203);
+			textBox1.Location = new Point(386, 22);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(124, 16);
 			textBox1.TabIndex = 2;
-			textBox1.Text = "Subject Request Page";
+			textBox1.Text = "Subject Enrolment Page";
 			// 
 			// vScrollBar1
 			// 
@@ -354,7 +369,6 @@
 			activityTypeComboxBox.Name = "activityTypeComboxBox";
 			activityTypeComboxBox.Size = new Size(180, 29);
 			activityTypeComboxBox.TabIndex = 9;
-			activityTypeComboxBox.SelectedIndexChanged += activityTypeComboxBox_SelectedIndexChanged;
 			// 
 			// groupBox1
 			// 
@@ -388,7 +402,6 @@
 			radioButton1.TabStop = true;
 			radioButton1.Text = "Cloud";
 			radioButton1.UseVisualStyleBackColor = true;
-			radioButton1.CheckedChanged += radioButton1_CheckedChanged;
 			// 
 			// button1
 			// 
@@ -398,7 +411,6 @@
 			button1.TabIndex = 4;
 			button1.Text = "Allocate";
 			button1.UseVisualStyleBackColor = true;
-			button1.Click += button1_Click;
 			// 
 			// textBox3
 			// 
@@ -611,6 +623,16 @@
 			textBox13.TabIndex = 9;
 			textBox13.Text = "Tuesday";
 			// 
+			// enrolmentButton
+			// 
+			enrolmentButton.Location = new Point(522, 161);
+			enrolmentButton.Name = "enrolmentButton";
+			enrolmentButton.Size = new Size(75, 23);
+			enrolmentButton.TabIndex = 5;
+			enrolmentButton.Text = "Enrol";
+			enrolmentButton.UseVisualStyleBackColor = true;
+			enrolmentButton.Click += enrolmentButton_Click;
+			// 
 			// StudentForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -693,5 +715,7 @@
 		private TextBox textBox10;
 		private TextBox textBox14;
 		private TextBox textBox13;
+		private ComboBox studentSubjectsComboBox;
+		private Button enrolmentButton;
 	}
 }
