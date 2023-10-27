@@ -47,6 +47,10 @@
 			homePage = new TabPage();
 			textBox2 = new TextBox();
 			subjectRequest = new TabPage();
+			textBox16 = new TextBox();
+			textBox15 = new TextBox();
+			requestMessageTextBox = new TextBox();
+			teacherSubjectsComboBox = new ComboBox();
 			textBox1 = new TextBox();
 			vScrollBar1 = new VScrollBar();
 			subjectAllocation = new TabPage();
@@ -68,6 +72,7 @@
 			textBox14 = new TextBox();
 			panel8 = new Panel();
 			textBox13 = new TextBox();
+			SubmitSubjectRequest = new Button();
 			panel1.SuspendLayout();
 			panel5.SuspendLayout();
 			panel2.SuspendLayout();
@@ -298,6 +303,11 @@
 			// 
 			// subjectRequest
 			// 
+			subjectRequest.Controls.Add(SubmitSubjectRequest);
+			subjectRequest.Controls.Add(textBox16);
+			subjectRequest.Controls.Add(textBox15);
+			subjectRequest.Controls.Add(requestMessageTextBox);
+			subjectRequest.Controls.Add(teacherSubjectsComboBox);
 			subjectRequest.Controls.Add(textBox1);
 			subjectRequest.Controls.Add(vScrollBar1);
 			subjectRequest.Location = new Point(4, 24);
@@ -308,10 +318,49 @@
 			subjectRequest.Text = "Subject Request";
 			subjectRequest.UseVisualStyleBackColor = true;
 			// 
+			// textBox16
+			// 
+			textBox16.BorderStyle = BorderStyle.None;
+			textBox16.Location = new Point(93, 49);
+			textBox16.Multiline = true;
+			textBox16.Name = "textBox16";
+			textBox16.Size = new Size(156, 37);
+			textBox16.TabIndex = 6;
+			textBox16.Text = "select the subject from the dropdown menu";
+			// 
+			// textBox15
+			// 
+			textBox15.BorderStyle = BorderStyle.None;
+			textBox15.Location = new Point(548, 70);
+			textBox15.Multiline = true;
+			textBox15.Name = "textBox15";
+			textBox15.Size = new Size(124, 37);
+			textBox15.TabIndex = 5;
+			textBox15.Text = "Reason for wanted to teach the subject";
+			// 
+			// requestMessageTextBox
+			// 
+			requestMessageTextBox.Location = new Point(501, 113);
+			requestMessageTextBox.Multiline = true;
+			requestMessageTextBox.Name = "requestMessageTextBox";
+			requestMessageTextBox.Size = new Size(234, 161);
+			requestMessageTextBox.TabIndex = 4;
+			// 
+			// teacherSubjectsComboBox
+			// 
+			teacherSubjectsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			teacherSubjectsComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			teacherSubjectsComboBox.FormattingEnabled = true;
+			teacherSubjectsComboBox.Location = new Point(81, 97);
+			teacherSubjectsComboBox.Name = "teacherSubjectsComboBox";
+			teacherSubjectsComboBox.Size = new Size(180, 29);
+			teacherSubjectsComboBox.TabIndex = 3;
+			teacherSubjectsComboBox.SelectedIndexChanged += teacherSubjectsComboBox_SelectedIndexChanged;
+			// 
 			// textBox1
 			// 
 			textBox1.BorderStyle = BorderStyle.None;
-			textBox1.Location = new Point(314, 203);
+			textBox1.Location = new Point(369, 27);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(124, 16);
 			textBox1.TabIndex = 2;
@@ -547,6 +596,16 @@
 			textBox13.TabIndex = 9;
 			textBox13.Text = "Tuesday";
 			// 
+			// SubmitSubjectRequest
+			// 
+			SubmitSubjectRequest.Location = new Point(403, 341);
+			SubmitSubjectRequest.Name = "SubmitSubjectRequest";
+			SubmitSubjectRequest.Size = new Size(75, 23);
+			SubmitSubjectRequest.TabIndex = 7;
+			SubmitSubjectRequest.Text = "Submit";
+			SubmitSubjectRequest.UseVisualStyleBackColor = true;
+			SubmitSubjectRequest.Click += SubmitSubjectRequest_Click;
+			// 
 			// TeacherForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -622,5 +681,10 @@
 		private TextBox textBox14;
 		private Panel panel8;
 		private TextBox textBox13;
+		private ComboBox teacherSubjectsComboBox;
+		private TextBox requestMessageTextBox;
+		private TextBox textBox16;
+		private TextBox textBox15;
+		private Button SubmitSubjectRequest;
 	}
 }

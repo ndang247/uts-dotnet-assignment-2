@@ -56,3 +56,6 @@ C:\Users\Matthew\OneDrive\Desktop\.net a2\uts-dotnet-assignment-2\EnrolmentTimet
 C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.TeacherForm.resources
 C:\Users\Matthew\OneDrive\Desktop\.net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.StudentForm.resources
 C:\Users\natha\Downloads\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.StudentForm.resources
+C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.AdminForm.resources
+C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.StudentForm.resources
+C:\Users\User\Desktop\net a2\uts-dotnet-assignment-2\EnrolmentTimetableSystem\EnrolmentTimetableSystem\obj\Debug\net6.0-windows\EnrolmentTimetableSystem.TeacherForm.resources
