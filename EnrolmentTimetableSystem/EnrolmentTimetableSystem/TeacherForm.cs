@@ -122,17 +122,32 @@ namespace EnrolmentTimetableSystem
 				// Use only the teacher's ID as the request file name
 				string requestFileName = $"{teacherID}.txt";
 
-				// Write the request data to the appropriate request file
-				File.AppendAllText("Requests\\" + requestFileName, requestData + Environment.NewLine);
+				// Load the teacher's previous requests
+				string[] previousRequests = File.ReadAllLines("Requests\\" + requestFileName);
 
-				// Notify the user that the request has been submitted
-				MessageBox.Show("Request submitted successfully.");
+				// Check if the new request already exists in the teacher's previous requests
+				bool isDuplicateRequest = previousRequests.Any(line => line.Contains(subjectInfo));
+
+				if (isDuplicateRequest)
+				{
+					// A request for this subject already exists
+					MessageBox.Show("You have already submitted a request for this subject.");
+				}
+				else
+				{
+					// Write the request data to the appropriate request file
+					File.AppendAllText("Requests\\" + requestFileName, requestData + Environment.NewLine);
+
+					// Notify the user that the request has been submitted
+					MessageBox.Show("Request submitted successfully.");
+				}
 			}
 			else
 			{
 				MessageBox.Show("Please select a subject from the dropdown.");
 			}
 		}
+
 
 
 
