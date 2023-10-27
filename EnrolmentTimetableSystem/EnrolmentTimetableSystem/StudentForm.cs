@@ -14,13 +14,16 @@ namespace EnrolmentTimetableSystem
 	{
 		private readonly LoginForm loginForm;
 		private bool subjectsComboBoxPopulated = false;
+		private bool studentSubjectsAllocationComboBoxPopulated = false;
 		private string loggedInStudentID;
+		private string[] details;
 
 		public StudentForm(LoginForm loginForm, string[] details)
 		{
 			this.loginForm = loginForm;
 			InitializeComponent();
 			loggedInStudentID = details[0];
+			this.details = details;
 		}
 
 		private string GetStudentName(string studentID)
@@ -51,11 +54,9 @@ namespace EnrolmentTimetableSystem
 
 		private void StudentForm_Load(object sender, EventArgs e)
 		{
-			//welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
-
-			//LoadStudentSubjectsComboBox();
-			//UpdateStudentSubjectsTable();
 			studentSubjectsComboBox.Items.Clear();
+			studentSubjectAllocationComboBox.Items.Clear();
+
 		}
 
 		private void StudentLogsIn(string studentID)
@@ -113,6 +114,35 @@ namespace EnrolmentTimetableSystem
 		private void addSubjectAndActivitiesButton_Click(object sender, EventArgs e)
 		{
 			studentTabControl.SelectedTab = studentTabControl.TabPages["subjectAllocation"];
+			LoadStudentSubjectAllocationComboBox();
+		}
+
+		private void LoadStudentSubjectAllocationComboBox()
+		{
+			if (!studentSubjectsAllocationComboBoxPopulated)
+			{
+				studentSubjectAllocationComboBox.Items.Clear();
+				string studentID = loggedInStudentID;
+
+				string[] subjectFiles = Directory.GetFiles("Enrolment");
+
+				foreach (string subjectFile in subjectFiles)
+				{
+					string fileName = Path.GetFileNameWithoutExtension(subjectFile);
+					string[] lines = File.ReadAllLines(subjectFile);
+
+					foreach (string line in lines)
+					{
+						if (line.Contains(studentID))
+						{
+							studentSubjectAllocationComboBox.Items.Add(fileName);
+							break; // If teacherID is found in the file, no need to continue checking other lines
+						}
+					}
+				}
+
+				studentSubjectsAllocationComboBoxPopulated = true; // Set the flag to true after populating
+			}
 		}
 
 		private void removeFromASubjectButton_Click(object sender, EventArgs e)
@@ -171,5 +201,119 @@ namespace EnrolmentTimetableSystem
 			}
 		}
 
+		private void studentSubjectAllocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string selectedRequest = $"{studentSubjectAllocationComboBox.SelectedItem}";
+			string[] selectedRequestDetails = selectedRequest.Split('-');
+		}
+
+		private void loadStudentActivitiesButton_Click(object sender, EventArgs e)
+		{
+			if (studentSubjectAllocationComboBox.SelectedIndex != -1)
+			{
+				// Read the selected subject from the combobox
+				string selectedSubject = studentSubjectAllocationComboBox.SelectedItem.ToString();
+
+				// Extract the subject ID from the selected subject
+				string subjectID = GetSubjectID(selectedSubject);
+
+				// Read the content of the subject activities file for the selected subject
+				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
+
+				if (File.Exists(activitiesFilePath))
+				{
+					// Load and display the content in the subjectActivitiesTextBox
+					studentSubjectActivitiesTextBox.Text = File.ReadAllText(activitiesFilePath);
+				}
+				else
+				{
+					// Subject activities file doesn't exist for the selected subject
+					studentSubjectActivitiesTextBox.Text = "No activities available for this subject.";
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select a subject from the dropdown.");
+			}
+		}
+
+		private string GetSubjectID(string subjectName)
+		{
+			// You need to extract the subject ID from the subjectName
+			// This is a simplified example; you may need to adjust it based on your file naming conventions
+			string[] parts = subjectName.Split('-');
+			if (parts.Length == 2)
+			{
+				return parts[0].Trim();
+			}
+			return "";
+		}
+
+		private void studentSubjectActivitiesAllocateButton_Click(object sender, EventArgs e)
+		{
+			if (studentSubjectAllocationComboBox.SelectedIndex != -1)
+			{
+				string selectedSubject = studentSubjectAllocationComboBox.SelectedItem.ToString();
+				string subjectID = GetSubjectID(selectedSubject);
+				string studentID = loggedInStudentID;
+				string studentFirstName = details[2]; // Assuming the first name is at index 2
+				string studentLastName = details[3]; // Assuming the last name is at index 3
+				string studentName = $"{studentFirstName} {studentLastName}";
+
+				// Check if the teacher has already allocated for this subject
+				string allocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
+				if (File.Exists(allocationFileName))
+				{
+					string[] existingAllocations = File.ReadAllLines(allocationFileName);
+					foreach (string allocation in existingAllocations)
+					{
+						if (allocation.Contains(studentID))
+						{
+							MessageBox.Show("You have already allocated to activities for this subject.");
+							return; // Exit the function if already allocated
+						}
+					}
+				}
+
+				// Read the subject activities from the SubjectActivities file for the selected subject
+				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
+
+				if (File.Exists(activitiesFilePath))
+				{
+					string[] activityLines = File.ReadAllLines(activitiesFilePath);
+
+					foreach (string line in activityLines)
+					{
+						string[] activityData = line.Split('|');
+
+						// Ensure the line has at least one element before accessing the activity ID
+						if (activityData.Length > 0)
+						{
+							string activityID = activityData[0];
+
+							// Use the activity's ID as the allocation file name
+							string activityAllocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
+
+							// Append allocation data (teacher ID, teacher name, role, and activity ID)
+							string allocationData = $"{studentID}:{studentName}:student:{activityID}";
+
+							File.AppendAllText(activityAllocationFileName, allocationData + Environment.NewLine);
+						}
+					}
+
+					// Notify the user that the allocation has been made
+					MessageBox.Show("Allocation successful.");
+				}
+				else
+				{
+					// Subject activities file doesn't exist for the selected subject
+					MessageBox.Show("No activities available for this subject.");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select a subject from the dropdown.");
+			}
+		}
 	}
 }

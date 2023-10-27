@@ -47,6 +47,7 @@
 			homePage = new TabPage();
 			textBox2 = new TextBox();
 			subjectRequest = new TabPage();
+			SubmitSubjectRequest = new Button();
 			textBox16 = new TextBox();
 			textBox15 = new TextBox();
 			requestMessageTextBox = new TextBox();
@@ -54,6 +55,10 @@
 			textBox1 = new TextBox();
 			vScrollBar1 = new VScrollBar();
 			subjectAllocation = new TabPage();
+			subjectActivitiesTextBox = new RichTextBox();
+			loadActivitiesButton = new Button();
+			textBox17 = new TextBox();
+			teacherSubjectAllocationComboBox = new ComboBox();
 			textBox3 = new TextBox();
 			viewActivities = new TabPage();
 			groupBox2 = new GroupBox();
@@ -72,7 +77,7 @@
 			textBox14 = new TextBox();
 			panel8 = new Panel();
 			textBox13 = new TextBox();
-			SubmitSubjectRequest = new Button();
+			subjectActivitiesAllocateButton = new Button();
 			panel1.SuspendLayout();
 			panel5.SuspendLayout();
 			panel2.SuspendLayout();
@@ -318,6 +323,16 @@
 			subjectRequest.Text = "Subject Request";
 			subjectRequest.UseVisualStyleBackColor = true;
 			// 
+			// SubmitSubjectRequest
+			// 
+			SubmitSubjectRequest.Location = new Point(403, 341);
+			SubmitSubjectRequest.Name = "SubmitSubjectRequest";
+			SubmitSubjectRequest.Size = new Size(75, 23);
+			SubmitSubjectRequest.TabIndex = 7;
+			SubmitSubjectRequest.Text = "Submit";
+			SubmitSubjectRequest.UseVisualStyleBackColor = true;
+			SubmitSubjectRequest.Click += SubmitSubjectRequest_Click;
+			// 
 			// textBox16
 			// 
 			textBox16.BorderStyle = BorderStyle.None;
@@ -353,7 +368,7 @@
 			teacherSubjectsComboBox.FormattingEnabled = true;
 			teacherSubjectsComboBox.Location = new Point(81, 97);
 			teacherSubjectsComboBox.Name = "teacherSubjectsComboBox";
-			teacherSubjectsComboBox.Size = new Size(180, 29);
+			teacherSubjectsComboBox.Size = new Size(250, 29);
 			teacherSubjectsComboBox.TabIndex = 3;
 			teacherSubjectsComboBox.SelectedIndexChanged += teacherSubjectsComboBox_SelectedIndexChanged;
 			// 
@@ -376,6 +391,11 @@
 			// 
 			// subjectAllocation
 			// 
+			subjectAllocation.Controls.Add(subjectActivitiesAllocateButton);
+			subjectAllocation.Controls.Add(subjectActivitiesTextBox);
+			subjectAllocation.Controls.Add(loadActivitiesButton);
+			subjectAllocation.Controls.Add(textBox17);
+			subjectAllocation.Controls.Add(teacherSubjectAllocationComboBox);
 			subjectAllocation.Controls.Add(textBox3);
 			subjectAllocation.Location = new Point(4, 24);
 			subjectAllocation.Name = "subjectAllocation";
@@ -385,10 +405,51 @@
 			subjectAllocation.Text = "Subject Allocation";
 			subjectAllocation.UseVisualStyleBackColor = true;
 			// 
+			// subjectActivitiesTextBox
+			// 
+			subjectActivitiesTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			subjectActivitiesTextBox.Location = new Point(36, 226);
+			subjectActivitiesTextBox.Name = "subjectActivitiesTextBox";
+			subjectActivitiesTextBox.ReadOnly = true;
+			subjectActivitiesTextBox.Size = new Size(910, 148);
+			subjectActivitiesTextBox.TabIndex = 10;
+			subjectActivitiesTextBox.Text = "";
+			// 
+			// loadActivitiesButton
+			// 
+			loadActivitiesButton.Location = new Point(392, 114);
+			loadActivitiesButton.Name = "loadActivitiesButton";
+			loadActivitiesButton.Size = new Size(75, 23);
+			loadActivitiesButton.TabIndex = 8;
+			loadActivitiesButton.Text = "Load";
+			loadActivitiesButton.UseVisualStyleBackColor = true;
+			loadActivitiesButton.Click += loadActivitiesButton_Click;
+			// 
+			// textBox17
+			// 
+			textBox17.BorderStyle = BorderStyle.None;
+			textBox17.Location = new Point(78, 71);
+			textBox17.Multiline = true;
+			textBox17.Name = "textBox17";
+			textBox17.Size = new Size(156, 37);
+			textBox17.TabIndex = 7;
+			textBox17.Text = "select the subject from the dropdown menu";
+			// 
+			// teacherSubjectAllocationComboBox
+			// 
+			teacherSubjectAllocationComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			teacherSubjectAllocationComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			teacherSubjectAllocationComboBox.FormattingEnabled = true;
+			teacherSubjectAllocationComboBox.Location = new Point(67, 114);
+			teacherSubjectAllocationComboBox.Name = "teacherSubjectAllocationComboBox";
+			teacherSubjectAllocationComboBox.Size = new Size(250, 29);
+			teacherSubjectAllocationComboBox.TabIndex = 4;
+			teacherSubjectAllocationComboBox.SelectedIndexChanged += teacherSubjectAllocationComboBox_SelectedIndexChanged;
+			// 
 			// textBox3
 			// 
 			textBox3.BorderStyle = BorderStyle.None;
-			textBox3.Location = new Point(137, 184);
+			textBox3.Location = new Point(381, 27);
 			textBox3.Name = "textBox3";
 			textBox3.Size = new Size(100, 16);
 			textBox3.TabIndex = 0;
@@ -596,15 +657,15 @@
 			textBox13.TabIndex = 9;
 			textBox13.Text = "Tuesday";
 			// 
-			// SubmitSubjectRequest
+			// subjectActivitiesAllocateButton
 			// 
-			SubmitSubjectRequest.Location = new Point(403, 341);
-			SubmitSubjectRequest.Name = "SubmitSubjectRequest";
-			SubmitSubjectRequest.Size = new Size(75, 23);
-			SubmitSubjectRequest.TabIndex = 7;
-			SubmitSubjectRequest.Text = "Submit";
-			SubmitSubjectRequest.UseVisualStyleBackColor = true;
-			SubmitSubjectRequest.Click += SubmitSubjectRequest_Click;
+			subjectActivitiesAllocateButton.Location = new Point(406, 491);
+			subjectActivitiesAllocateButton.Name = "subjectActivitiesAllocateButton";
+			subjectActivitiesAllocateButton.Size = new Size(75, 23);
+			subjectActivitiesAllocateButton.TabIndex = 11;
+			subjectActivitiesAllocateButton.Text = "Allocate";
+			subjectActivitiesAllocateButton.UseVisualStyleBackColor = true;
+			subjectActivitiesAllocateButton.Click += subjectActivitiesAllocateButton_Click;
 			// 
 			// TeacherForm
 			// 
@@ -686,5 +747,10 @@
 		private TextBox textBox16;
 		private TextBox textBox15;
 		private Button SubmitSubjectRequest;
+		private Button loadActivitiesButton;
+		private TextBox textBox17;
+		private ComboBox teacherSubjectAllocationComboBox;
+		private RichTextBox subjectActivitiesTextBox;
+		private Button subjectActivitiesAllocateButton;
 	}
 }

@@ -15,7 +15,9 @@ namespace EnrolmentTimetableSystem
 	{
 		private readonly LoginForm loginForm;
 		private bool subjectsComboBoxPopulated = false;
+		private bool subjectsAllocationComboBoxPopulated = false;
 		private string loggedInTeacherID;
+		private string[] details;
 
 
 		public TeacherForm(LoginForm loginForm, string[] details)
@@ -23,15 +25,13 @@ namespace EnrolmentTimetableSystem
 			this.loginForm = loginForm;
 			InitializeComponent();
 			loggedInTeacherID = details[0];
+			this.details = details;
 		}
 
 		private void TeacherForm_Load(object sender, EventArgs e)
 		{
-			//welcomeLabel.Text = $"Welcome back, {firstName} {lastName}!";
-
-			//LoadTeacherSubjectsComboBox();
-			//UpdateTeacherSubjectsTable();
 			teacherSubjectsComboBox.Items.Clear();
+			teacherSubjectAllocationComboBox.Items.Clear();
 		}
 
 		private void TeacherLogsIn(string teacherID)
@@ -88,7 +88,39 @@ namespace EnrolmentTimetableSystem
 		private void addSubjectAndActivitiesButton_Click(object sender, EventArgs e)
 		{
 			teacherTabControl.SelectedTab = teacherTabControl.TabPages["subjectAllocation"];
+			LoadTeacherSubjectAllocationComboBox();
 		}
+
+		private void LoadTeacherSubjectAllocationComboBox()
+		{
+			if (!subjectsAllocationComboBoxPopulated)
+			{
+				teacherSubjectAllocationComboBox.Items.Clear();
+				string teacherID = loggedInTeacherID;
+
+				string[] subjectFiles = Directory.GetFiles("Enrolment");
+
+				foreach (string subjectFile in subjectFiles)
+				{
+					string fileName = Path.GetFileNameWithoutExtension(subjectFile);
+					string[] lines = File.ReadAllLines(subjectFile);
+
+					foreach (string line in lines)
+					{
+						if (line.Contains(teacherID))
+						{
+							teacherSubjectAllocationComboBox.Items.Add(fileName);
+							break; // If teacherID is found in the file, no need to continue checking other lines
+						}
+					}
+				}
+
+				subjectsAllocationComboBoxPopulated = true; // Set the flag to true after populating
+			}
+		}
+
+
+
 
 		private void removeFromASubjectButton_Click(object sender, EventArgs e)
 		{
@@ -148,11 +180,6 @@ namespace EnrolmentTimetableSystem
 			}
 		}
 
-
-
-
-
-
 		private int GenerateRandomNumber()
 		{
 			// Implement a method to generate a random number as per your requirements
@@ -160,7 +187,131 @@ namespace EnrolmentTimetableSystem
 			return random.Next(10000, 99999); // Change the range as needed
 		}
 
+		private void teacherSubjectAllocationComboBox_DropDown(object sender, EventArgs e)
+		{
+			// Load subjects only when the dropdown is opened
+			LoadTeacherSubjectAllocationComboBox();
+		}
+
+		private void teacherSubjectAllocationComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			string selectedRequest = $"{teacherSubjectsComboBox.SelectedItem}";
+			string[] selectedRequestDetails = selectedRequest.Split('-');
+		}
+
+
+		private void loadActivitiesButton_Click(object sender, EventArgs e)
+		{
+			if (teacherSubjectAllocationComboBox.SelectedIndex != -1)
+			{
+				// Read the selected subject from the combobox
+				string selectedSubject = teacherSubjectAllocationComboBox.SelectedItem.ToString();
+
+				// Extract the subject ID from the selected subject
+				string subjectID = GetSubjectID(selectedSubject);
+
+				// Read the content of the subject activities file for the selected subject
+				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
+
+				if (File.Exists(activitiesFilePath))
+				{
+					// Load and display the content in the subjectActivitiesTextBox
+					subjectActivitiesTextBox.Text = File.ReadAllText(activitiesFilePath);
+				}
+				else
+				{
+					// Subject activities file doesn't exist for the selected subject
+					subjectActivitiesTextBox.Text = "No activities available for this subject.";
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select a subject from the dropdown.");
+			}
+		}
+
+		private string GetSubjectID(string subjectName)
+		{
+			// You need to extract the subject ID from the subjectName
+			// This is a simplified example; you may need to adjust it based on your file naming conventions
+			string[] parts = subjectName.Split('-');
+			if (parts.Length == 2)
+			{
+				return parts[0].Trim();
+			}
+			return "";
+		}
+
+		private void subjectActivitiesAllocateButton_Click(object sender, EventArgs e)
+		{
+			if (teacherSubjectAllocationComboBox.SelectedIndex != -1)
+			{
+				string selectedSubject = teacherSubjectAllocationComboBox.SelectedItem.ToString();
+				string subjectID = GetSubjectID(selectedSubject);
+				string teacherID = loggedInTeacherID;
+				string teacherFirstName = details[2]; // Assuming the first name is at index 2
+				string teacherLastName = details[3]; // Assuming the last name is at index 3
+				string teacherName = $"{teacherFirstName} {teacherLastName}";
+
+				// Check if the teacher has already allocated for this subject
+				string allocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
+				if (File.Exists(allocationFileName))
+				{
+					string[] existingAllocations = File.ReadAllLines(allocationFileName);
+					foreach (string allocation in existingAllocations)
+					{
+						if (allocation.Contains(teacherID))
+						{
+							MessageBox.Show("You have already allocated to activities for this subject.");
+							return; // Exit the function if already allocated
+						}
+					}
+				}
+
+				// Read the subject activities from the SubjectActivities file for the selected subject
+				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
+
+				if (File.Exists(activitiesFilePath))
+				{
+					string[] activityLines = File.ReadAllLines(activitiesFilePath);
+
+					foreach (string line in activityLines)
+					{
+						string[] activityData = line.Split('|');
+
+						// Ensure the line has at least one element before accessing the activity ID
+						if (activityData.Length > 0)
+						{
+							string activityID = activityData[0];
+
+							// Use the activity's ID as the allocation file name
+							string activityAllocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
+
+							// Append allocation data (teacher ID, teacher name, role, and activity ID)
+							string allocationData = $"{teacherID}:{teacherName}:teacher:{activityID}";
+
+							File.AppendAllText(activityAllocationFileName, allocationData + Environment.NewLine);
+						}
+					}
+
+					// Notify the user that the allocation has been made
+					MessageBox.Show("Allocation successful.");
+				}
+				else
+				{
+					// Subject activities file doesn't exist for the selected subject
+					MessageBox.Show("No activities available for this subject.");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select a subject from the dropdown.");
+			}
+		}
+
+
+
+
 	}
 
 }
-

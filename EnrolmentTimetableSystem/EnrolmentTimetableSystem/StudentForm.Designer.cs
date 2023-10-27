@@ -47,15 +47,16 @@
 			homePage = new TabPage();
 			textBox2 = new TextBox();
 			subjectEnrolment = new TabPage();
+			enrolmentButton = new Button();
 			studentSubjectsComboBox = new ComboBox();
 			textBox1 = new TextBox();
 			vScrollBar1 = new VScrollBar();
 			subjectAllocation = new TabPage();
-			activityTypeComboxBox = new ComboBox();
-			groupBox1 = new GroupBox();
-			radioButton2 = new RadioButton();
-			radioButton1 = new RadioButton();
-			button1 = new Button();
+			studentSubjectActivitiesAllocateButton = new Button();
+			studentSubjectActivitiesTextBox = new RichTextBox();
+			loadStudentActivitiesButton = new Button();
+			studentSubjectAllocationComboBox = new ComboBox();
+			textBox17 = new TextBox();
 			textBox3 = new TextBox();
 			viewTimetable = new TabPage();
 			groupBox2 = new GroupBox();
@@ -74,7 +75,6 @@
 			textBox14 = new TextBox();
 			panel8 = new Panel();
 			textBox13 = new TextBox();
-			enrolmentButton = new Button();
 			panel1.SuspendLayout();
 			panel5.SuspendLayout();
 			panel2.SuspendLayout();
@@ -83,7 +83,6 @@
 			homePage.SuspendLayout();
 			subjectEnrolment.SuspendLayout();
 			subjectAllocation.SuspendLayout();
-			groupBox1.SuspendLayout();
 			viewTimetable.SuspendLayout();
 			groupBox2.SuspendLayout();
 			panel6.SuspendLayout();
@@ -318,6 +317,16 @@
 			subjectEnrolment.Text = "Subject Enrolment";
 			subjectEnrolment.UseVisualStyleBackColor = true;
 			// 
+			// enrolmentButton
+			// 
+			enrolmentButton.Location = new Point(522, 161);
+			enrolmentButton.Name = "enrolmentButton";
+			enrolmentButton.Size = new Size(75, 23);
+			enrolmentButton.TabIndex = 5;
+			enrolmentButton.Text = "Enrol";
+			enrolmentButton.UseVisualStyleBackColor = true;
+			enrolmentButton.Click += enrolmentButton_Click;
+			// 
 			// studentSubjectsComboBox
 			// 
 			studentSubjectsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -348,9 +357,11 @@
 			// 
 			// subjectAllocation
 			// 
-			subjectAllocation.Controls.Add(activityTypeComboxBox);
-			subjectAllocation.Controls.Add(groupBox1);
-			subjectAllocation.Controls.Add(button1);
+			subjectAllocation.Controls.Add(studentSubjectActivitiesAllocateButton);
+			subjectAllocation.Controls.Add(studentSubjectActivitiesTextBox);
+			subjectAllocation.Controls.Add(loadStudentActivitiesButton);
+			subjectAllocation.Controls.Add(studentSubjectAllocationComboBox);
+			subjectAllocation.Controls.Add(textBox17);
 			subjectAllocation.Controls.Add(textBox3);
 			subjectAllocation.Location = new Point(4, 24);
 			subjectAllocation.Name = "subjectAllocation";
@@ -360,62 +371,61 @@
 			subjectAllocation.Text = "Subject Allocation";
 			subjectAllocation.UseVisualStyleBackColor = true;
 			// 
-			// activityTypeComboxBox
+			// studentSubjectActivitiesAllocateButton
 			// 
-			activityTypeComboxBox.DropDownStyle = ComboBoxStyle.DropDownList;
-			activityTypeComboxBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			activityTypeComboxBox.FormattingEnabled = true;
-			activityTypeComboxBox.Location = new Point(483, 102);
-			activityTypeComboxBox.Name = "activityTypeComboxBox";
-			activityTypeComboxBox.Size = new Size(180, 29);
-			activityTypeComboxBox.TabIndex = 9;
+			studentSubjectActivitiesAllocateButton.Location = new Point(412, 370);
+			studentSubjectActivitiesAllocateButton.Name = "studentSubjectActivitiesAllocateButton";
+			studentSubjectActivitiesAllocateButton.Size = new Size(75, 23);
+			studentSubjectActivitiesAllocateButton.TabIndex = 12;
+			studentSubjectActivitiesAllocateButton.Text = "Allocate";
+			studentSubjectActivitiesAllocateButton.UseVisualStyleBackColor = true;
+			studentSubjectActivitiesAllocateButton.Click += studentSubjectActivitiesAllocateButton_Click;
 			// 
-			// groupBox1
+			// studentSubjectActivitiesTextBox
 			// 
-			groupBox1.Controls.Add(radioButton2);
-			groupBox1.Controls.Add(radioButton1);
-			groupBox1.Location = new Point(56, 79);
-			groupBox1.Name = "groupBox1";
-			groupBox1.Size = new Size(200, 97);
-			groupBox1.TabIndex = 5;
-			groupBox1.TabStop = false;
-			groupBox1.Text = "Subjects";
+			studentSubjectActivitiesTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			studentSubjectActivitiesTextBox.Location = new Point(16, 178);
+			studentSubjectActivitiesTextBox.Name = "studentSubjectActivitiesTextBox";
+			studentSubjectActivitiesTextBox.ReadOnly = true;
+			studentSubjectActivitiesTextBox.Size = new Size(910, 148);
+			studentSubjectActivitiesTextBox.TabIndex = 11;
+			studentSubjectActivitiesTextBox.Text = "";
 			// 
-			// radioButton2
+			// loadStudentActivitiesButton
 			// 
-			radioButton2.AutoSize = true;
-			radioButton2.Location = new Point(19, 23);
-			radioButton2.Name = "radioButton2";
-			radioButton2.Size = new Size(47, 19);
-			radioButton2.TabIndex = 3;
-			radioButton2.TabStop = true;
-			radioButton2.Text = ".Net";
-			radioButton2.UseVisualStyleBackColor = true;
+			loadStudentActivitiesButton.Location = new Point(412, 112);
+			loadStudentActivitiesButton.Name = "loadStudentActivitiesButton";
+			loadStudentActivitiesButton.Size = new Size(75, 23);
+			loadStudentActivitiesButton.TabIndex = 10;
+			loadStudentActivitiesButton.Text = "Load";
+			loadStudentActivitiesButton.UseVisualStyleBackColor = true;
+			loadStudentActivitiesButton.Click += loadStudentActivitiesButton_Click;
 			// 
-			// radioButton1
+			// studentSubjectAllocationComboBox
 			// 
-			radioButton1.AutoSize = true;
-			radioButton1.Location = new Point(19, 48);
-			radioButton1.Name = "radioButton1";
-			radioButton1.Size = new Size(57, 19);
-			radioButton1.TabIndex = 2;
-			radioButton1.TabStop = true;
-			radioButton1.Text = "Cloud";
-			radioButton1.UseVisualStyleBackColor = true;
+			studentSubjectAllocationComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			studentSubjectAllocationComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			studentSubjectAllocationComboBox.FormattingEnabled = true;
+			studentSubjectAllocationComboBox.Location = new Point(31, 108);
+			studentSubjectAllocationComboBox.Name = "studentSubjectAllocationComboBox";
+			studentSubjectAllocationComboBox.Size = new Size(250, 29);
+			studentSubjectAllocationComboBox.TabIndex = 9;
+			studentSubjectAllocationComboBox.SelectedIndexChanged += studentSubjectAllocationComboBox_SelectedIndexChanged;
 			// 
-			// button1
+			// textBox17
 			// 
-			button1.Location = new Point(397, 401);
-			button1.Name = "button1";
-			button1.Size = new Size(75, 23);
-			button1.TabIndex = 4;
-			button1.Text = "Allocate";
-			button1.UseVisualStyleBackColor = true;
+			textBox17.BorderStyle = BorderStyle.None;
+			textBox17.Location = new Point(82, 65);
+			textBox17.Multiline = true;
+			textBox17.Name = "textBox17";
+			textBox17.Size = new Size(156, 37);
+			textBox17.TabIndex = 8;
+			textBox17.Text = "select the subject from the dropdown menu";
 			// 
 			// textBox3
 			// 
 			textBox3.BorderStyle = BorderStyle.None;
-			textBox3.Location = new Point(93, 22);
+			textBox3.Location = new Point(323, 27);
 			textBox3.Name = "textBox3";
 			textBox3.Size = new Size(100, 16);
 			textBox3.TabIndex = 0;
@@ -623,16 +633,6 @@
 			textBox13.TabIndex = 9;
 			textBox13.Text = "Tuesday";
 			// 
-			// enrolmentButton
-			// 
-			enrolmentButton.Location = new Point(522, 161);
-			enrolmentButton.Name = "enrolmentButton";
-			enrolmentButton.Size = new Size(75, 23);
-			enrolmentButton.TabIndex = 5;
-			enrolmentButton.Text = "Enrol";
-			enrolmentButton.UseVisualStyleBackColor = true;
-			enrolmentButton.Click += enrolmentButton_Click;
-			// 
 			// StudentForm
 			// 
 			AutoScaleDimensions = new SizeF(7F, 15F);
@@ -655,8 +655,6 @@
 			subjectEnrolment.PerformLayout();
 			subjectAllocation.ResumeLayout(false);
 			subjectAllocation.PerformLayout();
-			groupBox1.ResumeLayout(false);
-			groupBox1.PerformLayout();
 			viewTimetable.ResumeLayout(false);
 			groupBox2.ResumeLayout(false);
 			groupBox2.PerformLayout();
@@ -694,11 +692,6 @@
 		private TabPage subjectAllocation;
 		private TextBox textBox3;
 		private TabPage viewTimetable;
-		private Button button1;
-		private RadioButton radioButton2;
-		private RadioButton radioButton1;
-		private GroupBox groupBox1;
-		private ComboBox activityTypeComboxBox;
 		private Panel panel6;
 		private GroupBox groupBox2;
 		private TextBox textBox9;
@@ -717,5 +710,10 @@
 		private TextBox textBox13;
 		private ComboBox studentSubjectsComboBox;
 		private Button enrolmentButton;
+		private TextBox textBox17;
+		private ComboBox studentSubjectAllocationComboBox;
+		private Button loadStudentActivitiesButton;
+		private RichTextBox studentSubjectActivitiesTextBox;
+		private Button studentSubjectActivitiesAllocateButton;
 	}
 }
