@@ -491,7 +491,7 @@
             rejectButton.FlatStyle = FlatStyle.Flat;
             rejectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             rejectButton.ForeColor = Color.White;
-            rejectButton.Location = new Point(827, 361);
+            rejectButton.Location = new Point(142, 361);
             rejectButton.Name = "rejectButton";
             rejectButton.Size = new Size(130, 32);
             rejectButton.TabIndex = 11;
@@ -510,7 +510,7 @@
             approveButton.FlatStyle = FlatStyle.Flat;
             approveButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             approveButton.ForeColor = Color.White;
-            approveButton.Location = new Point(691, 361);
+            approveButton.Location = new Point(6, 361);
             approveButton.Name = "approveButton";
             approveButton.Size = new Size(130, 32);
             approveButton.TabIndex = 10;
@@ -986,7 +986,7 @@
             removeStudentFromSubjectButton.FlatStyle = FlatStyle.Flat;
             removeStudentFromSubjectButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             removeStudentFromSubjectButton.ForeColor = Color.White;
-            removeStudentFromSubjectButton.Location = new Point(502, 97);
+            removeStudentFromSubjectButton.Location = new Point(6, 97);
             removeStudentFromSubjectButton.Name = "removeStudentFromSubjectButton";
             removeStudentFromSubjectButton.Size = new Size(130, 32);
             removeStudentFromSubjectButton.TabIndex = 12;

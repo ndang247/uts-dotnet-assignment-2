@@ -96,9 +96,10 @@
             // titleLabel
             // 
             titleLabel.AutoSize = true;
+            titleLabel.Dock = DockStyle.Top;
             titleLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             titleLabel.ForeColor = Color.FromArgb(36, 92, 150);
-            titleLabel.Location = new Point(3, 5);
+            titleLabel.Location = new Point(0, 0);
             titleLabel.Name = "titleLabel";
             titleLabel.Size = new Size(221, 45);
             titleLabel.TabIndex = 5;
