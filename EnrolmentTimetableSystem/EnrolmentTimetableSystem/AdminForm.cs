@@ -484,9 +484,6 @@ namespace EnrolmentTimetableSystem
 
         private void SubjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            teachersListBox.Items.Clear();
-            studentsListBox.Items.Clear();
-
             string selectedSubject = $"{subjectsListBox.SelectedItem}";
             string[] selectedSubjectDetails = selectedSubject.Split('-');
 
@@ -506,6 +503,9 @@ namespace EnrolmentTimetableSystem
 
         private void LoadEnrolmentListBox(string subjectID, string subjectName)
         {
+            teachersListBox.Items.Clear();
+            studentsListBox.Items.Clear();
+
             // Get enrolement by subject ID
             string[] enrolments = File.ReadAllLines($"Enrolment\\{subjectID} - {subjectName}.txt");
 
@@ -523,7 +523,7 @@ namespace EnrolmentTimetableSystem
                 {
                     string student = File.ReadAllText($"Students\\{enrolmentData[0]}.txt");
                     string[] studentData = student.Split(':');
-                    studentsListBox.Items.Add($"{studentData[0]} {studentData[1]}");
+                    studentsListBox.Items.Add($"{studentData[0]} - {studentData[2]} {studentData[3]}");
                 }
             }
         }
@@ -540,12 +540,83 @@ namespace EnrolmentTimetableSystem
 
         private void RemoveStudentFromSubjectButton_Click(object sender, EventArgs e)
         {
+            string[] selectedSubjectDetails = $"{subjectsListBox.SelectedItem}".Split('-');
+            string subjectID = selectedSubjectDetails[0].Trim();
+            string subjectName = selectedSubjectDetails[1].Trim();
 
+            string[] selectedStudentDetails = $"{studentsListBox.SelectedItem}".Split('-');
+            string studentID = selectedStudentDetails[0].Trim();
+
+            RemoveFromSubject(subjectID, subjectName, studentID);
+
+            RemoveFromAllocation(subjectID, studentID);
+
+            LoadEnrolmentListBox(subjectID, subjectName);
+
+            removeStudentFromSubjectButton.Enabled = false;
         }
 
         private void RemoveTeacherFromSubjectButton_Click(object sender, EventArgs e)
         {
+            string[] selectedSubjectDetails = $"{subjectsListBox.SelectedItem}".Split('-');
+            string subjectID = selectedSubjectDetails[0].Trim();
+            string subjectName = selectedSubjectDetails[1].Trim();
 
+            string[] selectedTeacherDetails = $"{teachersListBox.SelectedItem}".Split('-');
+            string teacherID = selectedTeacherDetails[0].Trim();
+
+            RemoveFromSubject(subjectID, subjectName, teacherID);
+
+            RemoveFromAllocation(subjectID, teacherID);
+
+            LoadEnrolmentListBox(subjectID, subjectName);
+
+            removeTeacherFromSubjectButton.Enabled = false;
+        }
+
+        private static void RemoveFromSubject(string subjectID, string subjectName, string userID)
+        {
+            // Find the subject in the enrolment folder
+            string[] enrolments = File.ReadAllLines($"Enrolment\\{subjectID} - {subjectName}.txt");
+
+            // Remove the user from the subject
+            for (int i = 0; i < enrolments.Length; i++)
+            {
+                string[] enrolmentData = enrolments[i].Split(':');
+                if (enrolmentData[0] == userID)
+                {
+                    enrolments[i] = "";
+                    break;
+                }
+            }
+
+            // Convert the array to list and remove the empty elements
+            List<string> enrolmentsList = enrolments.ToList();
+            enrolmentsList.RemoveAll(x => x == "");
+
+            // Write the new enrolment data to the file
+            File.WriteAllLines($"Enrolment\\{subjectID} - {subjectName}.txt", enrolmentsList);
+        }
+
+        private static void RemoveFromAllocation(string subjectID, string userID)
+        {
+            // Remove the user from the allocation
+            string[] allocations = File.ReadAllLines($"Allocation\\{subjectID}.txt");
+            for (int i = 0; i < allocations.Length; i++)
+            {
+                string[] allocationData = allocations[i].Split(':');
+                if (allocationData[0] == userID)
+                {
+                    allocations[i] = "";
+                }
+            }
+
+            // Convert the array to list and remove the empty elements
+            List<string> allocationsList = allocations.ToList();
+            allocationsList.RemoveAll(x => x == "");
+
+            // Write the new allocation data to the file
+            File.WriteAllLines($"Allocation\\{subjectID}.txt", allocationsList);
         }
         #endregion
 
