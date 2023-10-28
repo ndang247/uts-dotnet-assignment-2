@@ -66,10 +66,10 @@ namespace EnrolmentTimetableSystem
 
 		private void logoutButton_Click(object sender, EventArgs e)
 		{
-			this.Close();
-			LoginForm loginForm = new LoginForm();
-			loginForm.Show();
-		}
+            loginForm.ResetLoginForm();
+            loginForm.Show();
+            Close();
+        }
 
 		private void viewSubjectRequestsButton_Click(object sender, EventArgs e)
 		{
