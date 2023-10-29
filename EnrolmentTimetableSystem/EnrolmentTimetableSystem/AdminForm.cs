@@ -488,20 +488,27 @@ namespace EnrolmentTimetableSystem
 
         private void SubjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedSubject = $"{subjectsListBox.SelectedItem}";
-            string[] selectedSubjectDetails = selectedSubject.Split('-');
-
-            string subjectID = selectedSubjectDetails[0].Trim();
-            string subjectName = selectedSubjectDetails[1].Trim();
-
-            if (File.Exists($"Enrolment\\{subjectID} - {subjectName}.txt"))
+            try
             {
-                LoadEnrolmentListBox(subjectID, subjectName);
+                string selectedSubject = $"{subjectsListBox.SelectedItem}";
+                string[] selectedSubjectDetails = selectedSubject.Split('-');
+
+                string subjectID = selectedSubjectDetails[0].Trim();
+                string subjectName = selectedSubjectDetails[1].Trim();
+
+                if (File.Exists($"Enrolment\\{subjectID} - {subjectName}.txt"))
+                {
+                    LoadEnrolmentListBox(subjectID, subjectName);
+                }
+                else
+                {
+                    teachersListBox.Items.Clear();
+                    studentsListBox.Items.Clear();
+                }
             }
-            else
+            catch (Exception)
             {
-                teachersListBox.Items.Clear();
-                studentsListBox.Items.Clear();
+                MessageBox.Show("Please select a subject", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

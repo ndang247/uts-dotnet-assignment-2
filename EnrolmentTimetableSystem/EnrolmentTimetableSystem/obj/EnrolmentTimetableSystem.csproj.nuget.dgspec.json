@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj": {}
+    "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj": {
+    "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
+        "projectUniqueName": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
         "projectName": "EnrolmentTimetableSystem",
-        "projectPath": "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\net a2\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\obj\\",
+        "projectPath": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem.csproj",
+        "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\natha\\Downloads\\uts-dotnet-assignment-2\\EnrolmentTimetableSystem\\EnrolmentTimetableSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

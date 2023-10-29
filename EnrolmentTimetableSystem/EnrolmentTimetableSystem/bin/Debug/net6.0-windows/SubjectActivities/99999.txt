@@ -1,1 +1,1 @@
-99999|test|95751|Workshop|3:00 PM|City (U)|CB06.04.040|Thursday|On-campus activity|11/2/2023|2/1/2024|3
+99999|Test Sub|72258|Workshop|3:00 PM|City (U)|CB06.04.040|Wednesday|On-campus activity|11/1/2023|1/31/2024|3
