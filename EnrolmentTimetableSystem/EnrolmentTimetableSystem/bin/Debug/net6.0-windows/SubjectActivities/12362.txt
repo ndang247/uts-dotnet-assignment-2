@@ -1,2 +1,2 @@
-74113|Lecture|11:00 AM|Online|Online|Monday|Online activity|10/30/2023|12/18/2023|2
-55021|Tutorial|2:00 PM|Online|Online|Thursday|Online activity|11/2/2023|12/21/2023|1.5
+12362|Cloud|20264|Lecture|11:00 AM|Online|Online|Monday|Online activity|10/30/2023|1/29/2024|2
+12362|Cloud|60399|Tutorial|11:00 AM|Online|Online|Thursday|Online activity|11/2/2023|2/1/2024|1.5

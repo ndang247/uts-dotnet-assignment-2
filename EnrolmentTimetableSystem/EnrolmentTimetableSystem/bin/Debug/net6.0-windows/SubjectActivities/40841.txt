@@ -1,2 +1,2 @@
-38093|Lecture|9:00 AM|Online|Online|Tuesday|Online activity|10/31/2023|12/19/2023|1
-42924|Tutorial|11:00 AM|Online|Online|Tuesday|Online activity|10/31/2023|12/19/2023|2
+40841|Java Programming|36022|Lecture|9:00 AM|Online|Online|Tuesday|Online activity|10/31/2023|1/30/2024|1
+40841|Java Programming|70144|Tutorial|11:00 AM|Online|Online|Tuesday|Online activity|10/31/2023|1/30/2024|2

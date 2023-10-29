@@ -1,2 +1,2 @@
-63588|Lecture|2:00 PM|Online|Online|Monday|Online activity|10/30/2023|12/18/2023|1.5
-39646|Tutorial|6:00 PM|Online|Online|Wednesday|Online activity|11/1/2023|12/20/2023|1.5
+13477|.NET|44403|Lecture|2:00 PM|Online|Online|Monday|Online activity|10/30/2023|1/29/2024|1.5
+13477|.NET|16112|Tutorial|6:00 PM|Online|Online|Wednesday|Online activity|11/1/2023|1/31/2024|1.5
