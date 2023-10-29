@@ -551,36 +551,36 @@
 			// 
 			fridayTimetable.BackColor = Color.GhostWhite;
 			fridayTimetable.BorderStyle = BorderStyle.None;
-			fridayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			fridayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			fridayTimetable.ForeColor = Color.PaleVioletRed;
-			fridayTimetable.Location = new Point(152, 473);
+			fridayTimetable.Location = new Point(152, 458);
 			fridayTimetable.Multiline = true;
 			fridayTimetable.Name = "fridayTimetable";
-			fridayTimetable.Size = new Size(586, 65);
+			fridayTimetable.Size = new Size(586, 85);
 			fridayTimetable.TabIndex = 14;
 			// 
 			// wednesdayTimetable
 			// 
 			wednesdayTimetable.BackColor = Color.GhostWhite;
 			wednesdayTimetable.BorderStyle = BorderStyle.None;
-			wednesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			wednesdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			wednesdayTimetable.ForeColor = Color.PaleVioletRed;
-			wednesdayTimetable.Location = new Point(152, 265);
+			wednesdayTimetable.Location = new Point(152, 256);
 			wednesdayTimetable.Multiline = true;
 			wednesdayTimetable.Name = "wednesdayTimetable";
-			wednesdayTimetable.Size = new Size(586, 65);
+			wednesdayTimetable.Size = new Size(586, 85);
 			wednesdayTimetable.TabIndex = 13;
 			// 
 			// mondayTimetable
 			// 
 			mondayTimetable.BackColor = Color.GhostWhite;
 			mondayTimetable.BorderStyle = BorderStyle.None;
-			mondayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			mondayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			mondayTimetable.ForeColor = Color.PaleVioletRed;
-			mondayTimetable.Location = new Point(152, 61);
+			mondayTimetable.Location = new Point(152, 49);
 			mondayTimetable.Multiline = true;
 			mondayTimetable.Name = "mondayTimetable";
-			mondayTimetable.Size = new Size(586, 65);
+			mondayTimetable.Size = new Size(586, 85);
 			mondayTimetable.TabIndex = 9;
 			// 
 			// textBox12
@@ -634,12 +634,12 @@
 			// 
 			thursdayTimetable.BackColor = Color.LavenderBlush;
 			thursdayTimetable.BorderStyle = BorderStyle.None;
-			thursdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			thursdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			thursdayTimetable.ForeColor = Color.PaleVioletRed;
-			thursdayTimetable.Location = new Point(152, 17);
+			thursdayTimetable.Location = new Point(152, 8);
 			thursdayTimetable.Multiline = true;
 			thursdayTimetable.Name = "thursdayTimetable";
-			thursdayTimetable.Size = new Size(586, 65);
+			thursdayTimetable.Size = new Size(586, 85);
 			thursdayTimetable.TabIndex = 11;
 			// 
 			// textBox14
@@ -669,12 +669,12 @@
 			// 
 			tuesdayTimetable.BackColor = Color.LavenderBlush;
 			tuesdayTimetable.BorderStyle = BorderStyle.None;
-			tuesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			tuesdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			tuesdayTimetable.ForeColor = Color.PaleVioletRed;
-			tuesdayTimetable.Location = new Point(152, 21);
+			tuesdayTimetable.Location = new Point(152, 8);
 			tuesdayTimetable.Multiline = true;
 			tuesdayTimetable.Name = "tuesdayTimetable";
-			tuesdayTimetable.Size = new Size(586, 65);
+			tuesdayTimetable.Size = new Size(586, 85);
 			tuesdayTimetable.TabIndex = 10;
 			// 
 			// textBox13

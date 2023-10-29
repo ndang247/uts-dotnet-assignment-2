@@ -63,7 +63,9 @@
 			subjectActivitiesTextBox = new RichTextBox();
 			loadActivitiesButton = new Button();
 			viewActivities = new TabPage();
+			textBox6 = new TextBox();
 			groupBox2 = new GroupBox();
+			textBox5 = new TextBox();
 			panel7 = new Panel();
 			textBox4 = new TextBox();
 			panel6 = new Panel();
@@ -79,8 +81,6 @@
 			panel8 = new Panel();
 			tuesdayTimetable = new TextBox();
 			textBox13 = new TextBox();
-			textBox5 = new TextBox();
-			textBox6 = new TextBox();
 			panel1.SuspendLayout();
 			panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -495,6 +495,18 @@
 			viewActivities.TabIndex = 2;
 			viewActivities.Text = "View Activities";
 			// 
+			// textBox6
+			// 
+			textBox6.BackColor = Color.Pink;
+			textBox6.BorderStyle = BorderStyle.None;
+			textBox6.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox6.ForeColor = Color.Snow;
+			textBox6.Location = new Point(417, 31);
+			textBox6.Name = "textBox6";
+			textBox6.Size = new Size(352, 36);
+			textBox6.TabIndex = 15;
+			textBox6.Text = "Timetable";
+			// 
 			// groupBox2
 			// 
 			groupBox2.BackColor = Color.LightCyan;
@@ -507,6 +519,18 @@
 			groupBox2.Size = new Size(786, 46);
 			groupBox2.TabIndex = 1;
 			groupBox2.TabStop = false;
+			// 
+			// textBox5
+			// 
+			textBox5.BackColor = Color.LightCyan;
+			textBox5.BorderStyle = BorderStyle.None;
+			textBox5.Font = new Font("Comic Sans MS", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox5.ForeColor = Color.PaleVioletRed;
+			textBox5.Location = new Point(152, 11);
+			textBox5.Name = "textBox5";
+			textBox5.Size = new Size(586, 20);
+			textBox5.TabIndex = 2;
+			textBox5.Text = "ID | Name | Activity | Type | Delivery | Exam | Day | Method | Start | End | Time";
 			// 
 			// panel7
 			// 
@@ -548,36 +572,36 @@
 			// 
 			fridayTimetable.BackColor = Color.GhostWhite;
 			fridayTimetable.BorderStyle = BorderStyle.None;
-			fridayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			fridayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			fridayTimetable.ForeColor = Color.PaleVioletRed;
-			fridayTimetable.Location = new Point(152, 468);
+			fridayTimetable.Location = new Point(152, 459);
 			fridayTimetable.Multiline = true;
 			fridayTimetable.Name = "fridayTimetable";
-			fridayTimetable.Size = new Size(586, 65);
+			fridayTimetable.Size = new Size(631, 85);
 			fridayTimetable.TabIndex = 12;
 			// 
 			// wednesdayTimetable
 			// 
 			wednesdayTimetable.BackColor = Color.GhostWhite;
 			wednesdayTimetable.BorderStyle = BorderStyle.None;
-			wednesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			wednesdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			wednesdayTimetable.ForeColor = Color.PaleVioletRed;
-			wednesdayTimetable.Location = new Point(152, 265);
+			wednesdayTimetable.Location = new Point(152, 255);
 			wednesdayTimetable.Multiline = true;
 			wednesdayTimetable.Name = "wednesdayTimetable";
-			wednesdayTimetable.Size = new Size(586, 65);
+			wednesdayTimetable.Size = new Size(631, 85);
 			wednesdayTimetable.TabIndex = 11;
 			// 
 			// mondayTimetable
 			// 
 			mondayTimetable.BackColor = Color.GhostWhite;
 			mondayTimetable.BorderStyle = BorderStyle.None;
-			mondayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			mondayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			mondayTimetable.ForeColor = Color.PaleVioletRed;
-			mondayTimetable.Location = new Point(152, 61);
+			mondayTimetable.Location = new Point(152, 51);
 			mondayTimetable.Multiline = true;
 			mondayTimetable.Name = "mondayTimetable";
-			mondayTimetable.Size = new Size(586, 65);
+			mondayTimetable.Size = new Size(631, 85);
 			mondayTimetable.TabIndex = 10;
 			// 
 			// textBox12
@@ -631,12 +655,12 @@
 			// 
 			thursdayTimetable.BackColor = Color.LavenderBlush;
 			thursdayTimetable.BorderStyle = BorderStyle.None;
-			thursdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			thursdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			thursdayTimetable.ForeColor = Color.PaleVioletRed;
-			thursdayTimetable.Location = new Point(152, 23);
+			thursdayTimetable.Location = new Point(152, 7);
 			thursdayTimetable.Multiline = true;
 			thursdayTimetable.Name = "thursdayTimetable";
-			thursdayTimetable.Size = new Size(586, 65);
+			thursdayTimetable.Size = new Size(631, 85);
 			thursdayTimetable.TabIndex = 11;
 			// 
 			// textBox14
@@ -666,12 +690,12 @@
 			// 
 			tuesdayTimetable.BackColor = Color.LavenderBlush;
 			tuesdayTimetable.BorderStyle = BorderStyle.None;
-			tuesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			tuesdayTimetable.Font = new Font("Comic Sans MS", 9F, FontStyle.Regular, GraphicsUnit.Point);
 			tuesdayTimetable.ForeColor = Color.PaleVioletRed;
-			tuesdayTimetable.Location = new Point(152, 21);
+			tuesdayTimetable.Location = new Point(152, 7);
 			tuesdayTimetable.Multiline = true;
 			tuesdayTimetable.Name = "tuesdayTimetable";
-			tuesdayTimetable.Size = new Size(586, 65);
+			tuesdayTimetable.Size = new Size(631, 85);
 			tuesdayTimetable.TabIndex = 11;
 			// 
 			// textBox13
@@ -685,30 +709,6 @@
 			textBox13.Size = new Size(100, 23);
 			textBox13.TabIndex = 9;
 			textBox13.Text = "Tuesday";
-			// 
-			// textBox5
-			// 
-			textBox5.BackColor = Color.LightCyan;
-			textBox5.BorderStyle = BorderStyle.None;
-			textBox5.Font = new Font("Comic Sans MS", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox5.ForeColor = Color.PaleVioletRed;
-			textBox5.Location = new Point(152, 11);
-			textBox5.Name = "textBox5";
-			textBox5.Size = new Size(586, 20);
-			textBox5.TabIndex = 2;
-			textBox5.Text = "ID | Name | Activity | Type | Delivery | Exam | Day | Method | Start | End | Time";
-			// 
-			// textBox6
-			// 
-			textBox6.BackColor = Color.Pink;
-			textBox6.BorderStyle = BorderStyle.None;
-			textBox6.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox6.ForeColor = Color.Snow;
-			textBox6.Location = new Point(417, 31);
-			textBox6.Name = "textBox6";
-			textBox6.Size = new Size(352, 36);
-			textBox6.TabIndex = 15;
-			textBox6.Text = "Timetable";
 			// 
 			// TeacherForm
 			// 

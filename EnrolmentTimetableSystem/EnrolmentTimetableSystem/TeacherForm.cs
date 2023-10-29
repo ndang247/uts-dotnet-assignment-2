@@ -140,7 +140,7 @@ namespace EnrolmentTimetableSystem
 
 				// Replace the hard-coded teacherID with the actual logic to retrieve the logged-in teacher's ID
 				string teacherID = loggedInTeacherID; // Replace with your logic to get the logged-in teacher's ID
-				// Trim the message to remove any leading/trailing spaces
+													  // Trim the message to remove any leading/trailing spaces
 				string message = requestMessageTextBox.Text.Trim();
 				// Format the request data with ":" at the end
 				string requestData = $"{GenerateRandomNumber()}:{teacherID}:{subjectInfo}:{message}:Awaiting for approval:";

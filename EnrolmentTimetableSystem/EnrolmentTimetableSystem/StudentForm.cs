@@ -157,7 +157,7 @@ namespace EnrolmentTimetableSystem
 				string subjectInfo = selectedSubject.Trim();
 				// Replace the hard-coded studentID with the actual logic to retrieve the logged-in student's ID
 				string studentID = loggedInStudentID; // Replace with your logic to get the logged-in student's ID
-				// Get the student's name
+													  // Get the student's name
 				string studentName = GetStudentName(studentID);
 				// Format the request data with ":" at the end
 				string requestData = $"{studentID}:{studentName}:student";
