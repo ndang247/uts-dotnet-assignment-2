@@ -32,7 +32,6 @@
 			panel1 = new Panel();
 			logoutButton = new Button();
 			panel5 = new Panel();
-			otherLabel = new Label();
 			removeFromASubjectButton = new Button();
 			panel4 = new Panel();
 			addSubjectAndActivitiesButton = new Button();
@@ -45,42 +44,47 @@
 			pictureBox1 = new PictureBox();
 			studentTabControl = new TabControl();
 			homePage = new TabPage();
-			textBox2 = new TextBox();
+			label2 = new Label();
+			label1 = new Label();
+			pictureBox2 = new PictureBox();
 			subjectEnrolment = new TabPage();
-			enrolmentButton = new Button();
 			studentSubjectsComboBox = new ComboBox();
+			textBox16 = new TextBox();
 			textBox1 = new TextBox();
+			enrolmentButton = new Button();
 			vScrollBar1 = new VScrollBar();
 			subjectAllocation = new TabPage();
+			studentSubjectAllocationComboBox = new ComboBox();
+			textBox3 = new TextBox();
+			textBox2 = new TextBox();
 			studentSubjectActivitiesAllocateButton = new Button();
 			studentSubjectActivitiesTextBox = new RichTextBox();
 			loadStudentActivitiesButton = new Button();
-			studentSubjectAllocationComboBox = new ComboBox();
-			textBox17 = new TextBox();
-			textBox3 = new TextBox();
 			viewTimetable = new TabPage();
+			textBox6 = new TextBox();
 			groupBox2 = new GroupBox();
 			panel7 = new Panel();
-			textBox9 = new TextBox();
-			textBox8 = new TextBox();
-			textBox7 = new TextBox();
-			textBox6 = new TextBox();
 			textBox5 = new TextBox();
 			textBox4 = new TextBox();
 			panel6 = new Panel();
+			fridayTimetable = new TextBox();
+			wednesdayTimetable = new TextBox();
+			mondayTimetable = new TextBox();
 			textBox12 = new TextBox();
 			textBox11 = new TextBox();
 			textBox10 = new TextBox();
 			panel9 = new Panel();
+			thursdayTimetable = new TextBox();
 			textBox14 = new TextBox();
 			panel8 = new Panel();
+			tuesdayTimetable = new TextBox();
 			textBox13 = new TextBox();
 			panel1.SuspendLayout();
-			panel5.SuspendLayout();
 			panel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 			studentTabControl.SuspendLayout();
 			homePage.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
 			subjectEnrolment.SuspendLayout();
 			subjectAllocation.SuspendLayout();
 			viewTimetable.SuspendLayout();
@@ -128,23 +132,11 @@
 			// 
 			// panel5
 			// 
-			panel5.Controls.Add(otherLabel);
 			panel5.Dock = DockStyle.Top;
 			panel5.Location = new Point(0, 285);
 			panel5.Name = "panel5";
 			panel5.Size = new Size(255, 40);
 			panel5.TabIndex = 6;
-			// 
-			// otherLabel
-			// 
-			otherLabel.AutoSize = true;
-			otherLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-			otherLabel.Location = new Point(12, 15);
-			otherLabel.Name = "otherLabel";
-			otherLabel.Size = new Size(43, 15);
-			otherLabel.TabIndex = 0;
-			otherLabel.Text = "OTHER";
-			otherLabel.TextAlign = ContentAlignment.BottomLeft;
 			// 
 			// removeFromASubjectButton
 			// 
@@ -286,7 +278,9 @@
 			// 
 			// homePage
 			// 
-			homePage.Controls.Add(textBox2);
+			homePage.Controls.Add(label2);
+			homePage.Controls.Add(label1);
+			homePage.Controls.Add(pictureBox2);
 			homePage.Location = new Point(4, 24);
 			homePage.Name = "homePage";
 			homePage.Size = new Size(984, 739);
@@ -294,20 +288,43 @@
 			homePage.Text = "Home Page";
 			homePage.UseVisualStyleBackColor = true;
 			// 
-			// textBox2
+			// label2
 			// 
-			textBox2.BorderStyle = BorderStyle.None;
-			textBox2.Location = new Point(181, 148);
-			textBox2.Name = "textBox2";
-			textBox2.Size = new Size(100, 16);
-			textBox2.TabIndex = 0;
-			textBox2.Text = "Home Page";
+			label2.AutoSize = true;
+			label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+			label2.Location = new Point(451, 235);
+			label2.Name = "label2";
+			label2.Size = new Size(112, 21);
+			label2.TabIndex = 4;
+			label2.Text = "Student Page";
+			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+			label1.Location = new Point(415, 214);
+			label1.Name = "label1";
+			label1.Size = new Size(180, 21);
+			label1.TabIndex = 2;
+			label1.Text = "Allocate+Schedule 1.0";
+			// 
+			// pictureBox2
+			// 
+			pictureBox2.BackgroundImage = (Image)resources.GetObject("pictureBox2.BackgroundImage");
+			pictureBox2.BackgroundImageLayout = ImageLayout.Center;
+			pictureBox2.Location = new Point(477, 156);
+			pictureBox2.Name = "pictureBox2";
+			pictureBox2.Size = new Size(55, 55);
+			pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+			pictureBox2.TabIndex = 1;
+			pictureBox2.TabStop = false;
 			// 
 			// subjectEnrolment
 			// 
-			subjectEnrolment.Controls.Add(enrolmentButton);
 			subjectEnrolment.Controls.Add(studentSubjectsComboBox);
+			subjectEnrolment.Controls.Add(textBox16);
 			subjectEnrolment.Controls.Add(textBox1);
+			subjectEnrolment.Controls.Add(enrolmentButton);
 			subjectEnrolment.Controls.Add(vScrollBar1);
 			subjectEnrolment.Location = new Point(4, 24);
 			subjectEnrolment.Name = "subjectEnrolment";
@@ -317,35 +334,46 @@
 			subjectEnrolment.Text = "Subject Enrolment";
 			subjectEnrolment.UseVisualStyleBackColor = true;
 			// 
+			// studentSubjectsComboBox
+			// 
+			studentSubjectsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			studentSubjectsComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			studentSubjectsComboBox.FormattingEnabled = true;
+			studentSubjectsComboBox.Location = new Point(284, 169);
+			studentSubjectsComboBox.Name = "studentSubjectsComboBox";
+			studentSubjectsComboBox.Size = new Size(258, 29);
+			studentSubjectsComboBox.TabIndex = 4;
+			studentSubjectsComboBox.SelectedIndexChanged += studentSubjectsComboBox_SelectedIndexChanged;
+			// 
+			// textBox16
+			// 
+			textBox16.BorderStyle = BorderStyle.None;
+			textBox16.Location = new Point(284, 147);
+			textBox16.Multiline = true;
+			textBox16.Name = "textBox16";
+			textBox16.Size = new Size(156, 37);
+			textBox16.TabIndex = 7;
+			textBox16.Text = "Select a subject";
+			// 
+			// textBox1
+			// 
+			textBox1.BorderStyle = BorderStyle.None;
+			textBox1.Font = new Font("Showcard Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox1.Location = new Point(313, 14);
+			textBox1.Name = "textBox1";
+			textBox1.Size = new Size(352, 30);
+			textBox1.TabIndex = 6;
+			textBox1.Text = "Subject Enrolment Page";
+			// 
 			// enrolmentButton
 			// 
-			enrolmentButton.Location = new Point(522, 161);
+			enrolmentButton.Location = new Point(601, 173);
 			enrolmentButton.Name = "enrolmentButton";
 			enrolmentButton.Size = new Size(75, 23);
 			enrolmentButton.TabIndex = 5;
 			enrolmentButton.Text = "Enrol";
 			enrolmentButton.UseVisualStyleBackColor = true;
 			enrolmentButton.Click += enrolmentButton_Click;
-			// 
-			// studentSubjectsComboBox
-			// 
-			studentSubjectsComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-			studentSubjectsComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			studentSubjectsComboBox.FormattingEnabled = true;
-			studentSubjectsComboBox.Location = new Point(60, 109);
-			studentSubjectsComboBox.Name = "studentSubjectsComboBox";
-			studentSubjectsComboBox.Size = new Size(180, 29);
-			studentSubjectsComboBox.TabIndex = 4;
-			studentSubjectsComboBox.SelectedIndexChanged += studentSubjectsComboBox_SelectedIndexChanged;
-			// 
-			// textBox1
-			// 
-			textBox1.BorderStyle = BorderStyle.None;
-			textBox1.Location = new Point(386, 22);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new Size(124, 16);
-			textBox1.TabIndex = 2;
-			textBox1.Text = "Subject Enrolment Page";
 			// 
 			// vScrollBar1
 			// 
@@ -357,12 +385,12 @@
 			// 
 			// subjectAllocation
 			// 
+			subjectAllocation.Controls.Add(studentSubjectAllocationComboBox);
+			subjectAllocation.Controls.Add(textBox3);
+			subjectAllocation.Controls.Add(textBox2);
 			subjectAllocation.Controls.Add(studentSubjectActivitiesAllocateButton);
 			subjectAllocation.Controls.Add(studentSubjectActivitiesTextBox);
 			subjectAllocation.Controls.Add(loadStudentActivitiesButton);
-			subjectAllocation.Controls.Add(studentSubjectAllocationComboBox);
-			subjectAllocation.Controls.Add(textBox17);
-			subjectAllocation.Controls.Add(textBox3);
 			subjectAllocation.Location = new Point(4, 24);
 			subjectAllocation.Name = "subjectAllocation";
 			subjectAllocation.Padding = new Padding(3);
@@ -370,6 +398,37 @@
 			subjectAllocation.TabIndex = 1;
 			subjectAllocation.Text = "Subject Allocation";
 			subjectAllocation.UseVisualStyleBackColor = true;
+			// 
+			// studentSubjectAllocationComboBox
+			// 
+			studentSubjectAllocationComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+			studentSubjectAllocationComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+			studentSubjectAllocationComboBox.FormattingEnabled = true;
+			studentSubjectAllocationComboBox.Location = new Point(31, 108);
+			studentSubjectAllocationComboBox.Name = "studentSubjectAllocationComboBox";
+			studentSubjectAllocationComboBox.Size = new Size(250, 29);
+			studentSubjectAllocationComboBox.TabIndex = 9;
+			studentSubjectAllocationComboBox.SelectedIndexChanged += studentSubjectAllocationComboBox_SelectedIndexChanged;
+			// 
+			// textBox3
+			// 
+			textBox3.BorderStyle = BorderStyle.None;
+			textBox3.Location = new Point(31, 89);
+			textBox3.Multiline = true;
+			textBox3.Name = "textBox3";
+			textBox3.Size = new Size(156, 37);
+			textBox3.TabIndex = 14;
+			textBox3.Text = "Select a subject";
+			// 
+			// textBox2
+			// 
+			textBox2.BorderStyle = BorderStyle.None;
+			textBox2.Font = new Font("Showcard Gothic", 18F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox2.Location = new Point(330, 14);
+			textBox2.Name = "textBox2";
+			textBox2.Size = new Size(352, 30);
+			textBox2.TabIndex = 13;
+			textBox2.Text = "Subject Allocation Page";
 			// 
 			// studentSubjectActivitiesAllocateButton
 			// 
@@ -401,40 +460,11 @@
 			loadStudentActivitiesButton.UseVisualStyleBackColor = true;
 			loadStudentActivitiesButton.Click += loadStudentActivitiesButton_Click;
 			// 
-			// studentSubjectAllocationComboBox
-			// 
-			studentSubjectAllocationComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-			studentSubjectAllocationComboBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-			studentSubjectAllocationComboBox.FormattingEnabled = true;
-			studentSubjectAllocationComboBox.Location = new Point(31, 108);
-			studentSubjectAllocationComboBox.Name = "studentSubjectAllocationComboBox";
-			studentSubjectAllocationComboBox.Size = new Size(250, 29);
-			studentSubjectAllocationComboBox.TabIndex = 9;
-			studentSubjectAllocationComboBox.SelectedIndexChanged += studentSubjectAllocationComboBox_SelectedIndexChanged;
-			// 
-			// textBox17
-			// 
-			textBox17.BorderStyle = BorderStyle.None;
-			textBox17.Location = new Point(82, 65);
-			textBox17.Multiline = true;
-			textBox17.Name = "textBox17";
-			textBox17.Size = new Size(156, 37);
-			textBox17.TabIndex = 8;
-			textBox17.Text = "select the subject from the dropdown menu";
-			// 
-			// textBox3
-			// 
-			textBox3.BorderStyle = BorderStyle.None;
-			textBox3.Location = new Point(323, 27);
-			textBox3.Name = "textBox3";
-			textBox3.Size = new Size(100, 16);
-			textBox3.TabIndex = 0;
-			textBox3.Text = "Subject Allocation";
-			// 
 			// viewTimetable
 			// 
 			viewTimetable.BackColor = Color.Pink;
 			viewTimetable.BackgroundImageLayout = ImageLayout.Stretch;
+			viewTimetable.Controls.Add(textBox6);
 			viewTimetable.Controls.Add(groupBox2);
 			viewTimetable.Controls.Add(panel6);
 			viewTimetable.Location = new Point(4, 24);
@@ -443,17 +473,26 @@
 			viewTimetable.TabIndex = 2;
 			viewTimetable.Text = "View Timetable";
 			// 
+			// textBox6
+			// 
+			textBox6.BackColor = Color.Pink;
+			textBox6.BorderStyle = BorderStyle.None;
+			textBox6.Font = new Font("Showcard Gothic", 21.75F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox6.ForeColor = Color.Snow;
+			textBox6.Location = new Point(419, 22);
+			textBox6.Name = "textBox6";
+			textBox6.Size = new Size(352, 36);
+			textBox6.TabIndex = 14;
+			textBox6.Text = "Timetable";
+			// 
 			// groupBox2
 			// 
 			groupBox2.BackColor = Color.LightCyan;
 			groupBox2.Controls.Add(panel7);
-			groupBox2.Controls.Add(textBox9);
-			groupBox2.Controls.Add(textBox8);
-			groupBox2.Controls.Add(textBox7);
-			groupBox2.Controls.Add(textBox6);
 			groupBox2.Controls.Add(textBox5);
 			groupBox2.Controls.Add(textBox4);
 			groupBox2.Location = new Point(100, 100);
+			groupBox2.Margin = new Padding(0);
 			groupBox2.Name = "groupBox2";
 			groupBox2.Padding = new Padding(0);
 			groupBox2.Size = new Size(786, 46);
@@ -467,65 +506,17 @@
 			panel7.Size = new Size(786, 100);
 			panel7.TabIndex = 0;
 			// 
-			// textBox9
-			// 
-			textBox9.BackColor = Color.LightCyan;
-			textBox9.BorderStyle = BorderStyle.None;
-			textBox9.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox9.ForeColor = Color.PaleVioletRed;
-			textBox9.Location = new Point(675, 11);
-			textBox9.Name = "textBox9";
-			textBox9.Size = new Size(100, 23);
-			textBox9.TabIndex = 5;
-			textBox9.Text = "4-6";
-			// 
-			// textBox8
-			// 
-			textBox8.BackColor = Color.LightCyan;
-			textBox8.BorderStyle = BorderStyle.None;
-			textBox8.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox8.ForeColor = Color.PaleVioletRed;
-			textBox8.Location = new Point(536, 11);
-			textBox8.Name = "textBox8";
-			textBox8.Size = new Size(100, 23);
-			textBox8.TabIndex = 4;
-			textBox8.Text = "2-4";
-			// 
-			// textBox7
-			// 
-			textBox7.BackColor = Color.LightCyan;
-			textBox7.BorderStyle = BorderStyle.None;
-			textBox7.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox7.ForeColor = Color.PaleVioletRed;
-			textBox7.Location = new Point(398, 11);
-			textBox7.Name = "textBox7";
-			textBox7.Size = new Size(100, 23);
-			textBox7.TabIndex = 3;
-			textBox7.Text = "12-2";
-			// 
-			// textBox6
-			// 
-			textBox6.BackColor = Color.LightCyan;
-			textBox6.BorderStyle = BorderStyle.None;
-			textBox6.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
-			textBox6.ForeColor = Color.PaleVioletRed;
-			textBox6.Location = new Point(275, 11);
-			textBox6.Name = "textBox6";
-			textBox6.Size = new Size(100, 23);
-			textBox6.TabIndex = 2;
-			textBox6.Text = "10-12";
-			// 
 			// textBox5
 			// 
 			textBox5.BackColor = Color.LightCyan;
 			textBox5.BorderStyle = BorderStyle.None;
-			textBox5.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point);
+			textBox5.Font = new Font("Comic Sans MS", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
 			textBox5.ForeColor = Color.PaleVioletRed;
 			textBox5.Location = new Point(152, 11);
 			textBox5.Name = "textBox5";
-			textBox5.Size = new Size(100, 23);
+			textBox5.Size = new Size(586, 20);
 			textBox5.TabIndex = 1;
-			textBox5.Text = "8-10";
+			textBox5.Text = "ID | Name | Activity | Type | Delivery | Exam | Day | Method | Start | End | Time";
 			// 
 			// textBox4
 			// 
@@ -542,6 +533,9 @@
 			// panel6
 			// 
 			panel6.BackColor = Color.GhostWhite;
+			panel6.Controls.Add(fridayTimetable);
+			panel6.Controls.Add(wednesdayTimetable);
+			panel6.Controls.Add(mondayTimetable);
 			panel6.Controls.Add(textBox12);
 			panel6.Controls.Add(textBox11);
 			panel6.Controls.Add(textBox10);
@@ -552,6 +546,42 @@
 			panel6.Name = "panel6";
 			panel6.Size = new Size(786, 552);
 			panel6.TabIndex = 0;
+			// 
+			// fridayTimetable
+			// 
+			fridayTimetable.BackColor = Color.GhostWhite;
+			fridayTimetable.BorderStyle = BorderStyle.None;
+			fridayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			fridayTimetable.ForeColor = Color.PaleVioletRed;
+			fridayTimetable.Location = new Point(152, 473);
+			fridayTimetable.Multiline = true;
+			fridayTimetable.Name = "fridayTimetable";
+			fridayTimetable.Size = new Size(586, 65);
+			fridayTimetable.TabIndex = 14;
+			// 
+			// wednesdayTimetable
+			// 
+			wednesdayTimetable.BackColor = Color.GhostWhite;
+			wednesdayTimetable.BorderStyle = BorderStyle.None;
+			wednesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			wednesdayTimetable.ForeColor = Color.PaleVioletRed;
+			wednesdayTimetable.Location = new Point(152, 265);
+			wednesdayTimetable.Multiline = true;
+			wednesdayTimetable.Name = "wednesdayTimetable";
+			wednesdayTimetable.Size = new Size(586, 65);
+			wednesdayTimetable.TabIndex = 13;
+			// 
+			// mondayTimetable
+			// 
+			mondayTimetable.BackColor = Color.GhostWhite;
+			mondayTimetable.BorderStyle = BorderStyle.None;
+			mondayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			mondayTimetable.ForeColor = Color.PaleVioletRed;
+			mondayTimetable.Location = new Point(152, 61);
+			mondayTimetable.Multiline = true;
+			mondayTimetable.Name = "mondayTimetable";
+			mondayTimetable.Size = new Size(586, 65);
+			mondayTimetable.TabIndex = 9;
 			// 
 			// textBox12
 			// 
@@ -593,11 +623,24 @@
 			// 
 			panel9.BackColor = Color.LavenderBlush;
 			panel9.BackgroundImageLayout = ImageLayout.None;
+			panel9.Controls.Add(thursdayTimetable);
 			panel9.Controls.Add(textBox14);
 			panel9.Location = new Point(0, 352);
 			panel9.Name = "panel9";
 			panel9.Size = new Size(786, 100);
 			panel9.TabIndex = 1;
+			// 
+			// thursdayTimetable
+			// 
+			thursdayTimetable.BackColor = Color.LavenderBlush;
+			thursdayTimetable.BorderStyle = BorderStyle.None;
+			thursdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			thursdayTimetable.ForeColor = Color.PaleVioletRed;
+			thursdayTimetable.Location = new Point(152, 17);
+			thursdayTimetable.Multiline = true;
+			thursdayTimetable.Name = "thursdayTimetable";
+			thursdayTimetable.Size = new Size(586, 65);
+			thursdayTimetable.TabIndex = 11;
 			// 
 			// textBox14
 			// 
@@ -615,11 +658,24 @@
 			// 
 			panel8.BackColor = Color.LavenderBlush;
 			panel8.BackgroundImageLayout = ImageLayout.None;
+			panel8.Controls.Add(tuesdayTimetable);
 			panel8.Controls.Add(textBox13);
 			panel8.Location = new Point(0, 140);
 			panel8.Name = "panel8";
 			panel8.Size = new Size(786, 100);
 			panel8.TabIndex = 0;
+			// 
+			// tuesdayTimetable
+			// 
+			tuesdayTimetable.BackColor = Color.LavenderBlush;
+			tuesdayTimetable.BorderStyle = BorderStyle.None;
+			tuesdayTimetable.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+			tuesdayTimetable.ForeColor = Color.PaleVioletRed;
+			tuesdayTimetable.Location = new Point(152, 21);
+			tuesdayTimetable.Multiline = true;
+			tuesdayTimetable.Name = "tuesdayTimetable";
+			tuesdayTimetable.Size = new Size(586, 65);
+			tuesdayTimetable.TabIndex = 10;
 			// 
 			// textBox13
 			// 
@@ -643,19 +699,19 @@
 			Name = "StudentForm";
 			Text = "StudentForm";
 			panel1.ResumeLayout(false);
-			panel5.ResumeLayout(false);
-			panel5.PerformLayout();
 			panel2.ResumeLayout(false);
 			panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			studentTabControl.ResumeLayout(false);
 			homePage.ResumeLayout(false);
 			homePage.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
 			subjectEnrolment.ResumeLayout(false);
 			subjectEnrolment.PerformLayout();
 			subjectAllocation.ResumeLayout(false);
 			subjectAllocation.PerformLayout();
 			viewTimetable.ResumeLayout(false);
+			viewTimetable.PerformLayout();
 			groupBox2.ResumeLayout(false);
 			groupBox2.PerformLayout();
 			panel6.ResumeLayout(false);
@@ -672,7 +728,6 @@
 		private Panel panel1;
 		private Button logoutButton;
 		private Panel panel5;
-		private Label otherLabel;
 		private Button removeFromASubjectButton;
 		private Panel panel4;
 		private Button addSubjectAndActivitiesButton;
@@ -685,19 +740,12 @@
 		private PictureBox pictureBox1;
 		private TabControl studentTabControl;
 		private TabPage homePage;
-		private TextBox textBox2;
 		private TabPage subjectEnrolment;
-		private TextBox textBox1;
 		private VScrollBar vScrollBar1;
 		private TabPage subjectAllocation;
-		private TextBox textBox3;
 		private TabPage viewTimetable;
 		private Panel panel6;
 		private GroupBox groupBox2;
-		private TextBox textBox9;
-		private TextBox textBox8;
-		private TextBox textBox7;
-		private TextBox textBox6;
 		private TextBox textBox5;
 		private TextBox textBox4;
 		private Panel panel7;
@@ -710,10 +758,22 @@
 		private TextBox textBox13;
 		private ComboBox studentSubjectsComboBox;
 		private Button enrolmentButton;
-		private TextBox textBox17;
 		private ComboBox studentSubjectAllocationComboBox;
 		private Button loadStudentActivitiesButton;
 		private RichTextBox studentSubjectActivitiesTextBox;
 		private Button studentSubjectActivitiesAllocateButton;
+		private TextBox mondayTimetable;
+		private TextBox wednesdayTimetable;
+		private TextBox fridayTimetable;
+		private TextBox thursdayTimetable;
+		private TextBox tuesdayTimetable;
+		private Label label2;
+		private Label label1;
+		private PictureBox pictureBox2;
+		private TextBox textBox1;
+		private TextBox textBox16;
+		private TextBox textBox3;
+		private TextBox textBox2;
+		private TextBox textBox6;
 	}
 }

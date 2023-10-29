@@ -24,13 +24,17 @@ namespace EnrolmentTimetableSystem
 			InitializeComponent();
 			loggedInStudentID = details[0];
 			this.details = details;
+			DisplayActivitiesForDay(mondayTimetable, "Monday");
+			DisplayActivitiesForDay(tuesdayTimetable, "Tuesday");
+			DisplayActivitiesForDay(wednesdayTimetable, "Wednesday");
+			DisplayActivitiesForDay(thursdayTimetable, "Thursday");
+			DisplayActivitiesForDay(fridayTimetable, "Friday");
 		}
 
 		private string GetStudentName(string studentID)
 		{
 			// Create the file path using the student's ID
 			string studentFilePath = Path.Combine("Students", $"{studentID}.txt");
-
 			if (File.Exists(studentFilePath))
 			{
 				string[] studentData = File.ReadAllLines(studentFilePath);
@@ -46,17 +50,13 @@ namespace EnrolmentTimetableSystem
 					}
 				}
 			}
-
 			return "Unknown Student";
 		}
-
-
 
 		private void StudentForm_Load(object sender, EventArgs e)
 		{
 			studentSubjectsComboBox.Items.Clear();
 			studentSubjectAllocationComboBox.Items.Clear();
-
 		}
 
 		private void StudentLogsIn(string studentID)
@@ -66,10 +66,10 @@ namespace EnrolmentTimetableSystem
 
 		private void logoutButton_Click(object sender, EventArgs e)
 		{
-            loginForm.ResetLoginForm();
-            loginForm.Show();
-            Close();
-        }
+			loginForm.ResetLoginForm();
+			loginForm.Show();
+			Close();
+		}
 
 		private void viewSubjectRequestsButton_Click(object sender, EventArgs e)
 		{
@@ -83,12 +83,10 @@ namespace EnrolmentTimetableSystem
 			{
 				studentSubjectsComboBox.Items.Clear();
 				string[] subjectFiles = Directory.GetFiles("Subjects");
-
 				foreach (string subjectFile in subjectFiles)
 				{
 					string fileName = Path.GetFileNameWithoutExtension(subjectFile);
 					string[] lines = File.ReadAllLines(subjectFile);
-
 					if (lines.Length > 0)
 					{
 						string[] subjectData = lines[0].Split(':');
@@ -100,7 +98,6 @@ namespace EnrolmentTimetableSystem
 						}
 					}
 				}
-
 				subjectsComboBoxPopulated = true; // Set the flag to true after populating
 			}
 		}
@@ -123,14 +120,11 @@ namespace EnrolmentTimetableSystem
 			{
 				studentSubjectAllocationComboBox.Items.Clear();
 				string studentID = loggedInStudentID;
-
 				string[] subjectFiles = Directory.GetFiles("Enrolment");
-
 				foreach (string subjectFile in subjectFiles)
 				{
 					string fileName = Path.GetFileNameWithoutExtension(subjectFile);
 					string[] lines = File.ReadAllLines(subjectFile);
-
 					foreach (string line in lines)
 					{
 						if (line.Contains(studentID))
@@ -140,7 +134,6 @@ namespace EnrolmentTimetableSystem
 						}
 					}
 				}
-
 				studentSubjectsAllocationComboBoxPopulated = true; // Set the flag to true after populating
 			}
 		}
@@ -162,25 +155,24 @@ namespace EnrolmentTimetableSystem
 			{
 				string selectedSubject = studentSubjectsComboBox.SelectedItem.ToString();
 				string subjectInfo = selectedSubject.Trim();
-
 				// Replace the hard-coded studentID with the actual logic to retrieve the logged-in student's ID
 				string studentID = loggedInStudentID; // Replace with your logic to get the logged-in student's ID
-
 				// Get the student's name
 				string studentName = GetStudentName(studentID);
-
 				// Format the request data with ":" at the end
 				string requestData = $"{studentID}:{studentName}:student";
-
 				// Use only the student's ID as the request file name
 				string requestFileName = $"{subjectInfo}.txt";
-
+				string requestFilePath = Path.Combine("Enrolment", requestFileName);
+				if (!File.Exists(requestFilePath))
+				{
+					// If the enrollment file doesn't exist, create a new file
+					File.Create(requestFilePath).Close();
+				}
 				// Load the students' previous requests
-				string[] previousRequests = File.ReadAllLines("Enrolment\\" + requestFileName);
-
+				string[] previousRequests = File.ReadAllLines(requestFilePath);
 				// Check if the student has already enrolled in this subject
 				bool isDuplicateRequest = previousRequests.Any(line => line.StartsWith(studentID + ":"));
-
 				if (isDuplicateRequest)
 				{
 					// The student has already enrolled in this subject
@@ -189,8 +181,7 @@ namespace EnrolmentTimetableSystem
 				else
 				{
 					// Write the request data to the appropriate request file
-					File.AppendAllText("Enrolment\\" + requestFileName, requestData + Environment.NewLine);
-
+					File.AppendAllText(requestFilePath, requestData + Environment.NewLine);
 					// Notify the user that the request has been submitted
 					MessageBox.Show("Enrollment submitted successfully.");
 				}
@@ -213,13 +204,10 @@ namespace EnrolmentTimetableSystem
 			{
 				// Read the selected subject from the combobox
 				string selectedSubject = studentSubjectAllocationComboBox.SelectedItem.ToString();
-
 				// Extract the subject ID from the selected subject
 				string subjectID = GetSubjectID(selectedSubject);
-
 				// Read the content of the subject activities file for the selected subject
 				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
-
 				if (File.Exists(activitiesFilePath))
 				{
 					// Load and display the content in the subjectActivitiesTextBox
@@ -259,7 +247,6 @@ namespace EnrolmentTimetableSystem
 				string studentFirstName = details[2]; // Assuming the first name is at index 2
 				string studentLastName = details[3]; // Assuming the last name is at index 3
 				string studentName = $"{studentFirstName} {studentLastName}";
-
 				// Check if the teacher has already allocated for this subject
 				string allocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
 				if (File.Exists(allocationFileName))
@@ -274,33 +261,25 @@ namespace EnrolmentTimetableSystem
 						}
 					}
 				}
-
 				// Read the subject activities from the SubjectActivities file for the selected subject
 				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
-
 				if (File.Exists(activitiesFilePath))
 				{
 					string[] activityLines = File.ReadAllLines(activitiesFilePath);
-
 					foreach (string line in activityLines)
 					{
 						string[] activityData = line.Split('|');
-
 						// Ensure the line has at least one element before accessing the activity ID
 						if (activityData.Length > 0)
 						{
 							string activityID = activityData[0];
-
 							// Use the activity's ID as the allocation file name
 							string activityAllocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
-
 							// Append allocation data (teacher ID, teacher name, role, and activity ID)
 							string allocationData = $"{studentID}:{studentName}:student:{activityID}";
-
 							File.AppendAllText(activityAllocationFileName, allocationData + Environment.NewLine);
 						}
 					}
-
 					// Notify the user that the allocation has been made
 					MessageBox.Show("Allocation successful.");
 				}
@@ -313,6 +292,39 @@ namespace EnrolmentTimetableSystem
 			else
 			{
 				MessageBox.Show("Please select a subject from the dropdown.");
+			}
+		}
+
+		private void DisplayActivitiesForDay(TextBox textBox, string day)
+		{
+			// Clear the textbox before populating it
+			textBox.Clear();
+			// Get the path to the "SubjectActivities" folder
+			string activitiesFolderPath = "SubjectActivities";
+			// Check if the folder exists
+			if (Directory.Exists(activitiesFolderPath))
+			{
+				// Get a list of text files in the folder
+				string[] activityFiles = Directory.GetFiles(activitiesFolderPath, "*.txt");
+				foreach (string activityFile in activityFiles)
+				{
+					// Read the content of each activity file
+					string[] activityLines = File.ReadAllLines(activityFile);
+					foreach (string line in activityLines)
+					{
+						// Check if the line contains the specified day (e.g., "Monday")
+						if (line.Contains(day, StringComparison.OrdinalIgnoreCase))
+						{
+							// Display the line in the specified textbox
+							textBox.AppendText(line + Environment.NewLine);
+						}
+					}
+				}
+			}
+			else
+			{
+				// The "SubjectActivities" folder doesn't exist
+				textBox.Text = "Subject activities folder not found.";
 			}
 		}
 	}

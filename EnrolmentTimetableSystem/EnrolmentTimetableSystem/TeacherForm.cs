@@ -19,13 +19,17 @@ namespace EnrolmentTimetableSystem
 		private string loggedInTeacherID;
 		private string[] details;
 
-
 		public TeacherForm(LoginForm loginForm, string[] details)
 		{
 			this.loginForm = loginForm;
 			InitializeComponent();
 			loggedInTeacherID = details[0];
 			this.details = details;
+			DisplayActivitiesForDay(mondayTimetable, "Monday");
+			DisplayActivitiesForDay(tuesdayTimetable, "Tuesday");
+			DisplayActivitiesForDay(wednesdayTimetable, "Wednesday");
+			DisplayActivitiesForDay(thursdayTimetable, "Thursday");
+			DisplayActivitiesForDay(fridayTimetable, "Friday");
 		}
 
 		private void TeacherForm_Load(object sender, EventArgs e)
@@ -68,7 +72,6 @@ namespace EnrolmentTimetableSystem
 						}
 					}
 				}
-
 				subjectsComboBoxPopulated = true; // Set the flag to true after populating
 			}
 		}
@@ -97,14 +100,11 @@ namespace EnrolmentTimetableSystem
 			{
 				teacherSubjectAllocationComboBox.Items.Clear();
 				string teacherID = loggedInTeacherID;
-
 				string[] subjectFiles = Directory.GetFiles("Enrolment");
-
 				foreach (string subjectFile in subjectFiles)
 				{
 					string fileName = Path.GetFileNameWithoutExtension(subjectFile);
 					string[] lines = File.ReadAllLines(subjectFile);
-
 					foreach (string line in lines)
 					{
 						if (line.Contains(teacherID))
@@ -114,13 +114,9 @@ namespace EnrolmentTimetableSystem
 						}
 					}
 				}
-
 				subjectsAllocationComboBoxPopulated = true; // Set the flag to true after populating
 			}
 		}
-
-
-
 
 		private void removeFromASubjectButton_Click(object sender, EventArgs e)
 		{
@@ -144,22 +140,16 @@ namespace EnrolmentTimetableSystem
 
 				// Replace the hard-coded teacherID with the actual logic to retrieve the logged-in teacher's ID
 				string teacherID = loggedInTeacherID; // Replace with your logic to get the logged-in teacher's ID
-
 				// Trim the message to remove any leading/trailing spaces
 				string message = requestMessageTextBox.Text.Trim();
-
 				// Format the request data with ":" at the end
 				string requestData = $"{GenerateRandomNumber()}:{teacherID}:{subjectInfo}:{message}:Awaiting for approval:";
-
 				// Use only the teacher's ID as the request file name
 				string requestFileName = $"{teacherID}.txt";
-
 				// Load the teacher's previous requests
 				string[] previousRequests = File.ReadAllLines("Requests\\" + requestFileName);
-
 				// Check if the new request already exists in the teacher's previous requests
 				bool isDuplicateRequest = previousRequests.Any(line => line.Contains(subjectInfo));
-
 				if (isDuplicateRequest)
 				{
 					// A request for this subject already exists
@@ -169,7 +159,6 @@ namespace EnrolmentTimetableSystem
 				{
 					// Write the request data to the appropriate request file
 					File.AppendAllText("Requests\\" + requestFileName, requestData + Environment.NewLine);
-
 					// Notify the user that the request has been submitted
 					MessageBox.Show("Request submitted successfully.");
 				}
@@ -199,20 +188,16 @@ namespace EnrolmentTimetableSystem
 			string[] selectedRequestDetails = selectedRequest.Split('-');
 		}
 
-
 		private void loadActivitiesButton_Click(object sender, EventArgs e)
 		{
 			if (teacherSubjectAllocationComboBox.SelectedIndex != -1)
 			{
 				// Read the selected subject from the combobox
 				string selectedSubject = teacherSubjectAllocationComboBox.SelectedItem.ToString();
-
 				// Extract the subject ID from the selected subject
 				string subjectID = GetSubjectID(selectedSubject);
-
 				// Read the content of the subject activities file for the selected subject
 				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
-
 				if (File.Exists(activitiesFilePath))
 				{
 					// Load and display the content in the subjectActivitiesTextBox
@@ -252,7 +237,6 @@ namespace EnrolmentTimetableSystem
 				string teacherFirstName = details[2]; // Assuming the first name is at index 2
 				string teacherLastName = details[3]; // Assuming the last name is at index 3
 				string teacherName = $"{teacherFirstName} {teacherLastName}";
-
 				// Check if the teacher has already allocated for this subject
 				string allocationFileName = Path.Combine("Allocation", $"{subjectID}.txt");
 				if (File.Exists(allocationFileName))
@@ -270,11 +254,9 @@ namespace EnrolmentTimetableSystem
 
 				// Read the subject activities from the SubjectActivities file for the selected subject
 				string activitiesFilePath = Path.Combine("SubjectActivities", $"{subjectID}.txt");
-
 				if (File.Exists(activitiesFilePath))
 				{
 					string[] activityLines = File.ReadAllLines(activitiesFilePath);
-
 					foreach (string line in activityLines)
 					{
 						string[] activityData = line.Split('|');
@@ -293,7 +275,6 @@ namespace EnrolmentTimetableSystem
 							File.AppendAllText(activityAllocationFileName, allocationData + Environment.NewLine);
 						}
 					}
-
 					// Notify the user that the allocation has been made
 					MessageBox.Show("Allocation successful.");
 				}
@@ -309,9 +290,37 @@ namespace EnrolmentTimetableSystem
 			}
 		}
 
-
-
-
+		private void DisplayActivitiesForDay(TextBox textBox, string day)
+		{
+			// Clear the textbox before populating it
+			textBox.Clear();
+			// Get the path to the "SubjectActivities" folder
+			string activitiesFolderPath = "SubjectActivities";
+			// Check if the folder exists
+			if (Directory.Exists(activitiesFolderPath))
+			{
+				// Get a list of text files in the folder
+				string[] activityFiles = Directory.GetFiles(activitiesFolderPath, "*.txt");
+				foreach (string activityFile in activityFiles)
+				{
+					// Read the content of each activity file
+					string[] activityLines = File.ReadAllLines(activityFile);
+					foreach (string line in activityLines)
+					{
+						// Check if the line contains the specified day (e.g., "Monday")
+						if (line.Contains(day, StringComparison.OrdinalIgnoreCase))
+						{
+							// Display the line in the specified textbox
+							textBox.AppendText(line + Environment.NewLine);
+						}
+					}
+				}
+			}
+			else
+			{
+				// The "SubjectActivities" folder doesn't exist
+				textBox.Text = "Subject activities folder not found.";
+			}
+		}
 	}
-
 }
